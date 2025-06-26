@@ -1,3 +1,3 @@
-export default function LocaleHome() {
-  return null; // actual pages are nested
-}
+import Home from "../page";
+
+export default Home;
