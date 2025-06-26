@@ -92,6 +92,49 @@ export const cartRouter = router({
    * @returns - success: boolean - Whether or not the operation was successful
    */
 
+  applyCoupon: privateProcedure
+    .input(z.object({ code: z.string() }))
+    .mutation(async ({ input, ctx }) => {
+      const { user } = ctx;
+      const { code } = input;
+
+      const payload = await getPayloadClient();
+
+      const { docs: coupons } = await payload.find({
+        collection: "coupons",
+        where: {
+          code: { equals: code.toUpperCase() },
+          active: { equals: true },
+        },
+        limit: 1,
+      });
+
+      if (!coupons.length) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Invalid coupon" });
+      }
+
+      const coupon = coupons[0];
+
+      if (coupon.expiresAt && new Date(coupon.expiresAt) < new Date()) {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Coupon expired" });
+      }
+
+      if (!user.cart) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Cart not found" });
+      }
+
+      const updated = await payload.update({
+        collection: "cart",
+        id: typeof user.cart === "string" ? user.cart : user.cart.id,
+        data: {
+          coupon: coupon.id,
+          discount: coupon.type === "percent" ? coupon.value : 0,
+        },
+      });
+
+      return { success: true, cart: updated };
+    }),
+
   removeItemFromCart: privateProcedure
     .input(z.object({ productId: z.string() }))
     .mutation(async ({ input, ctx }) => {

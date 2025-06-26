@@ -12,6 +12,7 @@ import {
   Products,
   Users,
   List,
+  Coupons,
 } from "./collections";
 import { S3Client } from "@aws-sdk/client-s3";
 import s3Upload from "payload-s3-upload";
@@ -20,7 +21,7 @@ dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
-  collections: [Users, Products, Media, ProductFiles, Orders, Cart, List],
+  collections: [Users, Products, Media, ProductFiles, Orders, Cart, List, Coupons],
   routes: {
     admin: "/sell",
   },

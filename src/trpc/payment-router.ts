@@ -84,6 +84,97 @@ export const paymentRouter = router({
       }
     }),
 
+  // Checkout using cart and optional coupon
+  checkoutCart: privateProcedure
+    .input(
+      z.object({ cartId: z.string() })
+    )
+    .mutation(async ({ input, ctx }) => {
+      const { cartId } = input;
+      const { user } = ctx;
+      const payload = await getPayloadClient();
+
+      // Fetch cart with products and coupon populated
+      const cart = await payload.findByID({
+        collection: "cart",
+        id: cartId,
+        depth: 2,
+      });
+
+      if (!cart) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Cart not found" });
+      }
+
+      const productIds = (cart.products || []).map((p: any) =>
+        typeof p === "string" ? p : p.id
+      );
+      if (!productIds.length) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Cart is empty" });
+      }
+
+      const { docs: products } = await payload.find({
+        collection: "products",
+        where: { id: { in: productIds } },
+        depth: 1,
+      });
+
+      const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = products.map((p) => ({
+        price: p.priceId!,
+        quantity: 1,
+      }));
+
+      let discounts: Stripe.Checkout.SessionCreateParams.Discount[] | undefined;
+      if (cart.coupon) {
+        let couponDoc: any = cart.coupon;
+        if (typeof couponDoc === "string") {
+          couponDoc = await payload.findByID({ collection: "coupons", id: couponDoc });
+        }
+        if (
+          couponDoc &&
+          couponDoc.active !== false &&
+          (!couponDoc.expiresAt || new Date(couponDoc.expiresAt) > new Date())
+        ) {
+          let stripeCouponId: string | undefined = couponDoc.stripeId;
+          if (!stripeCouponId) {
+            const created = await stripe.coupons.create(
+              couponDoc.type === "percent"
+                ? { percent_off: couponDoc.value }
+                : { amount_off: Math.round(couponDoc.value * 100), currency: "usd" }
+            );
+            stripeCouponId = created.id;
+            await payload.update({
+              collection: "coupons",
+              id: couponDoc.id,
+              data: { stripeId: stripeCouponId },
+            });
+          }
+          discounts = [{ coupon: stripeCouponId! }];
+        }
+      }
+
+      const order = await payload.create({
+        collection: "orders",
+        data: {
+          _isPaid: false,
+          products: productIds,
+          user: user.id,
+          coupon: cart.coupon ? (typeof cart.coupon === "string" ? cart.coupon : cart.coupon.id) : null,
+        },
+      });
+
+      const session = await stripe.checkout.sessions.create({
+        success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}`,
+        cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/cart`,
+        payment_method_types: ["card"],
+        mode: "payment",
+        metadata: { orderId: order.id, userId: user.id },
+        line_items,
+        discounts,
+      });
+
+      return { url: session.url };
+    }),
+
   pollOrderStatus: privateProcedure
     .input(
       z.object({

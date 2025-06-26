@@ -22,6 +22,13 @@ const Cart: CollectionConfig = {
       defaultValue: 0,
     },
     {
+      name: "coupon",
+      label: "Coupon",
+      type: "relationship",
+      relationTo: "coupons",
+      hasMany: false,
+    },
+    {
       name: "user",
       label: "Owner",
       type: "relationship",
