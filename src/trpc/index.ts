@@ -6,12 +6,18 @@ import { getPayloadClient } from "../get-payload";
 import { paymentRouter } from "./payment-router";
 import { cartRouter } from "./cart-route";
 import { listRouter } from "./list-route";
+import { clickRouter } from "./click-router";
+import { paymeRouter } from "./payme-router";
+import { emailRouter } from "./email-router";
 
 export const appRouter = router({
   auth: authRouter,
   payment: paymentRouter,
   cart: cartRouter,
   list: listRouter,
+  click: clickRouter,
+  payme: paymeRouter,
+  email: emailRouter,
   products: publicProcedure
     .input(
       z.object({
