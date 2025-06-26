@@ -21,6 +21,15 @@ const CartPage = () => {
   }, []);
 
   const { items, removeItem } = useCart();
+  const [couponCode, setCouponCode] = useState("");
+  const [discountPercent, setDiscountPercent] = useState(0);
+
+  const { mutate: applyCoupon, isLoading: isApplying } =
+    trpc.cart.applyCoupon.useMutation({
+      onSuccess: ({ cart }) => {
+        setDiscountPercent(cart.discount || 0);
+      },
+    });
   const { mutate: createCheckoutSession, isLoading } =
     trpc.payment.createSession.useMutation({
       onSuccess: ({ url }) => {
@@ -38,12 +47,21 @@ const CartPage = () => {
   const createList = async () =>
     createCartList({ productIds: items.map(({ product }) => product.id) });
 
-  let cartTotal = items.reduce(
+  let subTotal = items.reduce(
     (total, { product }) => total + product.price,
     0
   );
 
   const productIds = items.map(({ product }) => product.id);
+
+  const { mutate: createClickInvoice, isLoading: clickLoading } =
+    trpc.click.createInvoiceFromProducts.useMutation({
+      onSuccess: ({ url }) => url && router.push(url),
+    });
+  const { mutate: createPaymeInvoice, isLoading: paymeLoading } =
+    trpc.payme.createInvoiceFromProducts.useMutation({
+      onSuccess: ({ url }) => url && router.push(url),
+    });
 
   return (
     <div className="bg-background">
@@ -122,7 +140,7 @@ const CartPage = () => {
                 <p className="text-sm text-foreground/60">Subtotal</p>
                 <p className="font-medium text-foreground/90 text-sm">
                   {isMounted ? (
-                    formatPrice(cartTotal)
+                    formatPrice(subTotal)
                   ) : (
                     <Loader2 className="h-5 w-5 text-muted-foreground animate-spin" />
                   )}
@@ -141,13 +159,22 @@ const CartPage = () => {
                   )}
                 </div>
               </div>
+              {discountPercent > 0 && (
+                <div className="flex items-center justify-between border-t border-foreground/20 pt-4">
+                  <span className="text-sm text-muted-foreground">Discount</span>
+                  <span className="text-sm font-medium text-green-600">-{discountPercent}%</span>
+                </div>
+              )}
               <div className="flex items-center justify-between border-t border-muted text-foreground/20 pt-4">
                 <div className="flex items-center text-base font-medium text-muted-foreground">
                   Order Total
                 </div>
                 <div className=" text-base font-medium text-foreground/90">
                   {isMounted ? (
-                    formatPrice(cartTotal + Number(TRANSACTION_FEE))
+                    formatPrice(
+                    subTotal * (1 - discountPercent / 100) +
+                      Number(TRANSACTION_FEE)
+                  )
                   ) : (
                     <Loader2 className="h-5 w-5 text-muted-foreground animate-spin" />
                   )}
@@ -155,7 +182,26 @@ const CartPage = () => {
               </div>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 space-y-4">
+              <div className="flex">
+                <input
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value)}
+                  placeholder="Coupon code"
+                  className="flex-1 px-3 py-2 rounded-l-md border border-r-0 bg-background text-sm"
+                />
+                <Button
+                  variant="secondary"
+                  disabled={!couponCode || isApplying}
+                  onClick={() => applyCoupon({ code: couponCode })}
+                  className="rounded-l-none"
+                >
+                  {isApplying && <Loader2 className="h-4 w-4 animate-spin mr-1" />}
+                  Apply
+                </Button>
+              </div>
+
+              
               {isMounted && (
                 <Button
                   disabled={items.length === 0 || isLoading}
@@ -167,6 +213,29 @@ const CartPage = () => {
                     <Loader2 className="h-5 w-5 animate-spin mr-1.5" />
                   )}
                   Checkout
+                </Button>
+              )}
+
+              {isMounted && (
+                <Button
+                  variant="outline"
+                  disabled={items.length === 0 || clickLoading}
+                  onClick={() => createClickInvoice({ productIds, couponCode })}
+                  className="w-full mt-2"
+                >
+                  {clickLoading && <Loader2 className="h-5 w-5 animate-spin mr-1.5" />}
+                  Pay with Click
+                </Button>
+              )}
+              {isMounted && (
+                <Button
+                  variant="outline"
+                  disabled={items.length === 0 || paymeLoading}
+                  onClick={() => createPaymeInvoice({ productIds, couponCode })}
+                  className="w-full mt-2"
+                >
+                  {paymeLoading && <Loader2 className="h-5 w-5 animate-spin mr-1.5" />}
+                  Pay with Payme
                 </Button>
               )}
             </div>
