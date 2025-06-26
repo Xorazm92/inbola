@@ -6,6 +6,7 @@ import AddToCartButton from "@/components/cart/AddToCartButton";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductImageSlider from "@/components/product/ProductImageSlider";
 import ProductReel from "@/components/product/ProductReel";
+import AttributeTable from "@/components/product/AttributeTable";
 import { getPayloadClient } from "@/get-payload";
 import { formatPrice, getLabel, getValidURLs } from "@/lib/utils";
 
@@ -108,6 +109,8 @@ const ProductDetails = async ({
                   Eligible for Instant Delivery
                 </p>
               </div>
+            
+              <AttributeTable size={product.size as any} color={product.color as any} ageGroup={product.ageGroup as any} />
             </section>
           </div>
           {/* Product Image */}
