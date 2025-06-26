@@ -14,6 +14,14 @@ const Cart: CollectionConfig = {
       hasMany: true,
     },
     {
+      name: "discount",
+      label: "Discount (in %)",
+      type: "number",
+      min: 0,
+      max: 100,
+      defaultValue: 0,
+    },
+    {
       name: "user",
       label: "Owner",
       type: "relationship",
