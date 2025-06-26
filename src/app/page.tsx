@@ -1,6 +1,8 @@
 "use client";
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import Banner from "@/components/home/Banner";
+import CategoryGrid from "@/components/home/CategoryGrid";
 import ProductReel from "@/components/product/ProductReel";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Leaf, ScanEye, ShieldCheck } from "lucide-react";
@@ -30,6 +32,7 @@ const perks = [
 export default function Home() {
   return (
     <>
+      <Banner />
       <MaxWidthWrapper>
         <div className="flex flex-col items-center max-w-3xl py-20 mx-auto text-center">
           <h1 className="text-4xl font-bold tracking-tight text-foreground/80 sm:text-6xl [text-wrap:balance]">
@@ -59,6 +62,8 @@ export default function Home() {
           href="/products"
         />
       </MaxWidthWrapper>
+
+      <CategoryGrid />
       <section className="">
         <MaxWidthWrapper className="py-20">
           <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:gap-x-8 lg:gap-y-0 lg:grid-cols-3">
