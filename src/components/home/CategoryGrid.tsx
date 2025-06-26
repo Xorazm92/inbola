@@ -16,7 +16,7 @@ const CategoryGrid = () => {
           {PRODUCT_CATEGORIES.map((cat) => (
             <Link
               key={cat.value}
-              href={`/list/${cat.value}`}
+              href={`/categories/${cat.value}`}
               className="relative block overflow-hidden rounded-lg group"
             >
               <Image

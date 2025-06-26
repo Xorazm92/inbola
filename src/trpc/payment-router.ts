@@ -38,7 +38,7 @@ export const paymentRouter = router({
       );
 
       const order = await payload.create({
-        collection: "orders",
+        collection: "orders" as any,
         data: {
           _isPaid: false,
           products: filteredProducts.map((product) => product.id),
@@ -96,7 +96,7 @@ export const paymentRouter = router({
 
       // Fetch cart with products and coupon populated
       const cart = await payload.findByID({
-        collection: "cart",
+        collection: "cart" as any,
         id: cartId,
         depth: 2,
       });
@@ -127,7 +127,7 @@ export const paymentRouter = router({
       if (cart.coupon) {
         let couponDoc: any = cart.coupon;
         if (typeof couponDoc === "string") {
-          couponDoc = await payload.findByID({ collection: "coupons", id: couponDoc });
+          couponDoc = await payload.findByID({ collection: "coupons" as any, id: couponDoc });
         }
         if (
           couponDoc &&
@@ -143,7 +143,7 @@ export const paymentRouter = router({
             );
             stripeCouponId = created.id;
             await payload.update({
-              collection: "coupons",
+              collection: "coupons" as any,
               id: couponDoc.id,
               data: { stripeId: stripeCouponId },
             });
@@ -153,7 +153,7 @@ export const paymentRouter = router({
       }
 
       const order = await payload.create({
-        collection: "orders",
+        collection: "orders" as any,
         data: {
           _isPaid: false,
           products: productIds,
@@ -187,7 +187,7 @@ export const paymentRouter = router({
       const payload = await getPayloadClient();
 
       const { docs: orders } = await payload.find({
-        collection: "orders",
+        collection: "orders" as any,
         where: {
           id: {
             equals: orderId,

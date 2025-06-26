@@ -16,7 +16,7 @@ export const cartRouter = router({
 
     // Check if user has a cart
     let cart = await payload.findByID({
-      collection: "cart",
+      collection: "cart" as any,
       id: (typeof user.cart === "string" ? user.cart : user?.cart?.id) || "",
     });
 
@@ -62,18 +62,18 @@ export const cartRouter = router({
       }
 
       const cart = await payload.findByID({
-        collection: "cart",
+        collection: "cart" as any,
         id: typeof user.cart === "string" ? user.cart : user?.cart.id,
       });
 
       let allProductIds =
-        cart?.products?.map((product) =>
+        cart?.products?.map((product: any) =>
           typeof product === "string" ? product : product.id
         ) || [];
 
       // If user has a cart, add the product to the cart
       const { docs } = await payload.update({
-        collection: "cart",
+        collection: "cart" as any,
         where: {
           user: {
             equals: user.id,
@@ -101,7 +101,7 @@ export const cartRouter = router({
       const payload = await getPayloadClient();
 
       const { docs: coupons } = await payload.find({
-        collection: "coupons",
+        collection: "coupons" as any as any,
         where: {
           code: { equals: code.toUpperCase() },
           active: { equals: true },
@@ -124,7 +124,7 @@ export const cartRouter = router({
       }
 
       const updated = await payload.update({
-        collection: "cart",
+        collection: "cart" as any,
         id: typeof user.cart === "string" ? user.cart : user.cart.id,
         data: {
           coupon: coupon.id,
@@ -161,17 +161,17 @@ export const cartRouter = router({
       }
 
       const cart = await payload.findByID({
-        collection: "cart",
+        collection: "cart" as any,
         id: typeof user.cart === "string" ? user.cart : user.cart.id,
       });
 
       // If user has a cart, remove the product from the cart
       const updatedCart = await payload.update({
-        collection: "cart",
+        collection: "cart" as any,
         id: cart.id,
         data: {
           products: cart.products?.filter(
-            (product) =>
+            (product: any) =>
               (typeof product === "string" ? product : product.id) !== productId
           ),
         },

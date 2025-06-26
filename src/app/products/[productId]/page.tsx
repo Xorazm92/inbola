@@ -110,7 +110,7 @@ const ProductDetails = async ({
                 </p>
               </div>
             
-              <AttributeTable size={product.size as any} color={product.color as any} ageGroup={product.ageGroup as any} />
+              <AttributeTable size={(product as any).size} color={(product as any).color} ageGroup={(product as any).ageGroup} />
             </section>
           </div>
           {/* Product Image */}

@@ -251,6 +251,37 @@ const Products: CollectionConfig = {
       },
     },
     {
+      name: "size",
+      label: "Available Sizes",
+      type: "select",
+      hasMany: true,
+      options: [
+        { label: "XS", value: "XS" },
+        { label: "S", value: "S" },
+        { label: "M", value: "M" },
+        { label: "L", value: "L" },
+        { label: "XL", value: "XL" },
+      ],
+    },
+    {
+      name: "color",
+      label: "Colors",
+      type: "text",
+      hasMany: true,
+    },
+    {
+      name: "ageGroup",
+      label: "Age Group",
+      type: "select",
+      options: [
+        { label: "0-2 years", value: "0-2" },
+        { label: "3-5 years", value: "3-5" },
+        { label: "6-8 years", value: "6-8" },
+        { label: "9-12 years", value: "9-12" },
+        { label: "13+ years", value: "13+" },
+      ],
+    },
+    {
       name: "images",
       type: "array",
       label: "Product images",

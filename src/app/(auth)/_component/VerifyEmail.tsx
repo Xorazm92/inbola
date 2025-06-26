@@ -1,4 +1,4 @@
-`"use client";
+"use client";
 
 import { trpc } from "@/trpc/client";
 import Image from "next/image";
