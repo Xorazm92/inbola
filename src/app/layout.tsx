@@ -49,10 +49,11 @@ export default function RootLayout({
         >
           <main className="relative flex flex-col min-h-screen">
             <TrpcProvider>
+              <Navbar />
               <div className="flex-1 flex flex-col justify-center">
                 {children}
               </div>
-            </TrpcProvider>
+              <Footer />            </TrpcProvider>
           </main>
           <Toaster position="bottom-right" />
         </ThemeProvider>

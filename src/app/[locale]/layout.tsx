@@ -22,15 +22,11 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
 
 export default function LocaleLayout({
   children,
-  params: { locale },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
 }) {
-  const messages = useMessages();
-  if (!messages) notFound();
-  return (
-    <html lang={locale}>
+    return (
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "relative h-full font-sans antialiased",
@@ -40,13 +36,13 @@ export default function LocaleLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main className="relative flex flex-col min-h-screen">
             <TrpcProvider>
-              <NextIntlClientProvider locale={locale} messages={messages}>
+              
                 <Navbar />
                 <div className="flex-1 flex flex-col justify-center">
                   {children}
                 </div>
                 <Footer />
-              </NextIntlClientProvider>
+              
             </TrpcProvider>
           </main>
           <Toaster position="bottom-right" />
@@ -54,4 +50,9 @@ export default function LocaleLayout({
       </body>
     </html>
   );
+}
+export async function generateStaticParams() {
+  return [
+    { locale: "en" },
+  ];
 }
