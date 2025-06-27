@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button } from "@/components/ui/button";
+import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const BREADCRUMBS = [

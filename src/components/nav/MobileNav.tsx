@@ -1,3 +1,4 @@
+import React from "react";
 import { PRODUCT_CATEGORIES } from "@/lib/config";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";

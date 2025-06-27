@@ -1,5 +1,6 @@
 'use client'
 
+import React from "react";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -94,6 +95,7 @@ const ProductImageSlider = ({ urls }: { urls: string[] }) => {
             <Image
               src={url}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               loading="lazy"
               className="object-cover object-center w-full h-full -z-10"
               alt="Product image"

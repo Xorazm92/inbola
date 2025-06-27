@@ -6,6 +6,7 @@ import { formatPrice, getLabel } from "@/lib/utils";
 import { Product, ProductFile, User } from "@/payload-types";
 import { cookies } from "next/headers";
 import Image from "next/image";
+import React from "react";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import DownloadButton from "./_component/download-button";
@@ -19,7 +20,7 @@ type ThankYouPageProps = {
 const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
   const orderId = searchParams.orderId;
 
-  const nextCookies = cookies();
+  const nextCookies = await cookies();
   const { user } = await getServerSideUser(nextCookies);
   const payload = await getPayloadClient();
 
@@ -38,8 +39,8 @@ const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
   if (!order) return notFound();
 
   const orderUserId =
-    typeof order.user === "string" ? order.user : order.user.id;
-  if (orderUserId !== user?.id) {
+    typeof order.user === "string" ? order.user : (order.user as User).id;
+  if (orderUserId !== (user as User)?.id) {
     redirect("/sign-in?origin=/thank-you?orderId=" + orderId);
   }
 
@@ -53,7 +54,7 @@ const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
     collection: "cart",
     where: {
       user: {
-        equals: typeof user === "string" ? user : user.id,
+        equals: typeof user === "string" ? user : (user as User).id,
       },
     },
     data: {
@@ -67,6 +68,7 @@ const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
         <Image
           src="/checkout-thank-you.jpg"
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           alt="Thank you"
           className="h-full w-full object-cover object-center"
         />
@@ -85,9 +87,13 @@ const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
               below. We&apos;ve also sent receipt to{" "}
               {typeof order.user !== "string" ? (
                 <span className="font-medium text-foreground/90">
-                  {order.user.email}
+                  {(order.user as User).email}
                 </span>
-              ) : null}
+              ) : (
+                <span className="font-medium text-foreground/90">
+                  {order.user}
+                </span>
+              )}
               .
             </p>
           ) : (
@@ -104,25 +110,25 @@ const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
 
           <ul className="mt-6 divide-y divide-gray-200 border-t border-gray-200 text-sm font-medium text-muted-foreground">
             {(order.products as Product[]).map((product) => {
-              const label = getLabel(product.category);
+              const label = String(getLabel(product.category));
 
-              const downloadLink = `${S3_URL}/product_files/${
-                (product.product_files as ProductFile).filename
-              }`;
+              const filename = String((product.product_files as ProductFile).filename);
+              const downloadLink = `${S3_URL}/product_files/${filename}`;
 
               const { image } = product.images[0];
 
               return (
                 <li
-                  key={`order-product-${product.id}`}
+                  key={`order-product-${String(product.id)}`}
                   className="flex space-x-6 py-6"
                 >
                   <div className="relative h-24 w-24">
                     {typeof image !== "string" && image.url ? (
                       <Image
-                        src={`${S3_URL}/media/${image.filename}`}
+                        src={`${S3_URL}/media/${String(image.filename)}`}
                         fill
-                        alt={product.name}
+                        sizes="96px"
+                        alt={String(product.name)}
                         className="flex-none rounded-md bg-gray-100 object-cover object-center"
                       />
                     ) : null}
@@ -130,7 +136,7 @@ const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
 
                   <div className="flex-auto flex flex-col justify-between">
                     <div className="space-y-1">
-                      <h3 className="text-foreground/90">{product.name}</h3>
+                      <h3 className="text-foreground/90">{String(product.name)}</h3>
 
                       <p className="my-1">Category {label}</p>
                     </div>
@@ -138,7 +144,7 @@ const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
                     {order._isPaid && (
                       <DownloadButton
                         downloadLink={downloadLink}
-                        productName={product.name}
+                        productName={String(product.name)}
                       />
                     )}
                   </div>
@@ -170,7 +176,7 @@ const ThankYouPage = async ({ searchParams }: ThankYouPageProps) => {
 
           <PaymentStatus
             orderEmail={(order.user as User).email}
-            isPaid={order._isPaid}
+            isPaid={typeof order._isPaid === "boolean" ? order._isPaid : false}
             orderId={order.id}
           />
 

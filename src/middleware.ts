@@ -8,11 +8,12 @@ export async function middleware(req: NextRequest) {
   const pathnameIsMissingLocale = locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
-  if (pathnameIsMissingLocale) {
-    const locale = req.headers.get("accept-language")?.split(",")[0]?.split("-")[0] || "uz";
-    const finalLocale = locales.includes(locale as any) ? locale : "uz";
-    return NextResponse.redirect(new URL(`/${finalLocale}${pathname}`, req.url));
-  }
+  // Temporarily disable automatic locale redirect to avoid 404 until locale pages are ready
+  // if (pathnameIsMissingLocale) {
+  //   const locale = req.headers.get("accept-language")?.split(",")[0]?.split("-")[0] || "uz";
+  //   const finalLocale = locales.includes(locale as any) ? locale : "uz";
+  //   return NextResponse.redirect(new URL(`${finalLocale}${pathname}`, req.url));
+  // }
   const { nextUrl, cookies } = req;
 
   const { user } = await getServerSideUser(cookies);

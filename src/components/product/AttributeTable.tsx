@@ -13,7 +13,7 @@ const AttributeTable = ({ size, color, ageGroup }: AttributeTableProps) => {
     const text = Array.isArray(value) ? value.join(", ") : value;
 
     return (
-      <tr className="border-t border-muted">
+      <tr>
         <th className="py-2 pr-4 text-left text-muted-foreground whitespace-nowrap">
           {label}
         </th>

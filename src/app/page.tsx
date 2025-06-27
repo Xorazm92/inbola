@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Banner from "@/components/home/Banner";
 import CategoryGrid from "@/components/home/CategoryGrid";

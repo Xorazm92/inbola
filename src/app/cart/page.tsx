@@ -8,6 +8,7 @@ import { cn, formatPrice } from "@/lib/utils";
 import { trpc } from "@/trpc/client";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
+import React from "react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -15,6 +16,7 @@ const CartPage = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   const router = useRouter();
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     setIsMounted(true);

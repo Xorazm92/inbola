@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { PRODUCT_CATEGORIES } from "@/lib/config";
 import { cn } from "@/lib/utils";
@@ -57,6 +58,7 @@ const NavItem = ({ category, handleOpen, isOpen, isAnyOpen }: NavItemProps) => {
                         src="/placeholder.jpg"
                         alt={category.label}
                         fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover object-center "
                       />
                     </div>

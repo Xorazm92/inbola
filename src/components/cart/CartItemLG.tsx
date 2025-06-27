@@ -26,6 +26,7 @@ const CartItemLG = ({ product, isEditable, onClick }: CartItemLGProps) => {
             <Image
               src={`${S3_URL}/media/${image.filename}`}
               fill
+              sizes="96px"
               alt={product.name}
               className="h-full w-full rounded-md object-center object-cover sm:h-48 sm:w-48"
             />

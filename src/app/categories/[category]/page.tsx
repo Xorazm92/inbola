@@ -1,5 +1,6 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductReel from "@/components/product/ProductReel";
+import React from "react";
 import { getLabel } from "@/lib/utils";
 import { TQueryValidator } from "@/lib/validators/query-validator";
 

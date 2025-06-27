@@ -1,8 +1,8 @@
 "use client";
 
+import React, { useEffect } from "react";
 import { trpc } from "@/trpc/client";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
 
 type PaymentStatusProps = {
   orderEmail: string;

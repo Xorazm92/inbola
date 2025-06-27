@@ -1,3 +1,4 @@
+import React from "react";
 import { Loader2, XCircle } from "lucide-react";
 
 type ErrorAndLoadingProps = {

@@ -3,6 +3,7 @@
 import { trpc } from "@/trpc/client";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { buttonVariants } from "@/components/ui/button";
 import ErrorAndLoading from "./ErrorAndLoading";
 

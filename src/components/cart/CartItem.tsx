@@ -1,3 +1,4 @@
+import React from "react";
 import { useCart } from "@/hooks/use-cart";
 import { S3_URL } from "@/lib/constants";
 import { formatPrice, getLabel } from "@/lib/utils";

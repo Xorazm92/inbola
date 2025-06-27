@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
@@ -13,6 +14,7 @@ const Banner = () => {
         src="/banner-kids.jpg"
         alt="Kids store banner"
         fill
+        sizes="100vw"
         priority
         className="object-cover object-center opacity-30"
       />

@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Toaster } from "sonner";
+import React from "react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import Footer from "@/components/Footer";
@@ -48,11 +49,9 @@ export default function RootLayout({
         >
           <main className="relative flex flex-col min-h-screen">
             <TrpcProvider>
-              <Navbar />
               <div className="flex-1 flex flex-col justify-center">
                 {children}
               </div>
-              <Footer />
             </TrpcProvider>
           </main>
           <Toaster position="bottom-right" />

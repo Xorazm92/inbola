@@ -1,27 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n: {
-    locales: ["uz", "ru"],
-    defaultLocale: "uz",
-  },
   images: {
     remotePatterns: [
       {
         hostname: "localhost",
         pathname: "**",
         protocol: "http",
-        port: "3000",
+        port: "3003",
       },
       {
-        hostname: "digibee.up.railway.app",
-        protocol: "https",
-      },
-      {
-        hostname: "digibee-mediafiles.s3.ap-south-1.amazonaws.com",
+        hostname: "inbola.uz",
         protocol: "https",
       },
     ],
   },
 };
 
-module.exports = nextConfig;
+const withNextIntl = require('next-intl/plugin')('./next-intl.config.js');
+module.exports = withNextIntl(nextConfig);

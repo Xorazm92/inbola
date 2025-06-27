@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import ResetPassword from "../_component/ResetPassword";
 
 interface PageProps {
@@ -20,7 +21,7 @@ const ResetPasswordPage = ({ searchParams }: PageProps) => {
       ) : (
         <div className="flex flex-col items-center justify-center h-full space-y-1">
           <div className="relative mb-4 w-60 h-60 text-muted-foreground">
-            <Image src="/email-sent.png" fill alt="Email sent message" />
+            <Image src="/email-sent.png" fill sizes="240px" alt="Email sent message" />
           </div>
 
           <h3 className="text-2xl font-semibold">Check your email</h3>

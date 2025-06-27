@@ -1,4 +1,5 @@
 import { Check, Shield } from "lucide-react";
+import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -9,6 +10,7 @@ import ProductReel from "@/components/product/ProductReel";
 import AttributeTable from "@/components/product/AttributeTable";
 import { getPayloadClient } from "@/get-payload";
 import { formatPrice, getLabel, getValidURLs } from "@/lib/utils";
+import { Product } from "@/payload-types";
 
 type ProductDetailsProps = {
   params: {
@@ -38,13 +40,13 @@ const ProductDetails = async ({
       },
     },
   });
-  const [product] = products;
+  const product = products && products.length > 0 ? products[0] : null;
+  if (!product || typeof product !== 'object' || !('name' in product && 'price' in product && 'category' in product && 'product_files' in product)) return notFound();
 
-  if (!product) return notFound();
-
-  const label = getLabel(product.category)
-
-  const validURLs = getValidURLs(product, 'media');
+  // At this point, product is guaranteed to have the required Product fields
+  const typedProduct = product as Product;
+  const label = getLabel(typedProduct.category);
+  const validURLs = getValidURLs(typedProduct, 'media');
 
   return (
     <MaxWidthWrapper>
@@ -79,14 +81,14 @@ const ProductDetails = async ({
 
             <div className="mt-4">
               <h1 className="text-3xl font-bold tracking-tight text-foreground/80 sm:text-4xl">
-                {product.name}
+                {typedProduct.name}
               </h1>
             </div>
 
             <section className="mt-4">
               <div className="flex items-center">
                 <p className="font-medium text-foreground/80">
-                  {formatPrice(product.price)}
+                  {formatPrice(typeof typedProduct.price === 'number' ? typedProduct.price : 0)}
                 </p>
 
                 <div className="pl-4 ml-4 border-l border-gray-300 text-muted-foreground">
@@ -96,7 +98,7 @@ const ProductDetails = async ({
 
               <div className="mt-4 space-y-6">
                 <p className="text-base text-muted-foreground">
-                  {product.description}
+                  {typeof typedProduct.description === 'string' ? typedProduct.description : ''}
                 </p>
               </div>
 
@@ -110,7 +112,7 @@ const ProductDetails = async ({
                 </p>
               </div>
             
-              <AttributeTable size={(product as any).size} color={(product as any).color} ageGroup={(product as any).ageGroup} />
+              <AttributeTable size={(typedProduct as any).size} color={(typedProduct as any).color} ageGroup={(typedProduct as any).ageGroup} />
             </section>
           </div>
           {/* Product Image */}
@@ -124,7 +126,7 @@ const ProductDetails = async ({
           <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
             <div>
               <div className="mt-10">
-                <AddToCartButton product={product} />
+                <AddToCartButton product={typedProduct} />
               </div>
 
               <div className="mt-6 text-center">
@@ -146,9 +148,9 @@ const ProductDetails = async ({
       <ProductReel
         title={`Similar ${label}`}
         href="/products"
-        subtitle={`Browse similar high-quality ${label} just like '${product.name}'`}
+        subtitle={`Browse similar high-quality ${label} just like '${typedProduct.name}'`}
         query={{
-          category: product.category,
+          category: typedProduct.category,
           limit: 4,
         }}
       />

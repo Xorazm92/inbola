@@ -1,3 +1,4 @@
+import React from "react";
 import { getServerSideUser } from "@/lib/payload-utlis";
 import { cookies } from "next/headers";
 import Image from "next/image";
@@ -12,9 +13,10 @@ import UserNav from "./UserNav";
 import { ThemeSwitch } from "../ui/theme-switch";
 
 const Navbar = async () => {
-  const nextCookies = cookies();
+  const nextCookies = await cookies();
 
-  const { user } = await getServerSideUser(nextCookies);
+  const userObj = await getServerSideUser(nextCookies);
+  const user = userObj.user;
 
   return (
     <div className="sticky top-0 z-50 border-b supports-backdrop-blur:bg-background/90 border-foreground/10 backdrop-blur">
@@ -26,7 +28,13 @@ const Navbar = async () => {
               <div className="ml-4 lg:ml-0">
                 <Link href="/">
                   <div className="relative w-12 h-12">
-                    <Image src="/logo.png" fill alt="Digibee Logo" />
+                    <Image
+                      src="/logo.png"
+                      alt="Digibee Logo"
+                      fill
+                      sizes="100vw"
+                      className="object-contain"
+                    />
                   </div>
                 </Link>
               </div>
