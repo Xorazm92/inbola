@@ -4,7 +4,7 @@ import {
 } from "payload/dist/collections/config/types";
 import { Access, CollectionConfig } from "payload/types";
 import { PRODUCT_CATEGORIES } from "../lib/kids-config";
-import { stripe } from "../lib/stripe";
+
 import { Product, User } from "../payload-types";
 
 const addUser: BeforeChangeHook<Product> = async ({ req, data }) => {
@@ -88,6 +88,8 @@ const Products: CollectionConfig = {
     beforeChange: [
       addUser,
       async (args) => {
+        const { stripe } = await import("../lib/stripe");
+
         if (args.operation === "create") {
           const data = args.data as Product;
 

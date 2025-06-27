@@ -41,6 +41,11 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.MONGODB_URL!,
   }),
+  cors: [process.env.NEXT_PUBLIC_SERVER_URL!, 'http://localhost:3003'],
+  email: {
+    fromName: 'Inbola',
+    fromAddress: 'info@inbola.uz',
+  },
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },

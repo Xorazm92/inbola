@@ -67,10 +67,26 @@ const Users: CollectionConfig = {
     hidden: ({ user }) => user.role !== "admin",
     defaultColumns: ["id"],
   },
-  hooks: {
-    afterChange: [createCart],
-  },
+  // hooks: {
+  //   afterChange: [createCart],
+  // },
   fields: [
+    {
+      name: "loginAttempts",
+      type: "number",
+      required: true,
+      defaultValue: 0,
+      admin: {
+        hidden: true,
+      },
+    },
+    {
+      name: "lockUntil",
+      type: "date",
+      admin: {
+        hidden: true,
+      },
+    },
     {
       name: "products",
       label: "Products",

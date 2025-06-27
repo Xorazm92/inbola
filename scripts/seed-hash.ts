@@ -9,31 +9,23 @@ import { getPayloadClient } from "../src/get-payload";
   const password = process.env.SEED_ADMIN_PASSWORD || "supersecret";
 
   try {
-    const { MongoClient } = await import("mongodb");
-    const bcrypt = await import("bcryptjs");
-    const url = process.env.MONGODB_URL || process.env.MONGODB_URI;
-    if (!url) throw new Error("MONGODB_URL is missing");
-    const client = new MongoClient(url);
-    await client.connect();
-    const db = client.db();
-    const users = db.collection("users");
-    const hash = await bcrypt.hash(password, 10);
-    const existing = await users.findOne({ email });
-    if (existing) {
-      console.log(`\u2705 Admin user already exists (${email}). Skipping seeding.`);
-      process.exit(0);
-    }
-    await users.insertOne({
-      email,
-      password: hash,
-      role: "admin",
-      _verified: true,
-      loginAttempts: 0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
+    const payload = await getPayloadClient();
+    // Delete all users and carts for a clean seed
+    await payload.delete({ collection: "users", where: {} });
+    await payload.delete({ collection: "cart", where: {} });
+    // Now create admin user (NO cart field!)
+    await payload.create({
+      collection: "users",
+      data: {
+        email,
+        password,
+        role: "admin",
+        _verified: true,
+        products: [],
+        product_files: [],
+      },
     });
-    await client.close();
-    console.log("✅ Admin user with bcrypt hash created:");
+    console.log("✅ Admin user created via Payload API:");
     console.log(`   Email: ${email}`);
     console.log(`   Password: ${password}`);
   } catch (err) {
