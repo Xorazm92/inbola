@@ -65,16 +65,8 @@ export default buildConfig({
   },
   plugins: [],
   email: {
-    transport: {
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+      fromName: process.env.EMAIL_NAME || 'Inbola',
+      fromAddress: process.env.EMAIL_FROM || 'info@inbola.uz',
+      logMockCredentials: process.env.NODE_ENV === 'development',
     },
-    fromName: process.env.EMAIL_NAME || 'Inbola',
-    fromAddress: process.env.EMAIL_FROM || 'info@inbola.uz',
-  },
 });

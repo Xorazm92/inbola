@@ -6,6 +6,8 @@ import { Product } from "@/payload-types";
 import { trpc } from "@/trpc/client";
 import Link from "next/link";
 import ProductListing from "./ProductListing";
+import { cache } from "@/lib/cache";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 type ProductReelProps = {

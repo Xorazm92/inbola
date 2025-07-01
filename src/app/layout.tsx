@@ -2,9 +2,12 @@ Comprehensive SEO metadata has been added and the font loading strategy has been
 ```typescript
 import TrpcProvider from "@/components/TrpcProvider";
 import Navbar from "@/components/nav/Navbar";
+import Footer from "@/components/Footer";
+import { GoogleAnalytics, YandexMetrica } from "@/components/Analytics";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 
 const inter = Inter({ 
@@ -14,6 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://inbola.uz'),
   title: {
     default: "INBOLA - Bolalar uchun zamonaviy marketplace",
     template: "%s | INBOLA",
