@@ -303,6 +303,54 @@ const Products: CollectionConfig = {
         },
       ],
     },
+    {
+      name: "seo",
+      type: "group",
+      label: "SEO Settings",
+      fields: [
+        {
+          name: "title",
+          type: "text",
+          label: "SEO Title",
+          maxLength: 60,
+        },
+        {
+          name: "description",
+          type: "textarea",
+          label: "SEO Description",
+          maxLength: 160,
+        },
+        {
+          name: "keywords",
+          type: "text",
+          label: "Keywords",
+          hasMany: true,
+        },
+      ],
+    },
+    {
+      name: "featured",
+      type: "checkbox",
+      label: "Featured Product",
+      defaultValue: false,
+    },
+    {
+      name: "inStock",
+      type: "checkbox",
+      label: "In Stock",
+      defaultValue: true,
+    },
+    {
+      name: "rating",
+      type: "number",
+      label: "Average Rating",
+      min: 0,
+      max: 5,
+      defaultValue: 0,
+      admin: {
+        readOnly: true,
+      },
+    },
   ],
 };
 

@@ -30,23 +30,51 @@ export default buildConfig({
     user: "users",
     bundler: webpackBundler(),
     meta: {
-      titleSuffix: " | INBOLA",
+      titleSuffix: " | INBOLA - Bolalar uchun marketplace",
       favicon: "/favicon.ico",
       ogImage: "/logo.png",
     },
+    css: path.resolve(__dirname, "../public/admin.css"),
   },
   rateLimit: {
     max: 2000,
+    trustProxy: true,
   },
   editor: slateEditor({}),
   db: mongooseAdapter({
     url: process.env.MONGODB_URL!,
+    connectOptions: {
+      bufferCommands: false,
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
+    },
   }),
-  cors: [process.env.NEXT_PUBLIC_SERVER_URL!, 'http://localhost:3000'],
-
+  cors: [
+    process.env.NEXT_PUBLIC_SERVER_URL!, 
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+  ],
+  csrf: [
+    process.env.NEXT_PUBLIC_SERVER_URL!, 
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+  ],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
-  // S3 upload is disabled for now
   plugins: [],
+  email: {
+    transport: {
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT || '587'),
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    },
+    fromName: process.env.EMAIL_NAME || 'Inbola',
+    fromAddress: process.env.EMAIL_FROM || 'info@inbola.uz',
+  },
 });

@@ -1,36 +1,34 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getServerSideUser } from "./lib/payload-utlis";
-import { AUTH_ROUTES, LIST_EDIT_PATTERN, PRIVATE_ROUTES } from "./lib/routes";
-import { locales } from "./lib/i18n";
 
-export async function middleware(req: NextRequest) {
-  const pathname = req.nextUrl.pathname;
-  const pathnameIsMissingLocale = locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
-  // Temporarily disable automatic locale redirect to avoid 404 until locale pages are ready
-  // if (pathnameIsMissingLocale) {
-  //   const locale = req.headers.get("accept-language")?.split(",")[0]?.split("-")[0] || "uz";
-  //   const finalLocale = locales.includes(locale as any) ? locale : "uz";
-  //   return NextResponse.redirect(new URL(`${finalLocale}${pathname}`, req.url));
-  // }
-  const { nextUrl, cookies } = req;
+import { NextRequest, NextResponse } from 'next/server';
+import createIntlMiddleware from 'next-intl/middleware';
 
-  const { user } = await getServerSideUser(cookies);
+const intlMiddleware = createIntlMiddleware({
+  locales: ['uz', 'en', 'ru'],
+  defaultLocale: 'uz'
+});
 
-  if (user && AUTH_ROUTES.includes(nextUrl.pathname)) {
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SERVER_URL}/`);
+export default function middleware(request: NextRequest) {
+  const response = intlMiddleware(request);
+  
+  // Security headers
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
+  response.headers.set('X-XSS-Protection', '1; mode=block');
+  
+  // Performance headers
+  response.headers.set('X-DNS-Prefetch-Control', 'on');
+  
+  // Cache headers for static assets
+  if (request.nextUrl.pathname.startsWith('/_next/static/') ||
+      request.nextUrl.pathname.startsWith('/images/') ||
+      request.nextUrl.pathname.startsWith('/nav/')) {
+    response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
   }
-
-  if (
-    !user &&
-    (PRIVATE_ROUTES.includes(nextUrl.pathname) ||
-      LIST_EDIT_PATTERN.test(nextUrl.pathname))
-  ) {
-    return NextResponse.redirect(
-      `${
-        process.env.NEXT_PUBLIC_SERVER_URL
-      }/sign-in?origin=${encodeURIComponent(nextUrl.pathname)}`
-    );
-  }
+  
+  return response;
 }
+
+export const config = {
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+};

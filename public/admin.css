@@ -1,0 +1,77 @@
+
+/* Inbola Admin Panel Custom Styles */
+:root {
+  --primary-color: #FACC15;
+  --primary-dark: #EAB308;
+  --secondary-color: #F59E0B;
+  --accent-color: #10B981;
+  --danger-color: #EF4444;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --background: #F9FAFB;
+  --card-background: #FFFFFF;
+}
+
+.payload-admin {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.payload-admin .nav {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.payload-admin .nav__brand {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.payload-admin .nav__brand::after {
+  content: " - Bolalar Marketplace";
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.payload-admin .nav__link {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.payload-admin .nav__link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.payload-admin .card {
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.payload-admin .btn--style-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.payload-admin .btn--style-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.payload-admin .collection-list__table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.payload-admin .collection-list__table th {
+  background: var(--background);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.payload-admin .collection-list__table td {
+  border-bottom: 1px solid #E5E7EB;
+}
