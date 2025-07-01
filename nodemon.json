@@ -2,5 +2,5 @@
   "watch": ["src/"],
   "ext": "ts,tsx,json",
   "ignore": ["src/**/*.spec.ts"],
-  "exec": "ts-node --project tsconfig.server.json src/server.ts"
+  "exec": "node -r ignore-styles --max-old-space-size=4096 ./node_modules/.bin/ts-node --project tsconfig.server.json src/server.ts"
 }

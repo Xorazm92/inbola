@@ -5,7 +5,11 @@ import { getPayloadClient } from "./get-payload";
 import { Product } from "./payload-types";
 import { Resend } from "resend";
 import { ReceiptEmailHtml } from "./components/email/ReceiptEmail";
-import { WebhookRequest } from "./server";
+import { PayloadRequest } from 'payload/types'
+
+interface WebhookRequest extends PayloadRequest {
+  body: Stripe.Event
+}
 
 let resend: Resend;
 if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY.startsWith('re_')) {
@@ -25,8 +29,7 @@ export const stripeWebhookHandler = async (
   req: express.Request,
   res: express.Response
 ) => {
-  const webhookRequest = req as any as WebhookRequest;
-  const body = webhookRequest.rawBody;
+  const body = (req as any).rawBody;
   const signature = req.headers["stripe-signature"] || "";
 
   let event;
@@ -78,7 +81,7 @@ export const stripeWebhookHandler = async (
 
     const [order] = orders;
 
-    if (!user) return res.status(404).json({ error: "No such order exists." });
+    if (!order) return res.status(404).json({ error: "No such order exists." });
 
     await payload.update({
       collection: "orders",
@@ -96,11 +99,11 @@ export const stripeWebhookHandler = async (
     try {
       const data = await resend.emails.send({
         from: "DigiBee <hello@joshtriedcoding.com>",
-        to: [user.email],
+        to: [user.email as string],
         subject: "Thanks for your order! This is your receipt.",
         html: ReceiptEmailHtml({
           date: new Date(),
-          email: user.email,
+          email: user.email as string,
           orderId: session.metadata.orderId,
           products: order.products as Product[],
         }),

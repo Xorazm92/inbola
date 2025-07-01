@@ -1,6 +1,30 @@
 import type { Payload } from 'payload'
-import type { Express } from 'express'
+import type { Express, Request, Response } from 'express'
 import express from 'express'
+import { getPayloadClient } from '../get-payload'
+import { inferAsyncReturnType } from '@trpc/server'
+import { PayloadRequest } from 'payload/types'
+import { Stripe } from 'stripe'
+import next from 'next'
+import path from 'path'
+
+const nextApp = next({
+  dev: process.env.NODE_ENV !== 'production',
+  dir: path.resolve(__dirname, '../../'),
+})
+
+const nextHandler = nextApp.getRequestHandler()
+
+export const createContext = ({ req, res }: { req: Request; res: Response }) => ({
+  req,
+  res,
+})
+
+export type ExpressContext = inferAsyncReturnType<typeof createContext>
+
+export interface WebhookRequest extends PayloadRequest {
+  body: Stripe.Event
+}
 
 export const startServer = async (options: {
   payload: Payload
@@ -9,10 +33,11 @@ export const startServer = async (options: {
   const { payload } = options
   const app = options.express || express()
 
-  // Add your server middleware and routes here
-  // For example:
-  // app.use('/api', createRouter(payload))
+  app.use((req, res) => nextHandler(req, res))
 
-  // Return the server instance
+  await nextApp.prepare()
+
+  payload.logger.info('Next.js started')
+
   return app
 }

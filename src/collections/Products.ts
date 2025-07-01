@@ -20,10 +20,10 @@ const syncUser: AfterChangeHook<Product> = async ({ req, doc }) => {
   });
 
   if (fullUser && typeof fullUser === "object") {
-    const { products } = fullUser;
+    const { products } = fullUser as unknown as User;
 
     const allIDs = [
-      ...(products?.map((product) =>
+      ...(products?.map((product: string | Product) =>
         typeof product === "object" ? product.id : product
       ) || []),
     ];

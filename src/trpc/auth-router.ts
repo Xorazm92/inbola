@@ -3,14 +3,14 @@ import { privateProcedure, publicProcedure, router } from "./trpc";
 import { getPayloadClient } from "../get-payload";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+import { cookies } from "next/headers";
 
 export const authRouter = router({
   getUser: privateProcedure.query(async ({ ctx }) => {
     const { user } = ctx;
 
-    const existingUser = await (
-      await getPayloadClient()
-    ).findByID<"users">({
+    const payload = await getPayloadClient();
+    const existingUser = await payload.findByID({
       collection: "users",
       id: user.id,
     });
@@ -67,20 +67,26 @@ export const authRouter = router({
 
   signIn: publicProcedure
     .input(AuthCredentialValidator)
-    .mutation(async ({ input, ctx }) => {
+    .mutation(async ({ input }) => {
       const { email, password } = input;
-      const { res } = ctx;
 
       const payload = await getPayloadClient();
 
       try {
-        await payload.login({
+        const { token } = await payload.login({
           collection: "users",
           data: {
             email,
             password,
           },
-          res,
+        });
+
+        cookies().set({
+          name: "payload-token",
+          value: token,
+          httpOnly: true,
+          sameSite: "strict",
+          path: "/",
         });
 
         return { success: true };

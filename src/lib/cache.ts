@@ -55,7 +55,9 @@ class CacheService {
       // Memory cache ni tozalash (100 dan ortiq bo'lsa)
       if (this.memoryCache.size > 100) {
         const firstKey = this.memoryCache.keys().next().value;
-        this.memoryCache.delete(firstKey);
+        if (firstKey) {
+          this.memoryCache.delete(firstKey);
+        }
       }
     } catch (error) {
       console.error('Cache set error:', error);

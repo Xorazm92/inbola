@@ -2,6 +2,7 @@ import { router, publicProcedure } from "./trpc";
 import { z } from "zod";
 import { signClickRequest } from "@/lib/click";
 import { getPayloadClient } from "@/get-payload";
+import { Product } from "../payload-types";
 
 export const clickRouter = router({
   createInvoiceFromProducts: publicProcedure
@@ -16,7 +17,7 @@ export const clickRouter = router({
         collection: "products",
         where: { id: { in: productIds } },
       });
-      const total = products.reduce((sum, p: any) => sum + p.price, 0);
+      const total = products.reduce((sum: number, p: Product) => sum + p.price, 0);
       // Apply coupon if provided
       let discountPercent = 0;
       if (couponCode) {

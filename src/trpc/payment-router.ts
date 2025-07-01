@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Product } from "../payload-types";
 import { privateProcedure, publicProcedure, router } from "./trpc";
 import { TRPCError } from "@trpc/server";
 import { getPayloadClient } from "../get-payload";
@@ -33,22 +34,23 @@ export const paymentRouter = router({
         depth: 1,
       });
 
-      const filteredProducts = products.filter((product) =>
-        Boolean(product.priceId)
+      const filteredProducts = products.filter(
+        (product: any): product is Product =>
+          Boolean(typeof product === "object" && product.priceId)
       );
 
       const order = await payload.create({
         collection: "orders" as any,
         data: {
           _isPaid: false,
-          products: filteredProducts.map((product) => product.id),
+          products: filteredProducts.map((product: Product) => product.id),
           user: user.id,
         },
       });
 
       const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
 
-      filteredProducts.forEach((product) => {
+      filteredProducts.forEach((product: Product) => {
         line_items.push({
           price: product.priceId!,
           quantity: 1,
@@ -105,7 +107,7 @@ export const paymentRouter = router({
         throw new TRPCError({ code: "NOT_FOUND", message: "Cart not found" });
       }
 
-      const productIds = (cart.products || []).map((p: any) =>
+      const productIds = (cart.products || []).map((p: string | Product) =>
         typeof p === "string" ? p : p.id
       );
       if (!productIds.length) {
@@ -118,7 +120,7 @@ export const paymentRouter = router({
         depth: 1,
       });
 
-      const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = products.map((p) => ({
+      const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = products.map((p: Product) => ({
         price: p.priceId!,
         quantity: 1,
       }));

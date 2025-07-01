@@ -1,8 +1,8 @@
-Comprehensive SEO metadata has been added and the font loading strategy has been optimized for performance.
-```typescript
+
 import TrpcProvider from "@/components/TrpcProvider";
-import Navbar from "@/components/nav/Navbar";
-import Footer from "@/components/Footer";
+// import Navbar from "@/components/nav/Navbar";
+// import Footer from "@/components/Footer";
+
 import { GoogleAnalytics, YandexMetrica } from "@/components/Analytics";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'),
+
   alternates: {
     canonical: '/',
   },
@@ -89,7 +89,7 @@ import { Poppins } from "next/font/google";
 import { Toaster } from "sonner";
 import React from "react";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import Footer from "@/components/Footer";
+
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
 
@@ -116,11 +116,11 @@ export default function RootLayout({
         >
           <main className="relative flex flex-col min-h-screen">
             <TrpcProvider>
-              <Navbar />
+              {/* <Navbar /> */}
               <div className="flex-1 flex flex-col justify-center">
                 {children}
               </div>
-              <Footer />            </TrpcProvider>
+              {/* <Footer /> */}            </TrpcProvider>
           </main>
           <Toaster position="bottom-right" />
         </ThemeProvider>

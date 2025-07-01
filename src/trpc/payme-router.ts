@@ -1,4 +1,5 @@
 import { router, publicProcedure } from "./trpc";
+import { Product } from "../payload-types";
 import { z } from "zod";
 import { signPaymeRequest } from "@/lib/payme";
 import { getPayloadClient } from "@/get-payload";
@@ -13,7 +14,7 @@ export const paymeRouter = router({
         collection: "products",
         where: { id: { in: productIds } },
       });
-      let total = products.reduce((sum, p: any) => sum + p.price, 0);
+      let total = products.reduce((sum: number, p: Product) => sum + p.price, 0);
       // coupon
       let discountPercent = 0;
       if (couponCode) {

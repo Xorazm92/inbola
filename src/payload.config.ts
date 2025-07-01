@@ -15,13 +15,15 @@ import {
   Coupons,
 } from "./collections";
 import { S3Client } from "@aws-sdk/client-s3";
-// Temporarily commenting out s3-upload as it's not installed
-// import s3Upload from "payload-s3-upload";
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
+import { s3Adapter } from '@payloadcms/plugin-cloud-storage/s3';
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
+  serverURL:
+    process.env.NEXT_PUBLIC_SERVER_URL ||
+    `http://localhost:${process.env.PORT || 5000}`,
   collections: [Users, Products, Media, ProductFiles, Orders, Cart, List, Coupons],
   routes: {
     admin: "/sell",
@@ -63,12 +65,29 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
-  plugins: [],
+    plugins: [
+    cloudStorage({
+      collections: {
+        'media': {
+          adapter: s3Adapter({
+            config: new S3Client({
+              region: process.env.S3_REGION,
+              credentials: {
+                accessKeyId: process.env.S3_ACCESS_KEY_ID as string,
+                secretAccessKey: process.env.S3_SECRET_ACCESS_KEY as string,
+              },
+            }),
+            bucket: process.env.S3_BUCKET as string,
+          }),
+        },
+      },
+    }),
+  ],
   email: {
     fromName: process.env.EMAIL_NAME || 'Inbola',
     fromAddress: process.env.EMAIL_FROM || 'info@inbola.uz',
     logMockCredentials: process.env.NODE_ENV === 'development',
-    transport: {
+    transportOptions: {
       host: process.env.SMTP_HOST,
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: false,
@@ -77,5 +96,8 @@ export default buildConfig({
         pass: process.env.SMTP_PASS,
       },
     },
+  },
+  onInit: async (payload) => {
+    payload.logger.info("Payload initialized");
   },
 });

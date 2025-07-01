@@ -1,14 +1,14 @@
 import { appRouter } from "@/trpc";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { createContext } from "@/trpc/context";
+import { NextRequest } from "next/server";
 
-const handler = (req: Request) => {
+const handler = (req: NextRequest) =>
   fetchRequestHandler({
     endpoint: "/api/trpc",
     req,
     router: appRouter,
-    // @ts-expect-error Context is already pass in express middleware
-    createContext: () => ({}),
+    createContext: () => createContext(req),
   });
-};
 
 export { handler as GET, handler as POST };

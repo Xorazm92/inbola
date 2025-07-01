@@ -1,7 +1,9 @@
 import payload from 'payload'
-import type { Payload } from 'payload'
+import { InitOptions } from 'payload/config'
+import { Config } from './payload-types'
 import nodemailer from 'nodemailer'
 import path from 'path'
+import config from './payload.config'
 import dotenv from 'dotenv'
 
 // Load environment variables
@@ -13,7 +15,7 @@ if (!cached) {
   cached = (global as any).payload = { client: null, promise: null }
 }
 
-export const getPayloadClient = async (): Promise<Payload> => {
+export const getPayloadClient = async () => {
   if (!process.env.PAYLOAD_SECRET) {
     throw new Error('PAYLOAD_SECRET is missing')
   }
@@ -35,6 +37,7 @@ export const getPayloadClient = async (): Promise<Payload> => {
     })
 
     cached.promise = payload.init({
+      config: config,
       email: {
         transport: transporter,
         fromAddress: process.env.EMAIL_FROM || 'info@inbola.uz',

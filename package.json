@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "gen:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
-    "dev:app": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
+    "dev:app": "cross-env NODE_OPTIONS=--max-old-space-size=8192 PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "dev:db": "docker-compose up -d",
     "dev": "npm run dev:app",
     "seed": "ts-node -O '{\"jsx\":\"react\"}' scripts/seed.ts",
@@ -17,9 +17,9 @@
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/ && copyfiles next.config.js dist/",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc --project tsconfig.server.json",
-    "build:next": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NEXT_BUILD=true node dist/server.js",
+    "build:next": "cross-env NEXT_BUILD=true node -r ignore-styles dist/server.js",
     "build": "cross-env NODE_ENV=production npm run build:payload && npm run build:server && npm run copyfiles && npm run build:next",
-    "start": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
+    "start": "cross-env NODE_ENV=production node -r ignore-styles dist/server.js",
     "create-admin": "ts-node -O '{\"jsx\":\"react\"}' scripts/create-admin.ts",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -61,12 +61,14 @@
     "clsx": "^2.1.1",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
+    "critters": "^0.0.23",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.1",
     "gtag": "^1.0.1",
     "helmet": "^8.1.0",
+    "ignore-styles": "^5.0.1",
     "ioredis": "^5.6.1",
     "lucide-react": "^0.441.0",
     "mongodb": "^6.17.0",
@@ -115,6 +117,6 @@
     "tailwindcss": "^3.4.16",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5"
+    "typescript": "^5.5.4"
   }
 }

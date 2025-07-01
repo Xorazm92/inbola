@@ -2,12 +2,14 @@ import dotenv from 'dotenv'
 import path from 'path'
 import { getPayloadClient } from './get-payload'
 import { startServer } from './server/start'
+export type { ExpressContext, WebhookRequest } from './server/start'
 
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 const PORT = Number(process.env.PORT) || 5000;
 
+// Trigger restart again
 const start = async (): Promise<void> => {
   try {
     // Initialize Payload
