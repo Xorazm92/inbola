@@ -11,11 +11,16 @@ import { getPayloadClient } from "../src/get-payload";
       collection: "users",
       data: {
         email: "admin@inbola.uz",
-        password: "supersecret",
+        password: "inbola123", // Using the password from your .env
       },
     });
-    console.log("SUCCESS!", res);
+    console.log("SUCCESS! User logged in:", {
+      id: res.user.id,
+      email: res.user.email,
+      role: res.user.role,
+      token: res.token
+    });
   } catch (err) {
-    console.error("FAILED", err);
+    console.error("Login failed:", err);
   }
 })();

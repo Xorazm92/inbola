@@ -6,7 +6,7 @@ const nextConfig = {
         hostname: "localhost",
         pathname: "**",
         protocol: "http",
-        port: "3003",
+        port: "3000",
       },
       {
         hostname: "inbola.uz",

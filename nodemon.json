@@ -1,6 +1,6 @@
 {
-  "watch": ["src/server.ts", "src/collections/**/*.ts", "src/trpc/**/*.ts"],
-  "exec": "ts-node -r tsconfig-paths/register --project tsconfig.server.json src/server.ts -- --I",
-  "ext": "js ts",
-  "stdin": false
+  "watch": ["src/"],
+  "ext": "ts,tsx,json",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "ts-node --project tsconfig.server.json src/server.ts"
 }

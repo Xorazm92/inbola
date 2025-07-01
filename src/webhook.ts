@@ -7,7 +7,19 @@ import { Resend } from "resend";
 import { ReceiptEmailHtml } from "./components/email/ReceiptEmail";
 import { WebhookRequest } from "./server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend: Resend;
+if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY.startsWith('re_')) {
+  resend = new Resend(process.env.RESEND_API_KEY);
+} else {
+  // Dummy resend implementation when API key is missing
+  resend = {
+    emails: {
+      send: async () => {
+        throw new Error('Resend is disabled. Provide RESEND_API_KEY to enable email sending.');
+      },
+    },
+  } as unknown as Resend;
+}
 
 export const stripeWebhookHandler = async (
   req: express.Request,

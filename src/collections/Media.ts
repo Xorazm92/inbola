@@ -1,7 +1,9 @@
-import { S3UploadCollectionConfig } from "payload-s3-upload";
+import { CollectionConfig } from "payload/types";
 import { Access } from "payload/types";
-import { S3_URL } from "../lib/constants";
 import { User } from "../payload-types";
+
+// Using local storage instead of S3
+const LOCAL_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000';
 
 
 const isAdminOrHasAccessToImage =
@@ -20,7 +22,7 @@ const isAdminOrHasAccessToImage =
     };
   };
 
-const Media: S3UploadCollectionConfig = {
+const Media: CollectionConfig = {
   slug: "media",
   admin: {
     hidden: ({ user }) => user.role !== "admin",
@@ -61,12 +63,11 @@ const Media: S3UploadCollectionConfig = {
   upload: {
     staticDir: "media",
     staticURL: "/media",
-    disableLocalStorage: true,
-    s3: {
-      bucket: process.env.S3_BUCKET_NAME!,
-      prefix: "media", // files will be stored in bucket folder images/xyz
+    disableLocalStorage: false, // Enable local storage
+    adminThumbnail: ({ doc }) => {
+      // Return a default thumbnail or the actual file URL
+      return `${LOCAL_URL}/media/${doc.filename}`;
     },
-    adminThumbnail: ({ doc }) => `${S3_URL}/media/${doc.filename}`,
   },
   fields: [
     {

@@ -1,69 +1,26 @@
-import { S3UploadCollectionConfig } from "payload-s3-upload";
-import { BeforeChangeHook } from "payload/dist/collections/config/types";
+import { CollectionConfig } from "payload/types";
 import { Access } from "payload/types";
-import { S3_URL } from "../lib/constants";
 import { User } from "../payload-types";
 
-const addUser: BeforeChangeHook = ({ req, data }) => {
-  const user = req.user as User | null;
-  return { ...data, user: user?.id };
-};
+// Using local storage instead of S3
+const LOCAL_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000';
 
-const yourOwnAndPurchased: Access = async ({ req }) => {
-  const user = req.user as User | null;
+const isAdminOrHasAccessToProductFile = (): Access => {
+  return async ({ req }) => {
+    const user = req.user as User | undefined;
 
-  if (!user) return false;
+    if (!user) return false;
+    if (user.role === "admin") return true;
 
-  if (user?.role === "admin") return true;
-
-  const { docs: products } = await req.payload.find({
-    collection: "products",
-    depth: 2,
-    where: {
+    return {
       user: {
         equals: user.id,
       },
-    },
-  });
-
-  const ownProductField = products
-    .map((product) => product.product_files)
-    .flat();
-
-  const { docs: orders } = await req.payload.find({
-    collection: "orders",
-    depth: 0,
-    where: {
-      user: {
-        equals: user.id,
-      },
-    },
-  });
-
-  const purchasedProductFileIds = orders.map((order) => {
-    return order.products
-      .map((product) => {
-        if (typeof product === "string")
-          return req.payload.logger.error(
-            "Search depth is not sufficient to find product file IDs"
-          );
-
-        return typeof product.product_files === "string"
-          ? product.product_files
-          : product.product_files.id;
-      })
-      .filter(Boolean)
-      .flat();
-  });
-
-  return {
-    id: {
-      in: [...ownProductField, ...purchasedProductFileIds],
-    },
+    };
   };
 };
 
-export const ProductFiles: S3UploadCollectionConfig = {
+export const ProductFile: CollectionConfig = {
   slug: "product_files",
   admin: {
     hidden: ({ user }) => user.role !== "admin",
@@ -74,7 +31,7 @@ export const ProductFiles: S3UploadCollectionConfig = {
         const files = args.req?.files;
         if (files && files.file && files.file.name && operation === "create") {
           const parts = files.file.name.split(".");
-          files.file.name = `product_files-${(Math.random() + 1)
+          files.file.name = `product_file-${(Math.random() + 1)
             .toString(36)
             .substring(2)}-${Math.random().toString(36).substring(2, 15)}.${
             parts[parts.length - 1]
@@ -82,36 +39,43 @@ export const ProductFiles: S3UploadCollectionConfig = {
         }
       },
     ],
-    beforeChange: [addUser],
   },
   access: {
-    read: yourOwnAndPurchased,
+    create: isAdminOrHasAccessToProductFile(),
+    read: isAdminOrHasAccessToProductFile(),
     update: ({ req }) => req.user?.role === "admin",
     delete: ({ req }) => req.user?.role === "admin",
   },
   upload: {
     staticDir: "product_files",
     staticURL: "/product_files",
-    disableLocalStorage: true,
-    mimeTypes: ["image/*", "font/*", "application/*", "text/*"],
-    s3: {
-      bucket: process.env.S3_BUCKET_NAME!,
-      prefix: "product_files", // files will be stored in bucket folder images/xyz
+    disableLocalStorage: false, // Enable local storage
+    adminThumbnail: ({ doc }) => {
+      // Return a default thumbnail or the actual file URL
+      return `${LOCAL_URL}/product_files/${doc.filename}`;
     },
-    adminThumbnail: ({ doc }) => `${S3_URL}/product_files/${doc.filename}`,
+    mimeTypes: [
+      "image/*",
+      "application/pdf",
+      "application/zip",
+      "application/x-rar-compressed",
+      "application/x-7z-compressed",
+      "application/x-tar",
+      "application/x-gzip",
+    ],
   },
   fields: [
     {
       name: "user",
       type: "relationship",
       relationTo: "users",
+      required: true,
+      hasMany: false,
       admin: {
         condition: () => false,
       },
-      hasMany: false,
-      required: true,
     },
   ],
 };
 
-export default ProductFiles;
+export default ProductFile;

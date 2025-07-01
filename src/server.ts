@@ -1,87 +1,32 @@
-import express from "express";
-import cors from 'cors'
-import { getPayloadClient } from "./get-payload";
-import { nextApp, nextHandler } from "./next-utils";
-import * as trpcExpress from "@trpc/server/adapters/express";
-import { appRouter } from "./trpc";
-import { inferAsyncReturnType } from "@trpc/server";
-import bodyParser from "body-parser";
-import { IncomingMessage } from "http";
-import nextBuild from "next/dist/build";
-import path from "path";
-import { PayloadRequest } from "payload/types";
-import { parse } from "url";
-import { stripeWebhookHandler } from "./webhook";
+import dotenv from 'dotenv'
+import path from 'path'
+import { getPayloadClient } from './get-payload'
+import { startServer } from './server/start'
 
-const app = express();
+// Load environment variables
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
-app.use(
-  cors({
-    origin: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
-    credentials: true,
-  })
-)
-const PORT = Number(process.env.PORT) || 3000;
-
-const createContext = ({
-  req,
-  res,
-}: trpcExpress.CreateExpressContextOptions) => ({ req, res });
-
-export type ExpressContext = inferAsyncReturnType<typeof createContext>;
-
-export type WebhookRequest = IncomingMessage & { rawBody: Buffer };
+const PORT = process.env.PORT || 3000
 
 const start = async () => {
-  const webhookMiddleware = bodyParser.json({
-    verify: (req: WebhookRequest, _, buffer) => {
-      req.rawBody = buffer;
-    },
-  });
+  try {
+    // Initialize Payload
+    const payload = await getPayloadClient()
 
-  app.post("/api/webhooks/stripe", webhookMiddleware, stripeWebhookHandler);
-
-  const payload = await getPayloadClient({
-    initOptions: {
-      express: app,
-      onInit: async (cms) => {
-        cms.logger.info(`Admin URL: ${cms.getAdminURL()}`);
-      },
-    },
-  });
-
-  if (process.env.NEXT_BUILD) {
-    app.listen(PORT, async () => {
-      payload.logger.info("Next.js is building for production in port " + PORT);
-
-      // @ts-expect-error
-      await nextBuild(path.join(__dirname, "../"));
-
-      process.exit();
-    });
-
-    return;
-  }
-
-  app.use(
-    "/api/trpc",
-    trpcExpress.createExpressMiddleware({
-      router: appRouter,
-      createContext,
+    // Start the server
+    const server = await startServer({
+      payload,
+      express: payload.express as any,
     })
-  );
 
-  app.use((req, res) => nextHandler(req, res));
+    server.listen(PORT, async () => {
+      console.log(`Server is running on port ${PORT}`)
+      console.log(`Admin panel: http://localhost:${PORT}/admin`)
+    })
+  } catch (error) {
+    console.error('Error starting server:', error)
+    process.exit(1)
+  }
+}
 
-  nextApp.prepare().then(() => {
-    payload.logger.info("Next.js started");
-
-    app.listen(PORT, async () => {
-      payload.logger.info(
-        `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
-      );
-    });
-  });
-};
-
-start();
+start()

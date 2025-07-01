@@ -15,7 +15,8 @@ import {
   Coupons,
 } from "./collections";
 import { S3Client } from "@aws-sdk/client-s3";
-import s3Upload from "payload-s3-upload";
+// Temporarily commenting out s3-upload as it's not installed
+// import s3Upload from "payload-s3-upload";
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
@@ -41,31 +42,11 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.MONGODB_URL!,
   }),
-  cors: [process.env.NEXT_PUBLIC_SERVER_URL!, 'http://localhost:3003'],
-  email: {
-    fromName: 'Inbola',
-    fromAddress: 'info@inbola.uz',
-  },
+  cors: [process.env.NEXT_PUBLIC_SERVER_URL!, 'http://localhost:3000'],
+
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
-  // Enable S3 upload only if all required env vars are provided
-  plugins: [
-    ...(process.env.S3_BUCKET_NAME &&
-    process.env.S3_BUCKET_REGION &&
-    process.env.S3_ACCESS_KEY &&
-    process.env.S3_SECRET_ACCESS_KEY
-      ? [
-          s3Upload(
-            new S3Client({
-              region: process.env.S3_BUCKET_REGION,
-              credentials: {
-                accessKeyId: process.env.S3_ACCESS_KEY,
-                secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
-              },
-            })
-          ),
-        ]
-      : []),
-  ],
+  // S3 upload is disabled for now
+  plugins: [],
 });

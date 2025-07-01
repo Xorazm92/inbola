@@ -1,56 +1,84 @@
-# DigiBee - A Modern Digital Product Marketplace
+# INBOLA — Bolalar uchun zamonaviy marketplace (Next.js + Payload)
 
-![thumbnail](https://github.com/vignesh-gupta/digibee-marketplace/assets/52371759/32f36a2c-e6ba-4485-ae65-59485b058f6b)
+## Loyihaning qisqacha tavsifi
+INBOLA — bu zamonaviy Next.js frontend va Payload CMS backend asosida ishlaydigan bolalar uchun mahsulotlar do‘koni. Mahsulotlar, buyurtmalar, foydalanuvchilar va admin panel to‘liq boshqariladi. Email orqali tasdiqlash va xabarnoma yuborish ham ishlaydi.
 
-## Intro
+---
 
-DigiBee is a Full-Stack built with [Next.js](https://nextjs.org/) for frontend and [Payload](https://payloadcms.com/) as backend. It is a modern digital product marketplace where you can sell your digital products like ebooks, courses, templates, etc. It is a fully functional marketplace with a lot of features. 
+## Ishga tushirish uchun ko‘rsatma
 
-## Features
+### 1. Talablar
+- Node.js v20+
+- MongoDB (lokal yoki cloud)
+- Gmail (SMTP uchun App password)
 
-- [x] 🛠️ Highly scalable and customizable marketplace built with Next.js
-- [x] 💻 Beautiful landing page & product pages included
-- [x] 💳 Full admin dashboard to manage products, users, and more.
-- [x] 🛍️ Users can purchase and sell their own products
-- [x] 🛒 Locally persisted shopping cart + Cart will same across devices
-- [x] 🔑 Authentication using Payload with email verification
-- [x] 🌟 Clean, modern UI with different themes
-- [x] ✉️ Beautiful emails for signing up and after purchase
-- [x] ✅ Admins can verify products to ensure high quality
-- [x] ⌨️ 100% written in TypeScript for type safety
-- [x] 🎁 ...much more
+### 2. .env fayl namunasi
+```env
+MONGODB_URL=mongodb://localhost:27017/inbola
+PAYLOAD_SECRET=super-secret-key
+NEXT_PUBLIC_SERVER_URL=http://localhost:3000
 
-## Tech Stack
+# Email uchun
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_gmail@gmail.com
+SMTP_PASS=your_app_password
+EMAIL_FROM=info@inbola.uz
+EMAIL_NAME=Inbola
+```
+**Eslatma:** Gmail uchun App password olish uchun 2-step verification yoqing va [bu yerda](https://myaccount.google.com/apppasswords) yarating.
 
-### Frontend
+### 3. O‘rnatish va ishga tushirish
+```bash
+# 1. Barcha paketlarni o‘rnating
+npm install
 
-- [Next.js](https://nextjs.org/) [v14](https://nextjs.org/blog/next-14) – React framework for building performant apps with the best developer experience
-- [Zustand](https://zustand-demo.pmnd.rs/) – A small, fast and scalable bear bones state-management solution.
-- [Tailwind](https://tailwindcss.com/) – Utility-first CSS framework for rapid UI development
-- [Shadcn UI](https://ui.shadcn.com/) - A Component library to copy and paste component built on top of Tailwind + [Radix](https://www.radix-ui.com/).
-- [Lucide](https://lucide.dev/) – Beautifully simple, pixel-perfect icons
+# 2. Serverni ishga tushiring (Payload + Next.js)
+npm run dev
+```
 
-### Backend
-- [Payload](https://payloadcms.com/) – An highly customizable, headless CMS for Next.js
-- [Stripe](https://stripe.com/) – Payment processing for internet businesses
-- [Trpc](https://trpc.io/) - Makes the APIs End-to-end type-safe and boost the development speed and experience.
-- [AWS S3](https://aws.amazon.com/s3/) – Object storage built to store and retrieve any amount of data from anywhere.
+### 4. Admin panel va frontend
+- **Admin panel:** http://localhost:3000/admin
+- **Asosiy sahifa:** http://localhost:3000/
 
-### Platform + Database
-- [Render](https://render.com/) - Render is a unified platform to build and run all your apps and websites with free SSL, a global CDN, private networks and auto deploys from Git.
-- [MongoDB](https://www.mongodb.com/) – The most popular database for modern apps
 
-### Code Quality
-- [TypeScript](https://www.typescriptlang.org/) – Static type checker for end-to-end type-safety
-- [Prettier](https://prettier.io/) – Opinionated code formatter for consistent code style
-- [ESLint](https://eslint.org/) – Pluggable linter for Next.js & TypeScript
+---
 
-## Author
+## Texnik stack
+- **Frontend:** Next.js, TailwindCSS, Shadcn UI
+- **Backend:** Payload CMS, tRPC
+- **Ma’lumotlar bazasi:** MongoDB
+- **Email:** Nodemailer (Gmail SMTP orqali)
 
-- [![@vigneshfixes](https://img.shields.io/badge/vigneshfixes-000000?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/intent/follow?screen_name=vigneshfixes)
-- [![Vignesh Gupta](https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://vigneshgupta.vercel.app/)
+---
 
-## Thank you!
+## Muammolar va tezkor yechimlar
 
-Hope you like it. Please do ⭐ the repo. Happy coding!
-# inbola
+**1. Email ishlamasa:**
+- .env fayldagi SMTP_USER, SMTP_PASS (faqat App password!) va boshqa email maydonlarini tekshiring.
+- Gmail uchun oddiy parol emas, faqat App password ishlaydi!
+
+**2. 404 yoki sahifa ochilmasa:**
+- `npm run dev` buyrug‘idan so‘ng, brauzerda http://localhost:3000 ni yangilang.
+- Terminalda xatolik chiqsa, to‘liq logni tekshiring.
+
+**3. Port bandligi yoki boshqa server xatolari:**
+- 3000-port band bo‘lsa, eski processni o‘chiring: `lsof -i :3000` va `kill -9 PID`
+
+**4. Admin panel ochilmasa:**
+- http://localhost:3000/admin ga kiring. Login uchun admin foydalanuvchi yarating yoki mavjudini ishlating.
+
+---
+
+## Foydali scriptlar
+- `npm run dev` — Backend va frontendni birga ishga tushiradi
+- `npm install` — Barcha paketlarni o‘rnatadi
+
+---
+
+## Muallif va yordam
+Agar muammo yoki savol bo‘lsa, shu README asosida barcha yechimlarni topasiz. Yana savollar bo‘lsa, Telegram yoki GitHub orqali bog‘laning.
+
+---
+
+**INBOLA loyihasi — bolalar uchun eng yaxshi marketplace!**
