@@ -20,6 +20,9 @@
     "build:next": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NEXT_BUILD=true node dist/server.js",
     "build": "cross-env NODE_ENV=production npm run build:payload && npm run build:server && npm run copyfiles && npm run build:next",
     "start": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
+    "create-admin": "ts-node -O '{\"jsx\":\"react\"}' scripts/create-admin.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "pr:precheck": "npm run lint && npm run gen:types && npm run type-check && npm run build"
   },
   "resolutions": {

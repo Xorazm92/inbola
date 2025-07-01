@@ -6,9 +6,9 @@ import { startServer } from './server/start'
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
-const PORT = process.env.PORT || 3000
+const PORT = Number(process.env.PORT) || 5000;
 
-const start = async () => {
+const start = async (): Promise<void> => {
   try {
     // Initialize Payload
     const payload = await getPayloadClient()
@@ -19,9 +19,9 @@ const start = async () => {
       express: payload.express as any,
     })
 
-    server.listen(PORT, async () => {
+    server.listen(PORT, '0.0.0.0', async () => {
       console.log(`Server is running on port ${PORT}`)
-      console.log(`Admin panel: http://localhost:${PORT}/admin`)
+      console.log(`Admin panel: ${process.env.NEXT_PUBLIC_SERVER_URL}/sell`);
     })
   } catch (error) {
     console.error('Error starting server:', error)
