@@ -21,10 +21,7 @@ const start = async (): Promise<void> => {
       express: payload.express as any,
     })
 
-    server.listen(PORT, '0.0.0.0', async () => {
-      console.log(`Server is running on port ${PORT}`)
-      console.log(`Admin panel: ${process.env.NEXT_PUBLIC_SERVER_URL}/sell`);
-    })
+    payload.logger.info(`Server should be running at ${process.env.NEXT_PUBLIC_SERVER_URL}`)
   } catch (error) {
     console.error('Error starting server:', error)
     process.exit(1)

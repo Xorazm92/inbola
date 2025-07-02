@@ -29,8 +29,9 @@ export interface WebhookRequest extends PayloadRequest {
 export const startServer = async (options: {
   payload: Payload
   express?: Express
+  port?: number
 }) => {
-  const { payload } = options
+  const { payload, port = Number(process.env.PORT) || 5000 } = options
   const app = options.express || express()
 
   app.use((req, res) => nextHandler(req, res))
@@ -38,6 +39,11 @@ export const startServer = async (options: {
   await nextApp.prepare()
 
   payload.logger.info('Next.js started')
+
+  // Actually start the server
+  app.listen(port, () => {
+    payload.logger.info(`Server listening on http://localhost:${port}`)
+  })
 
   return app
 }

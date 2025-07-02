@@ -1,4 +1,5 @@
 
+const path = require('path');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -64,6 +65,17 @@ const nextConfig = {
   
   // Bundle optimization
   webpack: (config, { dev, isServer }) => {
+    // Add sharp to externals to avoid bundling it.
+    if (!config.externals) {
+      config.externals = [];
+    }
+    config.externals.push({ sharp: 'commonjs sharp' });
+
+    // Add alias for React to avoid multiple versions
+    if (!config.resolve) {
+      config.resolve = {};
+    }
+
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',

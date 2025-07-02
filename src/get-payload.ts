@@ -1,3 +1,4 @@
+
 import payload from 'payload'
 import { InitOptions } from 'payload/config'
 import { Config } from './payload-types'
