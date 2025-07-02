@@ -6,10 +6,12 @@
     "outDir": "dist",
     "rootDir": "src",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "noEmit": false,
     "isolatedModules": false
   },
-  "include": ["src/**/*"],
+  "include": ["src/server.ts", "src/**/*"],
+  "files": ["src/get-payload.ts", "src/server.ts"],
   "exclude": ["node_modules", "dist"]
 }

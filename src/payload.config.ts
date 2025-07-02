@@ -1,7 +1,8 @@
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { slateEditor } from "@payloadcms/richtext-slate";
-import dotenv from "dotenv";
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const dotenv = require("dotenv");
 import path from "path";
 import { buildConfig } from "payload/config";
 import {

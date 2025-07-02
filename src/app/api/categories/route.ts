@@ -12,7 +12,7 @@ export async function GET() {
     try {
       cachedResult = await cache.get(cacheKey);
       if (cachedResult) {
-        return NextResponse.json(JSON.parse(cachedResult));
+        return NextResponse.json(typeof cachedResult === 'string' ? JSON.parse(cachedResult) : cachedResult);
       }
     } catch (error) {
       console.log('Cache miss:', error);
@@ -45,7 +45,7 @@ export async function GET() {
 
     // Cache for 10 minutes
     try {
-      await cache.setex(cacheKey, 600, JSON.stringify(result));
+      await cache.set(cacheKey, JSON.stringify(result), 600);
     } catch (error) {
       console.log('Cache set error:', error);
     }

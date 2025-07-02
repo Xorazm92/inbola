@@ -22,7 +22,7 @@ const ProductReel = (props: ProductReelProps) => {
 
   const { ref, isIntersecting } = useIntersectionObserver({
     threshold: 0.1,
-    triggerOnce: true
+    
   });
 
   useEffect(() => {
@@ -45,7 +45,8 @@ const ProductReel = (props: ProductReelProps) => {
 
   let map: (typeof PRODUCT_CATEGORIES)[number][] = [];
   if (products.length > 0) {
-    map = products.map((product) =>
+    map = // eslint-disable-next-line @typescript-eslint/no-explicit-any
+products.map((product: any) =>
       PRODUCT_CATEGORIES.find(({ value }) => value === product.category)!
     );
   }
@@ -107,7 +108,8 @@ const ProductReel = (props: ProductReelProps) => {
       <div className="relative">
         <div className="mt-6 flex items-center w-full">
           <div className="w-full grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-10 lg:gap-x-8">
-            {products.map((product, i) => (
+            {// eslint-disable-next-line @typescript-eslint/no-explicit-any
+products.map((product: any, i: any) => (
               <ProductListing key={`product-${i}`} product={product} index={i} />
             ))}
           </div>

@@ -56,7 +56,8 @@ export async function GET() {
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  ${products.map(product => `
+  ${// eslint-disable-next-line @typescript-eslint/no-explicit-any
+products.map((product: any) => `
   <url>
     <loc>${baseUrl}/products/${product.id}</loc>
     <lastmod>${new Date(product.updatedAt).toISOString()}</lastmod>

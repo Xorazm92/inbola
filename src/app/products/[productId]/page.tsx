@@ -189,7 +189,8 @@ const ProductPage = async ({ params }: PageProps) => {
                         Available Sizes
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {product.size.map((size) => (
+                        {// eslint-disable-next-line @typescript-eslint/no-explicit-any
+product.size.map((size: any) => (
                           <Badge key={size} variant="outline">
                             {size}
                           </Badge>
@@ -204,7 +205,8 @@ const ProductPage = async ({ params }: PageProps) => {
                         Available Colors
                       </h3>
                       <div className="flex flex-wrap gap-2">
-                        {product.color.map((color) => (
+                        {// eslint-disable-next-line @typescript-eslint/no-explicit-any
+product.color.map((color: any) => (
                           <Badge key={color} variant="outline">
                             {color}
                           </Badge>

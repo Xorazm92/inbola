@@ -101,7 +101,7 @@ export default function Home() {
       <section className="bg-gray-50 py-16">
         <MaxWidthWrapper>
           <ProductReel
-            query={{ sort: "desc", limit: 4 }}
+            query={{ sort: "DESC", limit: 4 }}
             href="/products?sort=recent"
             title="Yangi mahsulotlar"
             subtitle="Eng so'nggi qo'shilgan mahsulotlar"
@@ -112,7 +112,7 @@ export default function Home() {
       <section className="py-16">
         <MaxWidthWrapper>
           <ProductReel
-            query={{ sort: "desc", limit: 4 }}
+            query={{ sort: "DESC", limit: 4 }}
             href="/products"
             title="Mashhur mahsulotlar"
             subtitle="Eng ko'p sotilayotgan mahsulotlar"

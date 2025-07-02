@@ -1,11 +1,12 @@
-
+export const testPayload = true;
 import payload from 'payload'
 import { InitOptions } from 'payload/config'
 import { Config } from './payload-types'
 import nodemailer from 'nodemailer'
 import path from 'path'
 import config from './payload.config'
-import dotenv from 'dotenv'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const dotenv = require('dotenv')
 
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
