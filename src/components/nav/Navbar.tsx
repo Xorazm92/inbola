@@ -11,6 +11,7 @@ import MobileNav from "./MobileNav";
 import NavItems from "./NavItems";
 import UserNav from "./UserNav";
 import { ThemeSwitch } from "../ui/theme-switch";
+import { LocaleSwitcher } from "../LocaleSwitcher";
 
 const Navbar = async () => {
   const nextCookies = await cookies();
@@ -47,6 +48,9 @@ const Navbar = async () => {
                   user={user}
                   className="hidden lg:flex lg:flex-1 lg:justify-end lg:space-x-6 lg:items-center"
                 />
+                <div className="flow-root ml-4 lg:ml-6">
+                  <LocaleSwitcher />
+                </div>
                 <div className="flow-root ml-4 lg:ml-6">
                   <ThemeSwitch />
                 </div>

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Star, Heart, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { formatUZS } from '@/lib/utils';
 
 const featuredProducts = [
   {
@@ -143,11 +144,11 @@ export default function FeaturedProducts() {
                 {/* Price */}
                 <div className="flex items-center gap-2">
                   <span className="text-lg font-bold text-gray-900">
-                    {formatPrice(product.price)}
+                    {formatUZS(product.price)}
                   </span>
                   {product.originalPrice && (
                     <span className="text-sm text-gray-500 line-through">
-                      {formatPrice(product.originalPrice)}
+                      {formatUZS(product.originalPrice)}
                     </span>
                   )}
                 </div>

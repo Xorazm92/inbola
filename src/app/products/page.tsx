@@ -3,6 +3,7 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductSearch from "@/components/home/ProductSearch";
 import ProductGrid from "@/components/product/ProductGrid";
 import { getPayloadClient } from "@/get-payload";
+import { PRODUCT_CATEGORIES } from "@/lib/kids-config";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,6 +22,11 @@ interface PageProps {
 
 export default async function ProductsPage({ searchParams }: PageProps) {
   const { category, search, page = "1", limit = "12" } = searchParams;
+
+  // Get category info
+  const categoryInfo = category
+    ? PRODUCT_CATEGORIES.find(cat => cat.value === category)
+    : null;
   
   const payload = await getPayloadClient();
   
@@ -64,11 +70,19 @@ export default async function ProductsPage({ searchParams }: PageProps) {
       <MaxWidthWrapper>
         <div className="py-20 mx-auto text-center flex flex-col items-center max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Mahsulotlar
+            {categoryInfo ? categoryInfo.label : "Mahsulotlar"}
           </h1>
           <p className="mt-6 text-lg max-w-prose text-muted-foreground">
-            Bolalar uchun sifatli mahsulotlarni kashf eting
+            {categoryInfo
+              ? `${categoryInfo.label} bo'limidagi eng yaxshi mahsulotlar`
+              : "Bolalar uchun sifatli mahsulotlarni kashf eting"
+            }
           </p>
+          {search && (
+            <p className="mt-2 text-sm text-muted-foreground">
+              "{search}" uchun qidiruv natijalari
+            </p>
+          )}
         </div>
 
         <div className="mt-8">
@@ -76,9 +90,9 @@ export default async function ProductsPage({ searchParams }: PageProps) {
         </div>
 
         <section className="mt-16">
-          <ProductGrid 
-            products={products} 
-            title="Barcha mahsulotlar"
+          <ProductGrid
+            products={products}
+            title={categoryInfo ? categoryInfo.label : "Barcha mahsulotlar"}
             currentPage={currentPage || 1}
             totalPages={totalPages || 1}
           />

@@ -11,6 +11,7 @@ import {
 } from "@/lib/validators/account-credentials-validator";
 import { trpc } from "@/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -24,6 +25,7 @@ interface ResetPasswordProps {
 
 const ResetPassword = ({ token }: ResetPasswordProps) => {
   const [isReset, setIsReset] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -92,14 +94,30 @@ const ResetPassword = ({ token }: ResetPasswordProps) => {
           <div className="grid gap-2">
             <div className="grid gap-1 py-2">
               <Label htmlFor="password">New Password</Label>
-              <Input
-                {...register("password")}
-                className={cn({
-                  "focus-visible:ring-red-500": errors.password,
-                })}
-                placeholder="*****"
-                type="password"
-              />
+              <div className="relative">
+                <Input
+                  {...register("password")}
+                  className={cn({
+                    "focus-visible:ring-red-500": errors.password,
+                  })}
+                  placeholder="Enter new password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
               {errors?.password && (
                 <p className="text-sm text-red-500">
                   {errors?.password?.message}
@@ -107,7 +125,9 @@ const ResetPassword = ({ token }: ResetPasswordProps) => {
               )}
             </div>
 
-            <Button>Submit</Button>
+            <Button disabled={isLoading} className="w-full">
+              {isLoading ? "Resetting..." : "Reset password"}
+            </Button>
           </div>
         </form>
       </div>

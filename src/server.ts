@@ -14,7 +14,7 @@ const start = async (): Promise<void> => {
     console.log('🚀 Starting INBOLA server...');
     console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
     console.log(`🔗 MongoDB URI: ${process.env.MONGODB_URI ? 'Connected' : 'Not configured'}`);
-    console.log(`🌐 Server URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`);
+    console.log(`🌐 Server URL: http://localhost:${PORT}`);
     console.log(`🚪 Port: ${PORT}`);
 
     // Initialize Payload
@@ -30,9 +30,9 @@ const start = async (): Promise<void> => {
     });
 
     console.log('🎉 Server started successfully!');
-    console.log(`📱 Frontend: ${process.env.NEXT_PUBLIC_SERVER_URL}`);
-    console.log(`⚙️  Admin Panel: ${process.env.NEXT_PUBLIC_SERVER_URL}/sell`);
-    console.log(`🔍 Health Check: ${process.env.NEXT_PUBLIC_SERVER_URL}/health`);
+    console.log(`📱 Frontend: http://localhost:${PORT}`);
+    console.log(`⚙️  Admin Panel: http://localhost:${PORT}/sell`);
+    console.log(`🔍 Health Check: http://localhost:${PORT}/health`);
 
   } catch (error) {
     console.error('❌ Error starting server:', error);

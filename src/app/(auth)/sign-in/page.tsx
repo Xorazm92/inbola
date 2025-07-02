@@ -12,7 +12,7 @@ import {
 } from "@/lib/validators/account-credentials-validator";
 import { trpc } from "@/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -22,6 +22,7 @@ import { toast } from "sonner";
 const SignInPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [showPassword, setShowPassword] = React.useState(false);
 
   const { loadItems } = useCart();
 
@@ -123,14 +124,30 @@ const SignInPage = () => {
 
             <div className="grid gap-1 py-2">
               <Label htmlFor="password">Password</Label>
-              <Input
-                {...register("password")}
-                type="password"
-                className={cn({
-                  "focus-visible:ring-red-500": errors.password,
-                })}
-                placeholder="Password"
-              />
+              <div className="relative">
+                <Input
+                  {...register("password")}
+                  type={showPassword ? "text" : "password"}
+                  className={cn({
+                    "focus-visible:ring-red-500": errors.password,
+                  })}
+                  placeholder="Password"
+                  autoComplete="current-password"
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
               {errors?.password && (
                 <p className="text-sm text-red-500">
                   {errors?.password?.message}
@@ -140,11 +157,13 @@ const SignInPage = () => {
                 className="text-primary text-sm hover:underline underline-offset-4"
                 href="/forgot-password"
               >
-                forgot password?
+                Forgot password?
               </Link>
             </div>
 
-            <Button>Sign in</Button>
+            <Button disabled={isLoading} className="w-full">
+              {isLoading ? "Signing in..." : "Sign in"}
+            </Button>
           </div>
         </form>
 

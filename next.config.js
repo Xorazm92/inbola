@@ -26,6 +26,10 @@ const nextConfig = {
         hostname: "inbola.uz",
         protocol: "https",
       },
+      {
+        hostname: "digibee-mediafiles.s3.ap-south-1.amazonaws.com",
+        protocol: "https",
+      },
     ],
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,

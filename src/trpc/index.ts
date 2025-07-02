@@ -1,5 +1,6 @@
 import QueryValidator from "../lib/validators/query-validator";
 import { authRouter } from "./auth-router";
+import { userRouter } from "./user-router";
 import { publicProcedure, router } from "./trpc";
 import { z } from "zod";
 import { getPayloadClient } from "../get-payload";
@@ -12,6 +13,7 @@ import { emailRouter } from "./email-router";
 
 export const appRouter = router({
   auth: authRouter,
+  user: userRouter,
   payment: paymentRouter,
   cart: cartRouter,
   list: listRouter,

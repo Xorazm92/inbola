@@ -4,6 +4,9 @@ import Banner from "@/components/home/Banner";
 import CategoryGrid from "@/components/home/CategoryGrid";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import ProductReel from "@/components/product/ProductReel";
+import HeroSection from "@/components/home/HeroSection";
+import DealsSection from "@/components/home/DealsSection";
+import BrandsSection from "@/components/home/BrandsSection";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ShieldCheck, ScanEye, Leaf, Truck, CreditCard, Headphones } from "lucide-react";
 import Link from "next/link";
@@ -34,8 +37,12 @@ const features = [
 export default function Home() {
   return (
     <>
-      <Banner />
-      
+      {/* Modern Hero Section */}
+      <HeroSection />
+
+      {/* Flash Deals */}
+      <DealsSection />
+
       <MaxWidthWrapper>
         {/* Hero Section */}
         <div className="flex flex-col items-center max-w-4xl py-20 mx-auto text-center">
@@ -93,6 +100,9 @@ export default function Home() {
 
       {/* Categories */}
       <CategoryGrid />
+
+      {/* Top Brands */}
+      <BrandsSection />
 
       {/* Featured Products */}
       <FeaturedProducts />

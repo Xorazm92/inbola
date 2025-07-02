@@ -12,7 +12,7 @@ import {
 } from "@/lib/validators/account-credentials-validator";
 import { trpc } from "@/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -21,6 +21,8 @@ import { toast } from "sonner";
 import { ZodError } from "zod";
 
 const SignUpPage = () => {
+  const [showPassword, setShowPassword] = React.useState(false);
+
   const {
     register,
     handleSubmit,
@@ -31,7 +33,7 @@ const SignUpPage = () => {
 
   const router = useRouter();
 
-  const { mutate } = trpc.auth.createPayloadUser.useMutation({
+  const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({
     onError: (error) => {
       if (error.data?.code === "CONFLICT") {
         toast.error("This email is already in use");
@@ -100,14 +102,30 @@ const SignUpPage = () => {
 
             <div className="grid gap-1 py-2">
               <Label htmlFor="password">Password</Label>
-              <Input
-                {...register("password")}
-                type="password"
-                className={cn({
-                  "focus-visible:ring-red-500": errors.password,
-                })}
-                placeholder="Password"
-              />
+              <div className="relative">
+                <Input
+                  {...register("password")}
+                  type={showPassword ? "text" : "password"}
+                  className={cn({
+                    "focus-visible:ring-red-500": errors.password,
+                  })}
+                  placeholder="Password (min. 8 characters)"
+                  autoComplete="new-password"
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4" />
+                  ) : (
+                    <Eye className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
               {errors?.password && (
                 <p className="text-sm text-red-500">
                   {errors?.password?.message}
@@ -115,7 +133,9 @@ const SignUpPage = () => {
               )}
             </div>
 
-            <Button>Sign up</Button>
+            <Button disabled={isLoading} className="w-full">
+              {isLoading ? "Creating account..." : "Sign up"}
+            </Button>
           </div>
         </form>
       </div>
