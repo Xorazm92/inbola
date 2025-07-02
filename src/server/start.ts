@@ -1,3 +1,4 @@
+
 import type { Payload } from 'payload'
 import type { Express, Request, Response } from 'express'
 import express from 'express'
@@ -7,6 +8,8 @@ import { PayloadRequest } from 'payload/types'
 import { Stripe } from 'stripe'
 import next from 'next'
 import path from 'path'
+import compression from 'compression'
+import helmet from 'helmet'
 
 const nextApp = next({
   dev: process.env.NODE_ENV !== 'production',
@@ -34,15 +37,31 @@ export const startServer = async (options: {
   const { payload, port = Number(process.env.PORT) || 5000 } = options
   const app = options.express || express()
 
+  // Security middleware
+  app.use(helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+  }))
+  
+  // Compression middleware
+  app.use(compression())
+
+  // Health check endpoint
+  app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() })
+  })
+
+  // Handle Next.js requests
   app.use((req, res) => nextHandler(req, res))
 
   await nextApp.prepare()
 
   payload.logger.info('Next.js started')
 
-  // Actually start the server
-  app.listen(port, () => {
-    payload.logger.info(`Server listening on http://localhost:${port}`)
+  // Start the server on all interfaces
+  app.listen(port, '0.0.0.0', () => {
+    payload.logger.info(`Server listening on http://0.0.0.0:${port}`)
+    payload.logger.info(`Admin panel: http://0.0.0.0:${port}/sell`)
   })
 
   return app

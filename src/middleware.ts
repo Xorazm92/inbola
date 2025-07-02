@@ -1,14 +1,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import createIntlMiddleware from 'next-intl/middleware';
-
-const intlMiddleware = createIntlMiddleware({
-  locales: ['uz', 'en', 'ru'],
-  defaultLocale: 'uz'
-});
 
 export default function middleware(request: NextRequest) {
-  const response = intlMiddleware(request);
+  const response = NextResponse.next();
   
   // Security headers
   response.headers.set('X-Frame-Options', 'DENY');
@@ -30,5 +24,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|sell).*)']
 };

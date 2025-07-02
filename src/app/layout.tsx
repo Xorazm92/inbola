@@ -1,72 +1,44 @@
-
 import TrpcProvider from "@/components/TrpcProvider";
-// import Navbar from "@/components/nav/Navbar";
-// import Footer from "@/components/Footer";
-
-import { GoogleAnalytics, YandexMetrica } from "@/components/Analytics";
+import Navbar from "@/components/nav/Navbar";
 import { cn } from "@/lib/utils";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Suspense } from "react";
+import { Poppins } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
-
-const inter = Inter({ 
-  subsets: ["latin"],
-  display: 'swap',
-  preload: true,
-});
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import Footer from "@/components/Footer";
+import React from "react";
+import { Metadata } from "next";
+import Analytics from "@/components/Analytics";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://inbola.uz'),
   title: {
-    default: "INBOLA - Bolalar uchun zamonaviy marketplace",
+    default: "INBOLA | Kids Store",
     template: "%s | INBOLA",
   },
-  description: "INBOLA - bolalar uchun sifatli kiyim, o'yinchoq, kitob va maktab buyumlari. Xavfsiz onlayn xaridlar, tez yetkazib berish.",
-  keywords: [
-    "bolalar kiyim",
-    "bolalar o'yinchoq", 
-    "maktab buyumlari",
-    "bolalar kitob",
-    "onlayn dokon",
-    "marketplace",
-    "Uzbekistan",
-    "kids fashion",
-    "children toys"
-  ],
-  authors: [{ name: "INBOLA Team" }],
-  creator: "INBOLA",
-  publisher: "INBOLA",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-
-  alternates: {
-    canonical: '/',
-  },
+  description: "Bolalar uchun eng yaxshi mahsulotlar - INBOLA marketplace",
+  keywords: "bolalar, o'yinchoqlar, kiyim, kitoblar, maktab jihozlari",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:5000'),
   openGraph: {
-    type: 'website',
-    locale: 'uz_UZ',
-    url: '/',
-    title: 'INBOLA - Bolalar uchun zamonaviy marketplace',
-    description: 'Bolalar uchun sifatli mahsulotlar - kiyim, o\'yinchoq, kitob va maktab buyumlari',
-    siteName: 'INBOLA',
+    title: "INBOLA | Kids Store",
+    description: "Bolalar uchun eng yaxshi mahsulotlar",
+    url: process.env.NEXT_PUBLIC_SERVER_URL,
+    siteName: "INBOLA",
     images: [
       {
-        url: '/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'INBOLA Logo',
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "INBOLA Logo",
       },
     ],
+    locale: "uz_UZ",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'INBOLA - Bolalar uchun marketplace',
-    description: 'Bolalar uchun sifatli mahsulotlar',
-    images: ['/logo.png'],
+    card: "summary_large_image",
+    title: "INBOLA | Kids Store",
+    description: "Bolalar uchun eng yaxshi mahsulotlar",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -74,26 +46,23 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {
-    google: 'your-google-verification-code',
-    yandex: 'your-yandex-verification-code',
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.YANDEX_VERIFICATION,
   },
 };
 
-import { Poppins } from "next/font/google";
-import { Toaster } from "sonner";
-import React from "react";
-import { ThemeProvider } from "@/components/ui/theme-provider";
-
-
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600"] });
-
-
+const poppins = Poppins({ 
+  subsets: ["latin"], 
+  weight: ["400", "600"],
+  display: 'swap',
+  fallback: ['Arial', 'sans-serif']
+});
 
 export default function RootLayout({
   children,
@@ -101,26 +70,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="uz" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <Analytics />
+      </head>
       <body
         className={cn(
           "relative h-full font-sans antialiased",
           poppins.className
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main className="relative flex flex-col min-h-screen">
             <TrpcProvider>
-              {/* <Navbar /> */}
+              <Navbar />
               <div className="flex-1 flex flex-col justify-center">
                 {children}
               </div>
-              {/* <Footer /> */}            </TrpcProvider>
+              <Footer />
+            </TrpcProvider>
           </main>
           <Toaster position="bottom-right" />
         </ThemeProvider>
