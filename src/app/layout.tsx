@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import Footer from "@/components/Footer";
 import React from "react";
 import { Metadata } from "next";
-import Analytics from "@/components/Analytics";
+import { GoogleAnalytics, YandexMetrica } from "@/components/Analytics";
 
 export const metadata: Metadata = {
   title: {
@@ -74,7 +74,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <Analytics />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        <YandexMetrica ymId={process.env.NEXT_PUBLIC_YM_ID ? Number(process.env.NEXT_PUBLIC_YM_ID) : undefined} />
       </head>
       <body
         className={cn(

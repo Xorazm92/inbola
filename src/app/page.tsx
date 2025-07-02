@@ -1,95 +1,122 @@
-"use client";
 
-import React from "react";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Banner from "@/components/home/Banner";
 import CategoryGrid from "@/components/home/CategoryGrid";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
 import ProductReel from "@/components/product/ProductReel";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { Leaf, ScanEye, ShieldCheck } from "lucide-react";
+import { ShieldCheck, ScanEye, Leaf, Truck, CreditCard, Headphones } from "lucide-react";
 import Link from "next/link";
 
-const perks = [
+const features = [
   {
-    name: "High-quality assets",
+    name: "Tez yetkazib berish",
+    Icon: Truck,
+    description: "24 soat ichida bepul yetkazib berish xizmati mavjud."
+  },
+  {
+    name: "Xavfsiz to'lov",
+    Icon: CreditCard,
+    description: "Barcha to'lov turlari himoyalangan va xavfsiz."
+  },
+  {
+    name: "24/7 yordam",
+    Icon: Headphones,
+    description: "Har qanday savolingizga tez javob beramiz."
+  },
+  {
+    name: "Sifat kafolati",
     Icon: ShieldCheck,
-    description:
-      "Every asset on our platform is carefully reviewed by our team to ensure best quality.",
-  },
-  {
-    name: "Carefully reviewed",
-    Icon: ScanEye,
-    description:
-      "Every asset on our platform is carefully reviewed by our team to ensure best quality.",
-  },
-  {
-    name: "For the Planet",
-    Icon: Leaf,
-    description:
-      "We've pledge to donate 1% of our revenue to preservation and restoration of out planet.",
-  },
+    description: "Barcha mahsulotlar sifat tekshiruvidan o'tgan."
+  }
 ];
 
 export default function Home() {
   return (
     <>
       <Banner />
+      
       <MaxWidthWrapper>
-        <div className="flex flex-col items-center max-w-3xl py-20 mx-auto text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground/80 sm:text-6xl [text-wrap:balance]">
-            Your marketplace for high-quality{" "}
-            <span className="text-primary">digital asset</span>.
+        {/* Hero Section */}
+        <div className="flex flex-col items-center max-w-4xl py-20 mx-auto text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl [text-wrap:balance]">
+            Bolalar uchun eng yaxshi{" "}
+            <span className="text-primary">marketplace</span>
           </h1>
 
-          <p className="mt-4 [text-wrap:balance]">
-            Welcome to DigiBee. Every asset on our platform is carefully
-            reviewed by our team to ensure best quality.
+          <p className="mt-6 text-lg text-gray-600 max-w-prose [text-wrap:balance]">
+            INBOLA platformasida sifatli va xavfsiz mahsulotlarni toping. 
+            Har bir mahsulot ehtiyotkorlik bilan tanlab olingan.
           </p>
 
-          <div className="flex flex-col gap-4 mt-6 md:flex-row">
-            <Link href="/products" className={buttonVariants()}>
-              Browse Trending
+          <div className="flex flex-col gap-4 mt-8 md:flex-row">
+            <Link href="/products" className={buttonVariants({ size: "lg" })}>
+              Xarid qilishni boshlash
             </Link>
-            <Button variant="outline">Our quality promise &rarr; </Button>
+            <Button variant="outline" size="lg">
+              Bizning kafolatimiz &rarr;
+            </Button>
           </div>
         </div>
 
-        <ProductReel
-          query={{
-            limit: 4,
-            sort: "DESC",
-          }}
-          title="Brand new"
-          href="/products"
-        />
+        {/* Features */}
+        <section className="py-16 border-t border-gray-200 bg-gray-50 rounded-2xl my-16">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Nima uchun bizni tanlash kerak?
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-gray-600">
+                Biz bolalar va ota-onalar uchun eng yaxshi xarid tajribasini taqdim etamiz
+              </p>
+            </div>
+            <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+              <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+                {features.map((feature) => (
+                  <div key={feature.name} className="flex flex-col items-center text-center">
+                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-primary">
+                      <feature.Icon className="h-8 w-8 text-white" aria-hidden="true" />
+                    </div>
+                    <dt className="text-lg font-semibold leading-7 text-gray-900">
+                      {feature.name}
+                    </dt>
+                    <dd className="mt-2 text-base leading-7 text-gray-600">
+                      {feature.description}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </section>
       </MaxWidthWrapper>
 
+      {/* Categories */}
       <CategoryGrid />
-      <section className="">
-        <MaxWidthWrapper className="py-20">
-          <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:gap-x-8 lg:gap-y-0 lg:grid-cols-3">
-            {perks.map((perk) => (
-              <div
-                key={perk.name}
-                className="text-center md:items-center md:flex md:text-left lg:block lg:text-center"
-              >
-                <div className="flex justify-center md:flex-shrink-0">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full text-primary bg-primary/10">
-                    <perk.Icon className="w-1/3 h-1/3" />
-                  </div>
-                </div>
 
-                <div className="mt-6 md:ml-4 md:mt-0 lg:ml-0 lg:mt-6">
-                  <h3 className="text-base font-medium text-foreground">
-                    {perk.name}
-                  </h3>
-                  <p className="mt-3 text-sm text-muted-foreground">
-                    {perk.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Featured Products */}
+      <FeaturedProducts />
+
+      {/* Product Reels */}
+      <section className="bg-gray-50 py-16">
+        <MaxWidthWrapper>
+          <ProductReel
+            query={{ sort: "desc", limit: 4 }}
+            href="/products?sort=recent"
+            title="Yangi mahsulotlar"
+            subtitle="Eng so'nggi qo'shilgan mahsulotlar"
+          />
+        </MaxWidthWrapper>
+      </section>
+
+      <section className="py-16">
+        <MaxWidthWrapper>
+          <ProductReel
+            query={{ sort: "desc", limit: 4 }}
+            href="/products"
+            title="Mashhur mahsulotlar"
+            subtitle="Eng ko'p sotilayotgan mahsulotlar"
+          />
         </MaxWidthWrapper>
       </section>
     </>
