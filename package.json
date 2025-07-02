@@ -11,6 +11,7 @@
     "seed": "ts-node -O '{\"jsx\":\"react\"}' scripts/seed.ts",
     "seed-simple": "ts-node -O '{\"jsx\":\"react\"}' scripts/seed-simple.ts",
     "seed-hash": "ts-node -O '{\"jsx\":\"react\"}' scripts/seed-hash.ts",
+    "seed-products": "ts-node -O '{\"jsx\":\"react\"}' scripts/seed-products.ts",
     "start:dev": "npm run dev",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
@@ -23,6 +24,7 @@
     "create-admin": "ts-node -O '{\"jsx\":\"react\"}' scripts/create-admin.ts",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:api": "ts-node -O '{\"jsx\":\"react\"}' scripts/test-api.ts",
     "pr:precheck": "npm run lint && npm run gen:types && npm run type-check && npm run build"
   },
   "resolutions": {
