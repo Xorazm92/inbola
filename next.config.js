@@ -63,7 +63,7 @@ const nextConfig = {
     ];
   },
   webpack: (config, { isServer, dev }) => {
-    // Disable source maps in development to prevent stack overflow
+    // Disable source maps in development to prevent issues
     if (dev) {
       config.devtool = false;
     }
@@ -91,27 +91,29 @@ const nextConfig = {
       use: 'node-loader',
     });
 
-    // Optimize for better performance
-    config.optimization = {
-      ...config.optimization,
-      splitChunks: {
-        chunks: 'all',
-        maxSize: 244000,
-        cacheGroups: {
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true,
-          },
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: -10,
-            chunks: 'all',
+    // Simplified optimization for development
+    if (!dev) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          maxSize: 244000,
+          cacheGroups: {
+            default: {
+              minChunks: 2,
+              priority: -20,
+              reuseExistingChunk: true,
+            },
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              priority: -10,
+              chunks: 'all',
+            },
           },
         },
-      },
-    };
+      };
+    }
 
     return config;
   },

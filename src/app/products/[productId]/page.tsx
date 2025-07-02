@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         description: product.seo?.description || product.description,
         images: product.images?.length ? [
           {
-            url: (product.images[0].image as any)?.url || '/placeholder.png',
+            url: (product.images[0].image as any)?.url || '/placeholder.svg',
             width: 800,
             height: 600,
             alt: product.name

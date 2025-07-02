@@ -121,9 +121,9 @@ npm run dev
 ```
 
 Visit:
-- **Frontend**: http://localhost:5000
-- **Admin Panel**: http://localhost:5000/sell
-- **API Documentation**: http://localhost:5000/api/docs
+- **Frontend**: http://localhost:3001
+- **Admin Panel**: http://localhost:3001/sell
+- **Health Check**: http://localhost:3001/health
 
 ## 📋 Available Scripts
 

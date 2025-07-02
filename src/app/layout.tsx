@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   description: "Bolalar uchun eng yaxshi mahsulotlar - INBOLA marketplace",
   keywords: "bolalar, o'yinchoqlar, kiyim, kitoblar, maktab jihozlari",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:5000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3001'),
   openGraph: {
     title: "INBOLA | Kids Store",
     description: "Bolalar uchun eng yaxshi mahsulotlar",

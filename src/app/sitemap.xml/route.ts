@@ -4,7 +4,7 @@ import { getPayloadClient } from '@/get-payload';
 
 export async function GET() {
   const payload = await getPayloadClient();
-  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:5000';
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3001';
   
   try {
     // Get all approved products

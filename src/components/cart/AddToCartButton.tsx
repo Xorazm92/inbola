@@ -19,9 +19,14 @@ const AddToCartButton = ({ product }: { product: Product }) => {
   }, [checkIfItemExists, product.id]);
 
   const handleAddToCart = async () => {
-    addItem(product);
-    setIsAdded(true);
-    addItems({ productIds: [product.id] });
+    try {
+      addItem(product);
+      setIsAdded(true);
+      addItems({ productIds: [product.id] });
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      setIsAdded(false);
+    }
   };
 
   return (

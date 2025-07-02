@@ -53,14 +53,14 @@ export default function Home() {
             <Link href="/products" className={buttonVariants({ size: "lg" })}>
               Xarid qilishni boshlash
             </Link>
-            <Button variant="outline" size="lg">
+            <Link href="#features" className={buttonVariants({ variant: "outline", size: "lg" })}>
               Bizning kafolatimiz &rarr;
-            </Button>
+            </Link>
           </div>
         </div>
 
         {/* Features */}
-        <section className="py-16 border-t border-gray-200 bg-gray-50 rounded-2xl my-16">
+        <section id="features" className="py-16 border-t border-gray-200 bg-gray-50 rounded-2xl my-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">

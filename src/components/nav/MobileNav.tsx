@@ -16,8 +16,8 @@ const MobileNav = ({ user }: { user: User | null }) => {
   return (
     <Sheet>
       <SheetTrigger asChild className="block lg:hidden">
-        <Button variant="outline" size="icon">
-          <Menu className="h-10" />
+        <Button variant="outline" size="icon" aria-label="Open menu">
+          <Menu className="h-6 w-6" />
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="lg:hidden" >
