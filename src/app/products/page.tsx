@@ -1,30 +1,50 @@
+
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import ProductReel from "@/components/product/ProductReel";
-import React from "react";
-import { getLabel } from "@/lib/utils";
+import ProductSearch from "@/components/home/ProductSearch";
+import ProductGrid from "@/components/product/ProductGrid";
+import { getPayloadClient } from "@/get-payload";
+import { Metadata } from "next";
 
-type Param = string | string[] | undefined;
-
-const parse = (param: Param) => {
-  return typeof param === "string" ? param : undefined;
+export const metadata: Metadata = {
+  title: "Products | INBOLA - Bolalar uchun marketplace",
+  description: "Discover high-quality products for children of all ages. Shop clothing, toys, books and more.",
 };
 
-export default async function ProductsPage(props: any) {
-  const searchParams = props.searchParams;
-  const parsedSort = parse(searchParams?.sort);
-  const parsedCategory = parse(searchParams?.category);
-  const label = getLabel(parsedCategory);
+interface ProductsPageProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const payload = await getPayloadClient();
+  
+  // Get initial products for SEO and faster initial load
+  const { docs: initialProducts } = await payload.find({
+    collection: 'products',
+    where: {
+      approvedForSale: { equals: 'approved' },
+      inStock: { equals: true }
+    },
+    sort: '-createdAt',
+    limit: 12,
+    depth: 2
+  });
 
   return (
     <MaxWidthWrapper>
-      <ProductReel
-        title={label ?? "Browse high-quality assets"}
-        query={{
-          category: parsedCategory,
-          limit: 40,
-          sort: parsedSort === "DESC" || parsedSort === "ASC" ? parsedSort : undefined,
-        }}
-      />
+      <div className="py-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-center mb-4">
+            Discover Amazing Products
+          </h1>
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto">
+            Browse our curated collection of high-quality products for children. 
+            From educational toys to stylish clothing, find everything you need.
+          </p>
+        </div>
+
+        <ProductSearch />
+        <ProductGrid initialProducts={initialProducts} />
+      </div>
     </MaxWidthWrapper>
   );
 }

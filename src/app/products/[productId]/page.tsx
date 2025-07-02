@@ -1,31 +1,75 @@
-import { Check, Shield } from "lucide-react";
-import React from "react";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 
 import AddToCartButton from "@/components/cart/AddToCartButton";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductImageSlider from "@/components/product/ProductImageSlider";
 import ProductReel from "@/components/product/ProductReel";
-import AttributeTable from "@/components/product/AttributeTable";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { getPayloadClient } from "@/get-payload";
-import { formatPrice, getLabel, getValidURLs } from "@/lib/utils";
+import { formatPrice, getValidURLs } from "@/lib/utils";
+import { Check, Shield, Star, Truck, RotateCcw } from "lucide-react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Metadata } from "next";
 import { Product } from "@/payload-types";
 
-type ProductDetailsProps = {
+interface PageProps {
   params: {
     productId: string;
   };
-};
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { productId } = params;
+  const payload = await getPayloadClient();
+
+  try {
+    const product = await payload.findByID({
+      collection: 'products',
+      id: productId,
+      depth: 1
+    });
+
+    if (!product) {
+      return {
+        title: 'Product Not Found',
+        description: 'The product you are looking for does not exist.'
+      };
+    }
+
+    return {
+      title: `${product.name} | INBOLA`,
+      description: product.description || `${product.name} - Premium quality product for children`,
+      keywords: product.seo?.keywords?.join(', ') || product.name,
+      openGraph: {
+        title: product.seo?.title || product.name,
+        description: product.seo?.description || product.description,
+        images: product.images?.length ? [
+          {
+            url: (product.images[0].image as any)?.url || '/placeholder.png',
+            width: 800,
+            height: 600,
+            alt: product.name
+          }
+        ] : []
+      }
+    };
+  } catch (error) {
+    return {
+      title: 'Product Not Found',
+      description: 'The product you are looking for does not exist.'
+    };
+  }
+}
 
 const BREADCRUMBS = [
   { id: 1, name: "Home", href: "/" },
   { id: 2, name: "Products", href: "/products" },
 ];
 
-const ProductDetails = async ({
-  params: { productId },
-}: ProductDetailsProps) => {
+const ProductPage = async ({ params }: PageProps) => {
+  const { productId } = params;
   const payload = await getPayloadClient();
 
   const { docs: products } = await payload.find({
@@ -39,20 +83,40 @@ const ProductDetails = async ({
         equals: "approved",
       },
     },
+    depth: 2,
   });
-  const product = products && products.length > 0 ? products[0] : null;
-  if (!product || typeof product !== 'object' || !('name' in product && 'price' in product && 'category' in product && 'product_files' in product)) return notFound();
 
-  // At this point, product is guaranteed to have the required Product fields
-  const typedProduct = product as Product;
-  const label = getLabel(typedProduct.category);
-  const validURLs = getValidURLs(typedProduct, 'media');
+  const [product] = products;
+
+  if (!product) return notFound();
+
+  const validURLs = getValidURLs(product, 'media');
+
+  // Get related products
+  const { docs: relatedProducts } = await payload.find({
+    collection: 'products',
+    where: {
+      and: [
+        {
+          category: { equals: product.category }
+        },
+        {
+          id: { not_equals: product.id }
+        },
+        {
+          approvedForSale: { equals: 'approved' }
+        }
+      ]
+    },
+    limit: 4,
+    depth: 2
+  });
 
   return (
-    <MaxWidthWrapper>
-      <div className="bg-background">
-        <div className="max-w-2xl px-4 py-4 mx-auto sm:px-6 sm:py-10 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-          {/* Product Detail*/}
+    <MaxWidthWrapper className="bg-white">
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          {/* Product Details */}
           <div className="lg:max-w-lg lg:self-end">
             <ol className="flex items-center space-x-2">
               {BREADCRUMBS.map((breadcrumb, i) => (
@@ -60,7 +124,7 @@ const ProductDetails = async ({
                   <div className="flex items-center text-sm">
                     <Link
                       href={breadcrumb.href}
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground/80"
+                      className="font-medium text-sm text-muted-foreground hover:text-gray-900"
                     >
                       {breadcrumb.name}
                     </Link>
@@ -69,9 +133,9 @@ const ProductDetails = async ({
                         viewBox="0 0 20 20"
                         fill="currentColor"
                         aria-hidden="true"
-                        className="flex-shrink-0 w-5 h-5 ml-2 text-gray-300"
+                        className="ml-2 h-5 w-5 flex-shrink-0 text-gray-300"
                       >
-                        <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                        <path d="m5.555 17.776 8-16 .894.448-8 16-.894-.448z" />
                       </svg>
                     ) : null}
                   </div>
@@ -80,64 +144,137 @@ const ProductDetails = async ({
             </ol>
 
             <div className="mt-4">
-              <h1 className="text-3xl font-bold tracking-tight text-foreground/80 sm:text-4xl">
-                {typedProduct.name}
+              <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                {product.name}
               </h1>
             </div>
 
             <section className="mt-4">
               <div className="flex items-center">
-                <p className="font-medium text-foreground/80">
-                  {formatPrice(typeof typedProduct.price === 'number' ? typedProduct.price : 0)}
+                <p className="font-medium text-gray-900">
+                  {formatPrice(product.price)}
                 </p>
 
-                <div className="pl-4 ml-4 border-l border-gray-300 text-muted-foreground">
-                  {label}
+                <div className="ml-4 border-l text-muted-foreground border-gray-300 pl-4">
+                  <div className="flex items-center">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-4 w-4 ${
+                          i < Math.floor(product.rating || 0)
+                            ? 'text-yellow-400 fill-current'
+                            : 'text-gray-300'
+                        }`}
+                      />
+                    ))}
+                    <span className="ml-2 text-sm">
+                      {product.rating || 0} / 5
+                    </span>
+                  </div>
                 </div>
               </div>
 
               <div className="mt-4 space-y-6">
                 <p className="text-base text-muted-foreground">
-                  {typeof typedProduct.description === 'string' ? typedProduct.description : ''}
+                  {product.description}
                 </p>
               </div>
 
-              <div className="flex items-center mt-6">
+              {/* Product Attributes */}
+              {(product.size?.length || product.color?.length || product.ageGroup) && (
+                <div className="mt-6 space-y-4">
+                  {product.size?.length && (
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-900 mb-2">
+                        Available Sizes
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {product.size.map((size) => (
+                          <Badge key={size} variant="outline">
+                            {size}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {product.color?.length && (
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-900 mb-2">
+                        Available Colors
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {product.color.map((color) => (
+                          <Badge key={color} variant="outline">
+                            {color}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {product.ageGroup && (
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-900 mb-2">
+                        Age Group
+                      </h3>
+                      <Badge variant="secondary">{product.ageGroup}</Badge>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="mt-6 flex items-center">
                 <Check
                   aria-hidden="true"
-                  className="flex-shrink-0 w-5 h-5 text-green-500"
+                  className="h-5 w-5 flex-shrink-0 text-green-500"
                 />
                 <p className="ml-2 text-sm text-muted-foreground">
-                  Eligible for Instant Delivery
+                  {product.inStock ? 'In stock and ready to ship' : 'Out of stock'}
                 </p>
               </div>
-            
-              <AttributeTable size={(typedProduct as any).size} color={(typedProduct as any).color} ageGroup={(typedProduct as any).ageGroup} />
             </section>
           </div>
-          {/* Product Image */}
+
+          {/* Product images */}
           <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
-            <div className="rounded-lg aspect-square">
+            <div className="aspect-square rounded-lg">
               <ProductImageSlider urls={validURLs} />
             </div>
           </div>
 
-          {/* Add to Cart */}
+          {/* add to cart part */}
           <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
             <div>
               <div className="mt-10">
-                <AddToCartButton product={typedProduct} />
+                <AddToCartButton product={product} />
               </div>
 
               <div className="mt-6 text-center">
-                <div className="inline-flex text-sm font-medium group">
+                <div className="group inline-flex text-sm font-medium">
                   <Shield
                     aria-hidden="true"
-                    className="flex-shrink-0 w-5 h-5 mr-2 text-muted-foreground group-hover:text-muted-foreground/80"
+                    className="mr-2 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                   />
-                  <span className="text-muted-foreground group-hover:text-muted-foreground/80">
+                  <span className="text-muted-foreground group-hover:text-gray-700">
                     30 Day Return Guarantee
                   </span>
+                </div>
+              </div>
+
+              {/* Additional Info */}
+              <div className="mt-8 space-y-4 border-t pt-6">
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <Truck className="h-4 w-4 mr-2" />
+                  Free shipping on orders over $50
+                </div>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <RotateCcw className="h-4 w-4 mr-2" />
+                  30-day return policy
+                </div>
+                <div className="flex items-center text-sm text-muted-foreground">
+                  <Shield className="h-4 w-4 mr-2" />
+                  2-year warranty included
                 </div>
               </div>
             </div>
@@ -145,17 +282,17 @@ const ProductDetails = async ({
         </div>
       </div>
 
-      <ProductReel
-        title={`Similar ${label}`}
-        href="/products"
-        subtitle={`Browse similar high-quality ${label} just like '${typedProduct.name}'`}
-        query={{
-          category: typedProduct.category,
-          limit: 4,
-        }}
-      />
+      {/* Related Products */}
+      {relatedProducts.length > 0 && (
+        <ProductReel
+          href="/products"
+          query={{ category: product.category, limit: 4 }}
+          title={`Similar ${product.category}`}
+          subtitle={`Browse similar high-quality ${product.category} just like '${product.name}'`}
+        />
+      )}
     </MaxWidthWrapper>
   );
 };
 
-export default ProductDetails;
+export default ProductPage;
