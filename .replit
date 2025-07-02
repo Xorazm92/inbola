@@ -21,7 +21,7 @@ args = "npm install"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev"
+args = "npm run dev:server"
 
 [[workflows.workflow]]
 name = "Build & Test"
