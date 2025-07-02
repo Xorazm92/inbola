@@ -1,0 +1,177 @@
+zufar@zufar-HP-Laptop-15-dy2xxx:~/Documents/inbola$ npm run dev
+
+> inbola.uz@0.1.0 dev
+> npm run dev:app
+
+
+> inbola.uz@0.1.0 dev:app
+> cross-env NODE_OPTIONS=--max-old-space-size=8192 PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon
+
+[nodemon] 3.1.9
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): src/**/*
+[nodemon] watching extensions: ts,tsx,json
+[nodemon] starting `node -r ignore-styles --max-old-space-size=4096 ./node_modules/.bin/ts-node --project tsconfig.server.json src/server.ts`
+[15:44:04] INFO (payload): Connected to MongoDB server successfully!
+[15:44:04] INFO (payload): Starting Payload...
+[15:44:04] WARN (payload): Email options provided in both init options and config. Using init options.
+[15:44:04] INFO (payload): Payload initialized
+> [PWA] PWA support is disabled
+> [PWA] PWA support is disabled
+[15:44:07] INFO (payload): Next.js started
+[15:44:07] INFO (payload): Server should be running at http://localhost:5000
+[15:44:07] INFO (payload): Server listening on http://0.0.0.0:5000
+[15:44:07] INFO (payload): Admin panel: http://0.0.0.0:5000/sell
+ ○ Compiling /[locale] ...
+request to https://fonts.gstatic.com/s/poppins/v23/pxiEyp8kv8JHgFVrJJbecnFHGPezSQ.woff2 failed, reason: 
+
+Retrying 1/3...
+request to https://fonts.gstatic.com/s/poppins/v23/pxiEyp8kv8JHgFVrJJnecnFHGPezSQ.woff2 failed, reason: 
+
+Retrying 1/3...
+request to https://fonts.gstatic.com/s/poppins/v23/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2 failed, reason: 
+
+Retrying 1/3...
+request to https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLEj6Z11lFd2JQEl8qw.woff2 failed, reason: 
+
+Retrying 1/3...
+request to https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLEj6Z1JlFd2JQEl8qw.woff2 failed, reason: 
+
+Retrying 1/3...
+request to https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk.woff2 failed, reason: 
+
+Retrying 1/3...
+ ⚠ ./src/app/layout.tsx
+Attempted import error: '@/components/Analytics' does not contain a default export (imported as 'Analytics').
+
+Import trace for requested module:
+./src/app/layout.tsx
+ ⚠ ./src/app/layout.tsx
+Attempted import error: '@/components/Analytics' does not contain a default export (imported as 'Analytics').
+
+Import trace for requested module:
+./src/app/layout.tsx
+Warning: React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+ ⨯ Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+digest: "402935940"
+ ⨯ Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+digest: "402935940"
+ GET / 500 in 12906ms
+ ⚠ ./src/app/layout.tsx
+Attempted import error: '@/components/Analytics' does not contain a default export (imported as 'Analytics').
+
+Import trace for requested module:
+./src/app/layout.tsx
+ ⚠ ./src/app/layout.tsx
+Attempted import error: '@/components/Analytics' does not contain a default export (imported as 'Analytics').
+
+Import trace for requested module:
+./src/app/layout.tsx
+Warning: React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+ ⨯ Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+digest: "402935940"
+ ⨯ Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+digest: "402935940"
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 5397ms
+Warning: React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+ ⨯ Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+digest: "402935940"
+ ⨯ Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+digest: "402935940"
+ GET /sell 500 in 28132ms

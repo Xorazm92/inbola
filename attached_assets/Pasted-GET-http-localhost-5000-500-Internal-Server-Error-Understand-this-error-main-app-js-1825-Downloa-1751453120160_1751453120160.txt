@@ -1,0 +1,141 @@
+GET http://localhost:5000/ 500 (Internal Server Error)Understand this error
+main-app.js:1825 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+2react-dom.development.js:9126 Uncaught TypeError: Cannot read properties of undefined (reading 'call')
+    at options.factory (webpack.js:715:31)
+    at __webpack_require__ (webpack.js:37:33)
+    at fn (webpack.js:371:21)
+    at eval (image-external.js:20:34)
+    at (:5000/app-pages-browser)/node_modules/next/dist/shared/lib/image-external.js (http://localhost:5000/_next/static/chunks/app/page.js:368:1)
+    at options.factory (webpack.js:715:31)
+    at __webpack_require__ (webpack.js:37:33)
+    at fn (webpack.js:371:21)
+    at eval (image.js:5:84)
+    at (:5000/app-pages-browser)/node_modules/next/dist/api/image.js (http://localhost:5000/_next/static/chunks/app/page.js:127:1)
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ image-external.js:20
+(app-pages-browser)/./node_modules/next/dist/shared/lib/image-external.js @ page.js:368
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ image.js:5
+(app-pages-browser)/./node_modules/next/dist/api/image.js @ page.js:127
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ Banner.tsx:5
+(app-pages-browser)/./src/components/home/Banner.tsx @ page.js:566
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ page.tsx:9
+(app-pages-browser)/./src/app/page.tsx @ page.js:544
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+requireModule @ react-server-dom-webpack-client.browser.development.js:198
+initializeModuleChunk @ react-server-dom-webpack-client.browser.development.js:1370
+resolveModuleChunk @ react-server-dom-webpack-client.browser.development.js:1315
+eval @ react-server-dom-webpack-client.browser.development.js:1831
+Promise.then
+resolveModule @ react-server-dom-webpack-client.browser.development.js:1830
+processFullRow @ react-server-dom-webpack-client.browser.development.js:1902
+processBinaryChunk @ react-server-dom-webpack-client.browser.development.js:2072
+progress @ react-server-dom-webpack-client.browser.development.js:2153
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+startReadingFromStream @ react-server-dom-webpack-client.browser.development.js:2161
+createFromReadableStream @ react-server-dom-webpack-client.browser.development.js:2166
+eval @ app-index.js:108
+(app-pages-browser)/./node_modules/next/dist/client/app-index.js @ main-app.js:244
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ app-next-dev.js:9
+eval @ app-bootstrap.js:57
+loadScriptsInSequence @ app-bootstrap.js:23
+appBootstrap @ app-bootstrap.js:56
+eval @ app-next-dev.js:8
+(app-pages-browser)/./node_modules/next/dist/client/app-next-dev.js @ main-app.js:266
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+__webpack_exec__ @ main-app.js:1985
+(anonymous) @ main-app.js:1986
+webpackJsonpCallback @ webpack.js:1387
+(anonymous) @ main-app.js:9Understand this error
+app-index.js:33 The above error occurred in the <ServerRoot> component:
+
+    at ServerRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:112:27)
+    at Root (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:117:11)
+    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ReactDevOverlay.
+window.console.error @ app-index.js:33
+logCapturedError @ react-dom.development.js:15295
+callback @ react-dom.development.js:15357
+callCallback @ react-dom.development.js:8696
+commitCallbacks @ react-dom.development.js:8743
+commitClassCallbacks @ react-dom.development.js:21323
+commitLayoutEffectOnFiber @ react-dom.development.js:21425
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21437
+commitLayoutEffects @ react-dom.development.js:22912
+commitRootImpl @ react-dom.development.js:26226
+commitRoot @ react-dom.development.js:26077
+commitRootWhenReady @ react-dom.development.js:24749
+finishConcurrentRender @ react-dom.development.js:24714
+performConcurrentWorkOnRoot @ react-dom.development.js:24559
+workLoop @ scheduler.development.js:256
+flushWork @ scheduler.development.js:225
+performWorkUntilDeadline @ scheduler.development.js:534Understand this error
+webpack.js:715 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'call')
+    at options.factory (webpack.js:715:31)
+    at __webpack_require__ (webpack.js:37:33)
+    at fn (webpack.js:371:21)
+    at eval (VM785 image-external.js:20:34)
+    at (:5000/app-pages-browser)/node_modules/next/dist/shared/lib/image-external.js (http://localhost:5000/_next/static/chunks/app/page.js:368:1)
+    at options.factory (webpack.js:715:31)
+    at __webpack_require__ (webpack.js:37:33)
+    at fn (webpack.js:371:21)
+    at eval (VM784 image.js:5:84)
+    at (:5000/app-pages-browser)/node_modules/next/dist/api/image.js (http://localhost:5000/_next/static/chunks/app/page.js:127:1)
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ VM785 image-external.js:20
+(app-pages-browser)/./node_modules/next/dist/shared/lib/image-external.js @ page.js:368
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ VM784 image.js:5
+(app-pages-browser)/./node_modules/next/dist/api/image.js @ page.js:127
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ VM783 Banner.tsx:5
+(app-pages-browser)/./src/components/home/Banner.tsx @ page.js:566
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ VM773 page.tsx:9
+(app-pages-browser)/./src/app/page.tsx @ page.js:544
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+Promise.then
+eval @ next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fhome%2Fzufar%2FDocuments%2Finbola%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=false!:1
+(app-pages-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2Fhome%2Fzufar%2FDocuments%2Finbola%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=false! @ page.js:17
+options.factory @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+__webpack_exec__ @ page.js:1682
+(anonymous) @ page.js:1683
+__webpack_require__.O @ webpack.js:86
+(anonymous) @ page.js:1684
+webpackJsonpCallback @ webpack.js:1387
+(anonymous) @ page.js:9Understand this error
+localhost/:1 The resource http://localhost:5000/_next/static/media/eafabf029ad39a43-s.p.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.Understand this warning
+localhost/:1 The resource http://localhost:5000/_next/static/media/0484562807a97172-s.p.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.Understand this warning
+localhost/:1 The resource http://localhost:5000/_next/static/css/app/layout.css?v=1751453075352 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.Understand this warning
+localhost/:1 The resource http://localhost:5000/_next/static/css/app/page.css?v=1751453075352 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.Understand this warning
