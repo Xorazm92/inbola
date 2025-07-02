@@ -58,10 +58,10 @@ export const startServer = async (options: {
 
   payload.logger.info('Next.js started')
 
-  // Start the server on all interfaces
-  app.listen(port, '0.0.0.0', () => {
-    payload.logger.info(`Server listening on http://0.0.0.0:${port}`)
-    payload.logger.info(`Admin panel: http://0.0.0.0:${port}/sell`)
+  // Start the server on localhost
+  app.listen(port, 'localhost', () => {
+    payload.logger.info(`Server listening on http://localhost:${port}`)
+    payload.logger.info(`Admin panel: http://localhost:${port}/sell`)
   })
 
   return app
