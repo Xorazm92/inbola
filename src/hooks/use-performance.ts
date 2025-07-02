@@ -1,5 +1,26 @@
 
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+// Intersection Observer hook
+export function useIntersectionObserver(options: IntersectionObserverInit = {}) {
+  const ref = useRef<HTMLElement | null>(null);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new window.IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting);
+    }, options);
+
+    observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [ref.current, options]);
+
+  return { ref, isIntersecting };
+}
 
 export function usePerformanceMonitoring() {
   useEffect(() => {

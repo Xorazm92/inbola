@@ -1,4 +1,4 @@
-
+import 'ignore-styles';
 import { getPayloadClient } from '../src/get-payload';
 import dotenv from 'dotenv';
 import path from 'path';

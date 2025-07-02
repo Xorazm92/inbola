@@ -1,4 +1,5 @@
 
+import 'ignore-styles';
 import dotenv from "dotenv";
 import path from "path";
 import { getPayloadClient } from "../src/get-payload";
@@ -22,7 +23,7 @@ const createAdmin = async () => {
     
     console.log("✅ Admin user yaratildi:", admin.email);
     
-    // Test mahsulot yaratish
+    /* // Test mahsulot yaratish
     const product = await payload.create({
       collection: "products",
       data: {
@@ -36,7 +37,7 @@ const createAdmin = async () => {
       },
     });
     
-    console.log("✅ Test mahsulot yaratildi:", product.name);
+    console.log("✅ Test mahsulot yaratildi:", product.name); */
     
   } catch (error) {
     console.error("❌ Xatolik:", error);

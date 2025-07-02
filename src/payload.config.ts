@@ -44,7 +44,8 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   db: mongooseAdapter({
-    url: process.env.MONGODB_URL!,
+    url: (process.env.MONGODB_URL || process.env.MONGODB_URI)!,
+
     connectOptions: {
       bufferCommands: false,
       maxPoolSize: 10,
