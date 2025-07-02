@@ -1,0 +1,385 @@
+sell:1  GET http://0.0.0.0:5000/sell 500 (Internal Server Error)Understand this error
+sell:1 The Cross-Origin-Opener-Policy header has been ignored, because the URL's origin was untrustworthy. It was defined either in the final response or a redirect. Please deliver the response using the HTTPS protocol. You can also use the 'localhost' origin instead. See https://www.w3.org/TR/powerful-features/#potentially-trustworthy-origin and https://html.spec.whatwg.org/#the-cross-origin-opener-policy-header.Understand this error
+sell:1 The page requested an origin-keyed agent cluster using the Origin-Agent-Cluster header, but could not be origin-keyed since the origin 'http://0.0.0.0:5000' had previously been placed in a site-keyed agent cluster. Update your headers to uniformly request origin-keying for all pages on the origin.Understand this warning
+main-app.js:1825 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+react-server-dom-webpack-client.browser.development.js:1849 Uncaught Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+    at listOnTimeout (node:internal/timers:581:17)
+    at processTimers (node:internal/timers:519:7)
+resolveErrorDev @ react-server-dom-webpack-client.browser.development.js:1849
+processFullRow @ react-server-dom-webpack-client.browser.development.js:1922
+processBinaryChunk @ react-server-dom-webpack-client.browser.development.js:2072
+progress @ react-server-dom-webpack-client.browser.development.js:2153
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+startReadingFromStream @ react-server-dom-webpack-client.browser.development.js:2161
+createFromReadableStream @ react-server-dom-webpack-client.browser.development.js:2166
+eval @ app-index.js:108
+(app-pages-browser)/./node_modules/next/dist/client/app-index.js @ main-app.js:244
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ app-next-dev.js:9
+eval @ app-bootstrap.js:57
+loadScriptsInSequence @ app-bootstrap.js:23
+appBootstrap @ app-bootstrap.js:56
+eval @ app-next-dev.js:8
+(app-pages-browser)/./node_modules/next/dist/client/app-next-dev.js @ main-app.js:266
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+__webpack_exec__ @ main-app.js:1985
+(anonymous) @ main-app.js:1986
+webpackJsonpCallback @ webpack.js:1387
+(anonymous) @ main-app.js:9Understand this error
+redirect-boundary.js:57 Uncaught Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+    at listOnTimeout (node:internal/timers:581:17)
+    at processTimers (node:internal/timers:519:7)
+resolveErrorDev @ react-server-dom-webpack-client.browser.development.js:1849
+processFullRow @ react-server-dom-webpack-client.browser.development.js:1922
+processBinaryChunk @ react-server-dom-webpack-client.browser.development.js:2072
+progress @ react-server-dom-webpack-client.browser.development.js:2153
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+startReadingFromStream @ react-server-dom-webpack-client.browser.development.js:2161
+createFromReadableStream @ react-server-dom-webpack-client.browser.development.js:2166
+eval @ app-index.js:108
+(app-pages-browser)/./node_modules/next/dist/client/app-index.js @ main-app.js:244
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ app-next-dev.js:9
+eval @ app-bootstrap.js:57
+loadScriptsInSequence @ app-bootstrap.js:23
+appBootstrap @ app-bootstrap.js:56
+eval @ app-next-dev.js:8
+(app-pages-browser)/./node_modules/next/dist/client/app-next-dev.js @ main-app.js:266
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+__webpack_exec__ @ main-app.js:1985
+(anonymous) @ main-app.js:1986
+webpackJsonpCallback @ webpack.js:1387
+(anonymous) @ main-app.js:9Understand this error
+not-found-boundary.js:37 Uncaught Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+    at listOnTimeout (node:internal/timers:581:17)
+    at processTimers (node:internal/timers:519:7)
+resolveErrorDev @ react-server-dom-webpack-client.browser.development.js:1849
+processFullRow @ react-server-dom-webpack-client.browser.development.js:1922
+processBinaryChunk @ react-server-dom-webpack-client.browser.development.js:2072
+progress @ react-server-dom-webpack-client.browser.development.js:2153
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+startReadingFromStream @ react-server-dom-webpack-client.browser.development.js:2161
+createFromReadableStream @ react-server-dom-webpack-client.browser.development.js:2166
+eval @ app-index.js:108
+(app-pages-browser)/./node_modules/next/dist/client/app-index.js @ main-app.js:244
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ app-next-dev.js:9
+eval @ app-bootstrap.js:57
+loadScriptsInSequence @ app-bootstrap.js:23
+appBootstrap @ app-bootstrap.js:56
+eval @ app-next-dev.js:8
+(app-pages-browser)/./node_modules/next/dist/client/app-next-dev.js @ main-app.js:266
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+__webpack_exec__ @ main-app.js:1985
+(anonymous) @ main-app.js:1986
+webpackJsonpCallback @ webpack.js:1387
+(anonymous) @ main-app.js:9Understand this error
+react-server-dom-webpack-client.browser.development.js:1849 Uncaught Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+    at listOnTimeout (node:internal/timers:581:17)
+    at processTimers (node:internal/timers:519:7)
+resolveErrorDev @ react-server-dom-webpack-client.browser.development.js:1849
+processFullRow @ react-server-dom-webpack-client.browser.development.js:1922
+processBinaryChunk @ react-server-dom-webpack-client.browser.development.js:2072
+progress @ react-server-dom-webpack-client.browser.development.js:2153
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+startReadingFromStream @ react-server-dom-webpack-client.browser.development.js:2161
+createFromReadableStream @ react-server-dom-webpack-client.browser.development.js:2166
+eval @ app-index.js:108
+(app-pages-browser)/./node_modules/next/dist/client/app-index.js @ main-app.js:244
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ app-next-dev.js:9
+eval @ app-bootstrap.js:57
+loadScriptsInSequence @ app-bootstrap.js:23
+appBootstrap @ app-bootstrap.js:56
+eval @ app-next-dev.js:8
+(app-pages-browser)/./node_modules/next/dist/client/app-next-dev.js @ main-app.js:266
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+__webpack_exec__ @ main-app.js:1985
+(anonymous) @ main-app.js:1986
+webpackJsonpCallback @ webpack.js:1387
+(anonymous) @ main-app.js:9Understand this error
+redirect-boundary.js:57 Uncaught Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+    at listOnTimeout (node:internal/timers:581:17)
+    at processTimers (node:internal/timers:519:7)
+resolveErrorDev @ react-server-dom-webpack-client.browser.development.js:1849
+processFullRow @ react-server-dom-webpack-client.browser.development.js:1922
+processBinaryChunk @ react-server-dom-webpack-client.browser.development.js:2072
+progress @ react-server-dom-webpack-client.browser.development.js:2153
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+startReadingFromStream @ react-server-dom-webpack-client.browser.development.js:2161
+createFromReadableStream @ react-server-dom-webpack-client.browser.development.js:2166
+eval @ app-index.js:108
+(app-pages-browser)/./node_modules/next/dist/client/app-index.js @ main-app.js:244
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ app-next-dev.js:9
+eval @ app-bootstrap.js:57
+loadScriptsInSequence @ app-bootstrap.js:23
+appBootstrap @ app-bootstrap.js:56
+eval @ app-next-dev.js:8
+(app-pages-browser)/./node_modules/next/dist/client/app-next-dev.js @ main-app.js:266
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+__webpack_exec__ @ main-app.js:1985
+(anonymous) @ main-app.js:1986
+webpackJsonpCallback @ webpack.js:1387
+(anonymous) @ main-app.js:9Understand this error
+not-found-boundary.js:37 Uncaught Error: Unsupported Server Component type: undefined
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1783:9)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at outlineTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1696:3)
+    at renderFunctionComponent (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1606:14)
+    at e (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1734:12)
+    at renderModelDestructive (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1784:1)
+    at webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2051:12
+    at Array.stringify (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2106:1)
+    at stringify (<anonymous>)
+    at retryTask (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2595:14)
+    at performWork (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:2649:7)
+    at Timeout._onTimeout (webpack://next/./dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-server.edge.development.js:1793:14)
+    at listOnTimeout (node:internal/timers:581:17)
+    at processTimers (node:internal/timers:519:7)
+resolveErrorDev @ react-server-dom-webpack-client.browser.development.js:1849
+processFullRow @ react-server-dom-webpack-client.browser.development.js:1922
+processBinaryChunk @ react-server-dom-webpack-client.browser.development.js:2072
+progress @ react-server-dom-webpack-client.browser.development.js:2153
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+progress @ react-server-dom-webpack-client.browser.development.js:2154
+Promise.then
+startReadingFromStream @ react-server-dom-webpack-client.browser.development.js:2161
+createFromReadableStream @ react-server-dom-webpack-client.browser.development.js:2166
+eval @ app-index.js:108
+(app-pages-browser)/./node_modules/next/dist/client/app-index.js @ main-app.js:244
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+fn @ webpack.js:371
+eval @ app-next-dev.js:9
+eval @ app-bootstrap.js:57
+loadScriptsInSequence @ app-bootstrap.js:23
+appBootstrap @ app-bootstrap.js:56
+eval @ app-next-dev.js:8
+(app-pages-browser)/./node_modules/next/dist/client/app-next-dev.js @ main-app.js:266
+(anonymous) @ webpack.js:715
+__webpack_require__ @ webpack.js:37
+__webpack_exec__ @ main-app.js:1985
+(anonymous) @ main-app.js:1986
+webpackJsonpCallback @ webpack.js:1387
+(anonymous) @ main-app.js:9Understand this error
+app-index.js:33 The above error occurred in the <NotFoundErrorBoundary> component:
+
+    at head
+    at html
+    at RootLayout (Server)
+    at RedirectErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:74:9)
+    at RedirectBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/redirect-boundary.js:82:11)
+    at NotFoundErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:76:9)
+    at NotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/not-found-boundary.js:84:11)
+    at DevRootNotFoundBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/dev-root-not-found-boundary.js:33:11)
+    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+    at HotReload (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:321:11)
+    at Router (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js:207:11)
+    at ErrorBoundaryHandler (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:113:9)
+    at ErrorBoundary (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js:160:11)
+    at AppRouter (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js:585:13)
+    at ServerRoot (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:112:27)
+    at Root (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:117:11)
+    at ReactDevOverlay (webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/ReactDevOverlay.js:87:9)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ReactDevOverlay.
+window.console.error @ app-index.js:33
+logCapturedError @ react-dom.development.js:15295
+callback @ react-dom.development.js:15357
+callCallback @ react-dom.development.js:8696
+commitCallbacks @ react-dom.development.js:8743
+commitClassCallbacks @ react-dom.development.js:21323
+commitLayoutEffectOnFiber @ react-dom.development.js:21425
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21407
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21407
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21418
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21407
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21407
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21407
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21407
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21577
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21418
+recursivelyTraverseLayoutEffects @ react-dom.development.js:22926
+commitLayoutEffectOnFiber @ react-dom.development.js:21437
+commitLayoutEffects @ react-dom.development.js:22912
+commitRootImpl @ react-dom.development.js:26226
+commitRoot @ react-dom.development.js:26077
+commitRootWhenReady @ react-dom.development.js:24749
+finishConcurrentRender @ react-dom.development.js:24714
+performConcurrentWorkOnRoot @ react-dom.development.js:24559
+workLoop @ scheduler.development.js:256
+flushWork @ scheduler.development.js:225
+performWorkUntilDeadline @ scheduler.development.js:534Understand this error
+sell:1 The resource http://0.0.0.0:5000/_next/static/css/app/%5Blocale%5D/page.css?v=1751454259199 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.Understand this warning
+sell:1 The resource http://0.0.0.0:5000/_next/static/css/app/%5Blocale%5D/layout.css?v=1751454259199 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.Understand this warning
