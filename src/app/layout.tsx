@@ -8,7 +8,6 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import Footer from "@/components/Footer";
 import React from "react";
 import { Metadata } from "next";
-import { GoogleAnalytics, YandexMetrica } from "@/components/Analytics";
 
 export const metadata: Metadata = {
   title: {
@@ -57,8 +56,8 @@ export const metadata: Metadata = {
   },
 };
 
-const poppins = Poppins({ 
-  subsets: ["latin"], 
+const poppins = Poppins({
+  subsets: ["latin"],
   weight: ["400", "600"],
   display: 'swap',
   fallback: ['Arial', 'sans-serif']
@@ -71,12 +70,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uz" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        <YandexMetrica ymId={process.env.NEXT_PUBLIC_YM_ID ? Number(process.env.NEXT_PUBLIC_YM_ID) : undefined} />
-      </head>
       <body
         className={cn(
           "relative h-full font-sans antialiased",
@@ -87,7 +80,7 @@ export default function RootLayout({
           <main className="relative flex flex-col min-h-screen">
             <TrpcProvider>
               <Navbar />
-              <div className="flex-1 flex flex-col justify-center">
+              <div className="flex-1 flex flex-col">
                 {children}
               </div>
               <Footer />

@@ -1,6 +1,6 @@
 {
-  "watch": ["src/"],
+  "watch": ["src/", "next.config.js"],
   "ext": "ts,tsx,json",
   "ignore": ["src/**/*.spec.ts"],
-  "exec": "node -r ignore-styles --max-old-space-size=4096 ./node_modules/.bin/ts-node --project tsconfig.server.json src/server.ts"
+  "exec": "dotenv -e .env.local -- node -r ignore-styles --max-old-space-size=4096 ./node_modules/.bin/ts-node --project tsconfig.server.json src/server.ts"
 }

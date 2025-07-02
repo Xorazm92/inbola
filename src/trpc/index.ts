@@ -32,13 +32,13 @@ export const appRouter = router({
 
       const payload = await getPayloadClient();
 
-      const parseQueryOpts: Record<string, { equals: string }> = {};
+      const parsedQueryOpts: Record<string, { equals: string }> = {};
 
-      Object.entries(queryOpts).forEach(([key, value]) => {
-        parseQueryOpts[key] = {
-          equals: value,
+      if (query.category) {
+        parsedQueryOpts.category = {
+          equals: query.category,
         };
-      });
+      }
 
       const page = cursor || 1;
 
@@ -52,7 +52,7 @@ export const appRouter = router({
           approvedForSale: {
             equals: "approved",
           },
-          ...parseQueryOpts,
+          ...parsedQueryOpts,
         },
         sort,
         depth: 1,

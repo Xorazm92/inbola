@@ -37,31 +37,64 @@ export const startServer = async (options: {
   const { payload, port = Number(process.env.PORT) || 5000 } = options
   const app = options.express || express()
 
+  // Prepare Next.js first
+  await nextApp.prepare()
+  payload.logger.info('Next.js started')
+
   // Security middleware
   app.use(helmet({
     contentSecurityPolicy: false,
     crossOriginEmbedderPolicy: false,
   }))
-  
+
   // Compression middleware
   app.use(compression())
 
-  // Health check endpoint
+  // Health check endpoint (before Next.js handler)
   app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() })
   })
 
-  // Handle Next.js requests
+  // API routes (before Next.js handler)
+  app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() })
+  })
+
+  // Handle Next.js requests (this should be last)
   app.use((req, res) => nextHandler(req, res))
 
-  await nextApp.prepare()
+  // Start the server with error handling
+  const server = app.listen(port, () => {
+    payload.logger.info(`🌐 Server listening on http://localhost:${port}`)
+    payload.logger.info(`⚙️  Admin panel: http://localhost:${port}/sell`)
+    payload.logger.info(`🔍 Health check: http://localhost:${port}/health`)
+  })
 
-  payload.logger.info('Next.js started')
+  // Handle server errors
+  server.on('error', (error: any) => {
+    if (error.code === 'EADDRINUSE') {
+      payload.logger.error(`❌ Port ${port} is already in use`)
+      payload.logger.info(`💡 Try using a different port or kill the process using port ${port}`)
+    } else {
+      payload.logger.error('❌ Server error:', error)
+    }
+  })
 
-  // Start the server on localhost
-  app.listen(port, 'localhost', () => {
-    payload.logger.info(`Server listening on http://localhost:${port}`)
-    payload.logger.info(`Admin panel: http://localhost:${port}/sell`)
+  // Graceful shutdown
+  process.on('SIGTERM', () => {
+    payload.logger.info('🛑 SIGTERM received, shutting down gracefully')
+    server.close(() => {
+      payload.logger.info('✅ Server closed')
+      process.exit(0)
+    })
+  })
+
+  process.on('SIGINT', () => {
+    payload.logger.info('🛑 SIGINT received, shutting down gracefully')
+    server.close(() => {
+      payload.logger.info('✅ Server closed')
+      process.exit(0)
+    })
   })
 
   return app

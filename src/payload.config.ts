@@ -45,13 +45,15 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   db: mongooseAdapter({
-    url: (process.env.MONGODB_URL || process.env.MONGODB_URI)!,
-
+    url: (process.env.MONGODB_URI || process.env.MONGODB_URL)!,
     connectOptions: {
       bufferCommands: false,
       maxPoolSize: 10,
-      serverSelectionTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 30000,
       socketTimeoutMS: 45000,
+      connectTimeoutMS: 30000,
+      retryWrites: true,
+      retryReads: true,
     },
   }),
   cors: [

@@ -55,7 +55,7 @@ const NavItem = ({ category, handleOpen, isOpen, isAnyOpen }: NavItemProps) => {
                   >
                     <div className="relative aspect-video overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                       <Image
-                        src="/placeholder.jpg"
+                        src="/placeholder.svg"
                         alt={category.label}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"

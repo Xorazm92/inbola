@@ -1,25 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development',
-  buildExcludes: [/middleware-manifest\.json$/],
-});
-
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
 const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['@payloadcms/db-mongodb'],
-    optimizeCss: true,
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'date-fns'],
-    turbotrace: {
-      logLevel: 'error',
-    },
   },
   images: {
     remotePatterns: [
@@ -43,21 +26,11 @@ const nextConfig = {
         hostname: "inbola.uz",
         protocol: "https",
       },
-      {
-        protocol: 'https',
-        hostname: 'fonts.googleapis.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'fonts.gstatic.com',
-      },
     ],
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -87,42 +60,61 @@ const nextConfig = {
           },
         ],
       },
-      {
-        source: '/sw.js',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
     ];
   },
   webpack: (config, { isServer, dev }) => {
+    // Disable source maps in development to prevent stack overflow
+    if (dev) {
+      config.devtool = false;
+    }
+
+    // Fix Sharp binary loading issue
+    config.externals = config.externals || [];
+    if (isServer) {
+      config.externals.push('sharp');
+    }
+
+    // Fix module resolution issues
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
       path: false,
       crypto: false,
+      stream: false,
+      buffer: false,
+      util: false,
+    };
+
+    // Handle .node files
+    config.module.rules.push({
+      test: /\.node$/,
+      use: 'node-loader',
+    });
+
+    // Optimize for better performance
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        chunks: 'all',
+        maxSize: 244000,
+        cacheGroups: {
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true,
+          },
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            priority: -10,
+            chunks: 'all',
+          },
+        },
+      },
     };
 
     return config;
   },
-  modularizeImports: {
-    'lucide-react': {
-      transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
-      preventFullImport: true,
-    },
-  },
 };
 
-module.exports = withBundleAnalyzer(withPWA(nextConfig));
+module.exports = nextConfig;
