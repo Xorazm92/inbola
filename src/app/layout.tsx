@@ -1,11 +1,10 @@
 import TrpcProvider from "@/components/TrpcProvider";
-import Navbar from "@/components/nav/Navbar";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
-import Footer from "@/components/Footer";
+import UzumFooter from "@/components/layout/UzumFooter";
 import React from "react";
 import { Metadata } from "next";
 
@@ -79,11 +78,10 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main className="relative flex flex-col min-h-screen">
             <TrpcProvider>
-              <Navbar />
               <div className="flex-1 flex flex-col">
                 {children}
               </div>
-              <Footer />
+              <UzumFooter />
             </TrpcProvider>
           </main>
           <Toaster position="bottom-right" />
