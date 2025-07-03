@@ -5,9 +5,10 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp, Star, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import UzumProductCard from '@/components/product/UzumProductCard';
+import UzumMarketProductCard from '@/components/product/UzumMarketProductCard';
+import { useFeaturedProducts } from '@/hooks/useProducts';
 
 const featuredProducts = [
   {
@@ -66,27 +67,28 @@ function formatPrice(price: number) {
 
 export default function FeaturedProducts() {
   return (
-    <section className="py-8 bg-white">
+    <section className="py-6 bg-white">
       <div className="max-w-[1200px] mx-auto px-4">
-        <div className="flex justify-between items-center mb-12">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="flex justify-between items-center mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center">
+              <Star className="w-3 h-3 text-white" />
+            </div>
+            <h2 className="text-xl font-bold text-gray-900">
               Tavsiya etilgan mahsulotlar
             </h2>
-            <p className="text-gray-600">
-              Eng mashhur va sifatli mahsulotlar
-            </p>
           </div>
           <Link href="/products">
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="sm" className="flex items-center gap-1 text-sm">
               Barchasini ko'rish
+              <ChevronRight className="w-3 h-3" />
             </Button>
           </Link>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
           {featuredProducts.map((product) => (
-            <UzumProductCard
+            <UzumMarketProductCard
               key={product.id}
               product={{
                 ...product,

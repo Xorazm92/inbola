@@ -183,6 +183,7 @@ const UzumFooter = () => {
                       width={32}
                       height={20}
                       className="object-contain"
+                      style={{ width: 'auto', height: 'auto' }}
                     />
                   </div>
                 ))}

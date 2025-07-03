@@ -87,11 +87,9 @@ const UzumHero = () => {
 
   return (
     <section className="bg-white">
-      <div className="max-w-[1200px] mx-auto px-4 py-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* Main Hero Slider - Exact Uzum Market sizing */}
-          <div className="lg:col-span-2">
-            <div className="relative h-[280px] lg:h-[320px] rounded-lg overflow-hidden">
+      <div className="mb-8">
+        {/* Main Hero Slider - 400px height */}
+        <div className="relative h-[400px] rounded-lg overflow-hidden">
               {heroSlides.map((slide, index) => (
                 <div
                   key={slide.id}
@@ -149,29 +147,6 @@ const UzumHero = () => {
               </div>
             </div>
           </div>
-
-          {/* Quick Actions Sidebar */}
-          <div className="space-y-4">
-            {quickActions.map((action, index) => (
-              <Link key={index} href={action.href}>
-                <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-12 h-12 ${action.color} rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform`}>
-                        {action.icon}
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900 group-hover:text-primary transition-colors">
-                          {action.title}
-                        </h3>
-                        <p className="text-sm text-gray-600">{action.subtitle}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
         </div>
 
         {/* Stats Section */}
@@ -197,38 +172,7 @@ const UzumHero = () => {
           </div>
         </div>
 
-        {/* Promotional Banners */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="bg-gradient-to-r from-blue-500 to-purple-600 text-white overflow-hidden">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Birinchi buyurtma</h3>
-                  <p className="text-blue-100 mb-4">50% chegirma olish</p>
-                  <Button variant="secondary" size="sm">
-                    Boshlash
-                  </Button>
-                </div>
-                <div className="text-6xl opacity-20">🎁</div>
-              </div>
-            </CardContent>
-          </Card>
 
-          <Card className="bg-gradient-to-r from-green-500 to-teal-600 text-white overflow-hidden">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Bepul yetkazib berish</h3>
-                  <p className="text-green-100 mb-4">100,000 so'mdan yuqori</p>
-                  <Button variant="secondary" size="sm">
-                    Xarid qilish
-                  </Button>
-                </div>
-                <div className="text-6xl opacity-20">🚚</div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </section>
   );

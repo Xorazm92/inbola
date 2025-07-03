@@ -1,8 +1,7 @@
 
 import UzumHeader from "@/components/layout/UzumHeader";
 import UzumLayout from "@/components/layout/UzumLayout";
-import UzumHero from "@/components/home/UzumHero";
-import CategoryGrid from "@/components/home/CategoryGrid";
+import UzumHero from "@/components/home/UzumHeroFixed";
 import DealsSection from "@/components/home/DealsSection";
 import BrandsSection from "@/components/home/BrandsSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";

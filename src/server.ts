@@ -7,7 +7,7 @@ export type { ExpressContext, WebhookRequest } from './server/start';
 // Load environment variables
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = Number(process.env.PORT) || 3001;
 
 const start = async (): Promise<void> => {
   try {

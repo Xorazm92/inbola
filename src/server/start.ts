@@ -34,7 +34,7 @@ export const startServer = async (options: {
   express?: Express
   port?: number
 }) => {
-  const { payload, port = Number(process.env.PORT) || 5000 } = options
+  const { payload, port = Number(process.env.PORT) || 3001 } = options
   const app = options.express || express()
 
   // Prepare Next.js first
@@ -59,6 +59,11 @@ export const startServer = async (options: {
   app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() })
   })
+
+  // Payload admin routes (before Next.js handler)
+  if (payload.express) {
+    app.use(payload.express)
+  }
 
   // Handle Next.js requests (this should be last)
   app.use((req, res) => nextHandler(req, res))

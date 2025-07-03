@@ -135,6 +135,7 @@ export default function BrandsSection() {
                       alt={brand.name}
                       fill
                       className="object-contain group-hover:scale-110 transition-transform duration-300"
+                      sizes="80px"
                     />
                   </div>
 
@@ -199,6 +200,7 @@ export default function BrandsSection() {
                         alt={brand.name}
                         fill
                         className="object-contain group-hover:scale-110 transition-transform duration-300"
+                        sizes="64px"
                       />
                     </div>
                     <h4 className="font-medium text-gray-900 group-hover:text-primary transition-colors text-sm">

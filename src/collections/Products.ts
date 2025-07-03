@@ -10,10 +10,24 @@ import { Product, User } from "../payload-types";
 const addUser: BeforeChangeHook<Product> = async ({ req, data }) => {
   const user = req.user;
 
+  // If user is provided in data, use it; otherwise use req.user
+  if (data.user) {
+    return { ...data };
+  }
+
+  if (!user) {
+    throw new Error('User is required');
+  }
+
   return { ...data, user: user.id };
 };
 
 const syncUser: AfterChangeHook<Product> = async ({ req, doc }) => {
+  // Skip if no user in request (for seeding)
+  if (!req.user) {
+    return;
+  }
+
   const fullUser = await req.payload.findByID({
     collection: "users",
     id: req.user.id,
@@ -85,85 +99,13 @@ const Products: CollectionConfig = {
   },
   hooks: {
     afterChange: [syncUser],
-    beforeChange: [
-      addUser,
-      async (args) => {
-        const { stripe } = await import("../lib/stripe");
-
-        if (args.operation === "create") {
-          const data = args.data as Product;
-
-          const createdProduct = await stripe.products.create({
-            name: data.name,
-            default_price_data: {
-              currency: "INR",
-              unit_amount: Math.round(data.price * 100),
-            },
-          });
-
-          const created: Product = {
-            ...data,
-            stripeId: createdProduct.id,
-            priceId: createdProduct.default_price as string,
-          };
-
-          return created;
-        } else if (args.operation === "update") {
-          const data = args.data as Product;
-
-          // Check if price is updated
-          const currentPriceId = data.priceId as string;
-          const currentPriceData = await stripe.prices.retrieve(currentPriceId);
-
-          let updatedProduct = null;
-
-          if (currentPriceData.unit_amount !== data.price * 100) {
-            const newPrice = await stripe.prices.create({
-              product: data.stripeId!,
-              currency: "INR",
-              unit_amount: Math.round(data.price * 100),
-            });
-            await stripe.prices.update(currentPriceId, {
-              active: false,
-            });
-            updatedProduct = await stripe.products.update(data.stripeId!, {
-              name: data.name,
-              default_price: newPrice.id!,
-            });
-          } else {
-            updatedProduct = await stripe.products.update(data.stripeId!, {
-              name: data.name,
-              default_price: currentPriceId,
-            });
-          }
-
-          const updated: Product = {
-            ...data,
-            stripeId: updatedProduct.id,
-            priceId: updatedProduct.default_price as string,
-          };
-
-          return updated;
-        }
-
-        if (args.operation === "delete") {
-          const data = args.data as Product;
-
-          if (data.stripeId) {
-            await stripe.products.del(data.stripeId);
-          } else {
-            throw new Error("Stripe ID not found");
-          }
-        }
-      },
-    ],
   },
   fields: [
     {
       name: "user",
       type: "relationship",
       relationTo: "users",
-      required: true,
+      required: false,
       hasMany: false,
       admin: {
         condition: () => false,
@@ -182,9 +124,9 @@ const Products: CollectionConfig = {
     },
     {
       name: "price",
-      label: "Price in INR",
+      label: "Price in UZS",
       min: 0,
-      max: 1000,
+      max: 10000000,
       type: "number",
       required: true,
     },
@@ -199,7 +141,7 @@ const Products: CollectionConfig = {
       name: "product_files",
       label: "Product file(s)",
       type: "relationship",
-      required: true,
+      required: false,
       relationTo: "product_files",
       hasMany: false,
     },
@@ -287,9 +229,9 @@ const Products: CollectionConfig = {
       name: "images",
       type: "array",
       label: "Product images",
-      minRows: 1,
+      minRows: 0,
       maxRows: 4,
-      required: true,
+      required: false,
       labels: {
         singular: "Image",
         plural: "Images",

@@ -162,11 +162,35 @@ async function seedProducts() {
     
     console.log('🌱 Seeding products...');
     
+    // Get admin user
+    const adminUser = await payload.find({
+      collection: 'users',
+      where: {
+        email: {
+          equals: 'admin@inbola.uz'
+        }
+      }
+    });
+
+    if (!adminUser.docs.length) {
+      console.error('❌ Admin user not found');
+      return;
+    }
+
+    const adminId = adminUser.docs[0].id;
+
     for (const product of sampleProducts) {
       try {
+        const productData = {
+          ...product,
+          user: adminId,
+          stripeId: `stripe_${Math.random().toString(36).substring(7)}`,
+          priceId: `price_${Math.random().toString(36).substring(7)}`,
+        };
+
         const result = await payload.create({
           collection: 'products',
-          data: product,
+          data: productData,
         });
         console.log(`✅ Created product: ${result.name}`);
       } catch (error) {
