@@ -1,6 +1,7 @@
 
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductGrid from "@/components/product/ProductGrid";
+import AliExpressProductGrid from "@/components/product/AliExpressProductGrid";
 import { getPayloadClient } from "@/get-payload";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
@@ -83,7 +84,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
         </div>
 
         <section className="mt-16">
-          <ProductGrid 
+          <AliExpressProductGrid
             products={products}
             title={categoryName}
             currentPage={currentPage || 1}

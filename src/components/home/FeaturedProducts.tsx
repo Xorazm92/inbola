@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, Star, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import UzumMarketProductCard from '@/components/product/UzumMarketProductCard';
+import EnhancedProductCard from '@/components/product/EnhancedProductCard';
 import { useFeaturedProducts } from '@/hooks/useProducts';
 
 const featuredProducts = [
@@ -88,14 +88,17 @@ export default function FeaturedProducts() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
           {featuredProducts.map((product) => (
-            <UzumMarketProductCard
+            <EnhancedProductCard
               key={product.id}
               product={{
                 ...product,
+                id: product.id.toString(),
                 installment: {
                   monthlyPayment: Math.ceil(product.price / 12),
                   months: 12
-                }
+                },
+                category: 'Bolalar mahsulotlari',
+                badges: product.isNew ? ['Yangi'] : []
               }}
             />
           ))}

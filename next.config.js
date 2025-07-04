@@ -95,6 +95,12 @@ const nextConfig = {
       use: 'node-loader',
     });
 
+    // Ignore TypeScript declaration files to avoid parsing errors from packages like 'esbuild'
+    config.module.rules.push({
+      test: /\.d\.ts$/,
+      loader: 'ignore-loader',
+    });
+
     // Simplified optimization for development
     if (!dev) {
       config.optimization = {

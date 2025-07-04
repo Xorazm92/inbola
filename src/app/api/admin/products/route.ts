@@ -55,6 +55,54 @@ export async function GET(request: NextRequest) {
   }
 }
 
+export async function POST(request: NextRequest) {
+  try {
+    const nextCookies = await cookies();
+    const { user } = await getServerSideUser(nextCookies);
+
+    if (!user || user.role !== 'admin') {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
+    const payload = await getPayloadClient();
+    const body = await request.json();
+    const { name, price, category, description } = body;
+
+    // Validate required fields
+    if (!name || !price || !category) {
+      return NextResponse.json(
+        { error: 'Name, price, and category are required' },
+        { status: 400 }
+      );
+    }
+
+    const createdProduct = await payload.create({
+      collection: 'products',
+      data: {
+        name,
+        price,
+        category,
+        description: description || '',
+        approvedForSale: 'pending',
+        featured: false,
+        inStock: true,
+        rating: 0
+      }
+    });
+
+    return NextResponse.json(createdProduct);
+  } catch (error) {
+    console.error('Admin product create error:', error);
+    return NextResponse.json(
+      { error: 'Failed to create product' },
+      { status: 500 }
+    );
+  }
+}
+
 export async function PATCH(request: NextRequest) {
   try {
     const nextCookies = await cookies();

@@ -1,31 +1,64 @@
 
-import UzumHeader from "@/components/layout/UzumHeader";
-import UzumLayout from "@/components/layout/UzumLayout";
-import UzumHero from "@/components/home/UzumHeroFixed";
+import EnhancedHeader from "@/components/layout/EnhancedHeader";
+import EnhancedHeroSection from "@/components/sections/EnhancedHeroSection";
 import DealsSection from "@/components/home/DealsSection";
 import BrandsSection from "@/components/home/BrandsSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
+import EnhancedFooter from "@/components/layout/EnhancedFooter";
+import AliExpressProductGrid from "@/components/product/AliExpressProductGrid";
+import { getPayloadClient } from "@/get-payload";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch products for AliExpress style grid
+  const payload = await getPayloadClient();
+
+  let products = [];
+  try {
+    const { docs } = await payload.find({
+      collection: 'products',
+      where: {
+        approvedForSale: {
+          equals: 'approved',
+        },
+      },
+      limit: 24, // Show 24 products in AliExpress style
+      depth: 1,
+    });
+    products = docs;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+
   return (
-    <>
-      {/* Uzum Market Style Header */}
-      <UzumHeader />
+    <div className="min-h-screen bg-gradient-hero">
+      {/* Enhanced Header */}
+      <EnhancedHeader />
 
-      {/* Uzum Market Layout with Sidebar */}
-      <UzumLayout>
-        {/* Uzum Market Style Hero */}
-        <UzumHero />
+      {/* Enhanced Hero Section */}
+      <EnhancedHeroSection />
 
-        {/* Flash Deals - Uzum Market Style */}
+      {/* Content Sections */}
+      <div className="bg-white">
+        {/* Flash Deals - Enhanced */}
         <DealsSection />
 
-        {/* Featured Products - Uzum Market Style */}
+        {/* AliExpress Style Products Grid */}
+        <section className="py-8 bg-gray-50">
+          <AliExpressProductGrid
+            products={products}
+            title="Sizga tavsiya etiladigan mahsulotlar"
+          />
+        </section>
+
+        {/* Featured Products - Enhanced */}
         <FeaturedProducts />
 
-        {/* Top Brands - Uzum Market Style */}
+        {/* Top Brands - Enhanced */}
         <BrandsSection />
-      </UzumLayout>
-    </>
+      </div>
+
+      {/* Enhanced Footer */}
+      <EnhancedFooter />
+    </div>
   );
 }

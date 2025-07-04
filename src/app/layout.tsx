@@ -7,6 +7,9 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import UzumFooter from "@/components/layout/UzumFooter";
 import React from "react";
 import { Metadata } from "next";
+import { AuthProvider } from "@/contexts/AuthContext";
+import { CartProvider } from "@/contexts/CartContext";
+import { FavoritesProvider } from "@/contexts/FavoritesContext";
 
 export const metadata: Metadata = {
   title: {
@@ -74,15 +77,26 @@ export default function RootLayout({
           "relative h-full font-sans antialiased",
           poppins.className
         )}
+        suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          suppressHydrationWarning
+        >
           <main className="relative flex flex-col min-h-screen">
-            <TrpcProvider>
-              <div className="flex-1 flex flex-col">
-                {children}
-              </div>
-              <UzumFooter />
-            </TrpcProvider>
+            <AuthProvider>
+              <CartProvider>
+                <FavoritesProvider>
+                  <TrpcProvider>
+                    <div className="flex-1 flex flex-col">
+                      {children}
+                    </div>
+                  </TrpcProvider>
+                </FavoritesProvider>
+              </CartProvider>
+            </AuthProvider>
           </main>
           <Toaster position="bottom-right" />
         </ThemeProvider>

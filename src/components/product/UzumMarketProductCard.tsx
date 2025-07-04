@@ -6,6 +6,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Heart, Star, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { toast } from 'sonner';
 
 interface Product {
   id: string;
@@ -37,11 +40,39 @@ const formatUZS = (amount: number) => {
 
 const UzumMarketProductCard: React.FC<UzumMarketProductCardProps> = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(product.isFavorite || false);
+  const { addToCart, isInCart } = useCart();
+  const { addToFavorites, removeFromFavorites, isFavorite: isProductFavorite } = useFavorites();
 
-  const discountPercentage = product.originalPrice 
+  const discountPercentage = product.originalPrice
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : product.discount || 0;
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+    });
+
+    toast.success('Mahsulot savatga qo\'shildi!');
+  };
+
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (isProductFavorite(product.id)) {
+      removeFromFavorites(product.id);
+      toast.success('Sevimlilardan olib tashlandi');
+    } else {
+      addToFavorites(product.id);
+      toast.success('Sevimlilarga qo\'shildi!');
+    }
+  };
 
   return (
     <Card 
@@ -84,20 +115,21 @@ const UzumMarketProductCard: React.FC<UzumMarketProductCardProps> = ({ product }
           size="sm"
           variant="ghost"
           className="absolute top-2 right-2 w-8 h-8 p-0 bg-white/80 hover:bg-white rounded-full"
-          onClick={(e) => {
-            e.preventDefault();
-            setIsFavorite(!isFavorite);
-          }}
+          onClick={handleToggleFavorite}
         >
-          <Heart className={`w-4 h-4 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-600'}`} />
+          <Heart className={`w-4 h-4 ${isProductFavorite(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-600'}`} />
         </Button>
 
         {/* Quick Actions on Hover */}
         {isHovered && (
           <div className="absolute bottom-2 left-2 right-2 flex gap-2">
-            <Button size="sm" className="flex-1 bg-uzum-purple hover:bg-uzum-purple/90 text-white text-xs">
+            <Button
+              size="sm"
+              className="flex-1 bg-uzum-purple hover:bg-uzum-purple/90 text-white text-xs"
+              onClick={handleAddToCart}
+            >
               <ShoppingCart className="w-3 h-3 mr-1" />
-              Savat
+              {isInCart(product.id) ? 'Savatda' : 'Savat'}
             </Button>
           </div>
         )}

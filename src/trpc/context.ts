@@ -1,19 +1,49 @@
-import { getPayloadClient } from '../get-payload'
-import { inferAsyncReturnType } from '@trpc/server'
-import { NextRequest } from 'next/server'
-import { User } from '../payload-types'
+import { inferAsyncReturnType } from '@trpc/server';
+import { NextRequest } from 'next/server';
+import { User } from '../payload-types';
+import { getPayloadClient } from '../get-payload';
 
 export const createContext = async (req: NextRequest) => {
-  const payload = await getPayloadClient()
+  let user: User | null = null;
+  const token = req.cookies.get('payload-token')?.value;
 
-  const { user } = await payload.auth({
-    headers: req.headers,
-    req: req as any,
-  })
+  if (token) {
+    try {
+      const payloadClient = await getPayloadClient();
+      let userFromToken: User | null = null;
+      let userId: string | undefined;
 
-  return {
-    user: user as User | null,
+      if (typeof payloadClient.verifyJWT === 'function') {
+        const result = await payloadClient.verifyJWT(token);
+        if (result && result.user) {
+          userFromToken = result.user as User;
+          userId = userFromToken.id || result.user.id;
+        } else if (result && result.id) {
+          userId = result.id;
+        }
+      }
+
+      // Agar user JWT verifydan topilmasa, token ichidan id olib, findByID orqali userni topamiz
+      if (!userFromToken && userId) {
+        try {
+          const foundUser = await payloadClient.findByID({
+            collection: 'users',
+            id: userId,
+          });
+          if (foundUser) {
+            userFromToken = foundUser as User;
+          }
+        } catch (e) {
+          userFromToken = null;
+        }
+      }
+      user = userFromToken;
+    } catch (e) {
+      user = null;
+    }
   }
-}
+
+  return { user };
+};
 
 export type Context = inferAsyncReturnType<typeof createContext>

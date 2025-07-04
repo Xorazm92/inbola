@@ -2,6 +2,7 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductSearch from "@/components/home/ProductSearch";
 import ProductGrid from "@/components/product/ProductGrid";
+import AliExpressProductGrid from "@/components/product/AliExpressProductGrid";
 import { getPayloadClient } from "@/get-payload";
 import { PRODUCT_CATEGORIES } from "@/lib/kids-config";
 import { Metadata } from "next";
@@ -90,7 +91,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
         </div>
 
         <section className="mt-16">
-          <ProductGrid
+          <AliExpressProductGrid
             products={products}
             title={categoryInfo ? categoryInfo.label : "Barcha mahsulotlar"}
             currentPage={currentPage || 1}

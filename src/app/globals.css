@@ -3,6 +3,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .bg-primary-600 { background-color: var(--primary-600) !important; }
+  .bg-primary-700 { background-color: var(--primary-700) !important; }
+  .focus\:ring-primary-500:focus { box-shadow: 0 0 0 2px var(--primary-500) !important; }
+  .hover\:bg-primary-700:hover { background-color: var(--primary-700) !important; }
+
+  .focus\:ring-primary-500:focus {
+    --tw-ring-color: var(--primary-500) !important;
+    box-shadow: 0 0 0 2px var(--primary-500) !important;
+  }
+
+  .bg-secondary-100 { background-color: var(--secondary-100) !important; }
+  .hover\:bg-secondary-200:hover { background-color: var(--secondary-200) !important; }
+  .text-secondary-800 { color: var(--secondary-800) !important; }
+  .focus\:ring-secondary-500:focus { box-shadow: 0 0 0 2px var(--secondary-500) !important; }
+
+  .bg-success-600 { background-color: var(--success-600) !important; }
+  .bg-success-700 { background-color: var(--success-700) !important; }
+  .focus\:ring-success-500:focus { box-shadow: 0 0 0 2px var(--success-500) !important; }
+  .hover\:bg-success-700:hover { background-color: var(--success-700) !important; }
+
+  .bg-error-600 { background-color: var(--error-600) !important; }
+  .bg-error-700 { background-color: var(--error-700) !important; }
+  .focus\:ring-error-500:focus { box-shadow: 0 0 0 2px var(--error-500) !important; }
+  .hover\:bg-error-700:hover { background-color: var(--error-700) !important; }
+}
+
+@import '../styles/design-system.css';
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
@@ -171,4 +200,11 @@
   .no-print {
     display: none !important;
   }
+}
+
+/* Fix for app-store and google-play SVG aspect ratio */
+.app-store-img, .google-play-img {
+  height: 40px;
+  width: auto;
+  display: inline-block;
 }

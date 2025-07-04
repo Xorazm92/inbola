@@ -89,7 +89,8 @@ export const authRouter = router({
           name: "payload-token",
           value: token,
           httpOnly: true,
-          sameSite: "strict",
+          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+          secure: process.env.NODE_ENV === 'production',
           path: "/",
         });
 

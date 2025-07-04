@@ -12,12 +12,11 @@ const TrpcProvider = ({ children }: PropsWithChildren) => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3001'}/api/trpc`,
+          url:
+            `${process.env.NEXT_PUBLIC_SERVER_URL ?? 'http://localhost:3001'}/api/trpc`
+              .replace(/\/+$/, ''), // oxirgi '/' lardan tozalash
           fetch(url, options) {
-            return fetch(url, {
-              ...options,
-              credentials: "include",
-            });
+            return fetch(url, { ...options, credentials: 'include' });
           },
         }),
       ],

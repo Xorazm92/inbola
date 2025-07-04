@@ -1,8 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useCart } from '@/contexts/CartContext';
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -30,6 +34,23 @@ import {
 const UzumHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [mounted, setMounted] = useState(false);
+  const router = useRouter();
+  const { getTotalItems } = useCart();
+  const { favoritesCount } = useFavorites();
+  const { user, logout } = useAuth();
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
 
   const categories = [
     { name: "Bolalar kiyimlari", href: "/category/clothing", icon: "👕" },
@@ -98,30 +119,11 @@ const UzumHeader = () => {
             </div>
           </Link>
 
-          {/* Categories Button - Desktop */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="hidden lg:flex items-center gap-2">
-                <Menu className="w-4 h-4" />
-                Kategoriyalar
-                <ChevronDown className="w-4 h-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-64">
-              {categories.map((category) => (
-                <DropdownMenuItem key={category.name} asChild>
-                  <Link href={category.href} className="flex items-center gap-3 p-3">
-                    <span className="text-lg">{category.icon}</span>
-                    <span>{category.name}</span>
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
 
-          {/* Search Bar - Exact Uzum Market sizing */}
-          <div className="flex-1 max-w-[600px] mx-6">
-            <div className="relative">
+
+          {/* Search Bar - Expanded */}
+          <div className="flex-1 max-w-[700px] mx-6">
+            <form onSubmit={handleSearch} className="relative">
               <Input
                 type="text"
                 placeholder="Mahsulotlarni qidiring..."
@@ -130,53 +132,77 @@ const UzumHeader = () => {
                 className="w-full pl-4 pr-[52px] h-[44px] rounded-lg border border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary text-sm"
               />
               <Button
+                type="submit"
                 size="sm"
                 className="absolute right-[2px] top-[2px] h-[40px] w-[48px] px-0 rounded-lg"
               >
                 <Search className="w-4 h-4" />
               </Button>
-            </div>
+            </form>
           </div>
 
           {/* Action Buttons */}
           <div className="flex items-center gap-2">
             {/* Wishlist */}
-            <Button variant="ghost" size="sm" className="relative p-2">
-              <Heart className="w-5 h-5" />
-              <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center text-xs">
-                3
-              </Badge>
-            </Button>
+            <Link href="/favorites">
+              <Button variant="ghost" size="sm" className="relative p-2">
+                <Heart className="w-5 h-5" />
+                {mounted && favoritesCount > 0 && (
+                  <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center text-xs">
+                    {favoritesCount}
+                  </Badge>
+                )}
+              </Button>
+            </Link>
 
             {/* Cart */}
-            <Button variant="ghost" size="sm" className="relative p-2">
-              <ShoppingCart className="w-5 h-5" />
-              <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center text-xs">
-                2
-              </Badge>
-            </Button>
+            <Link href="/cart">
+              <Button variant="ghost" size="sm" className="relative p-2">
+                <ShoppingCart className="w-5 h-5" />
+                {mounted && getTotalItems() > 0 && (
+                  <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center text-xs">
+                    {getTotalItems()}
+                  </Badge>
+                )}
+              </Button>
+            </Link>
 
             {/* User Menu */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="flex items-center gap-2 p-2">
                   <User className="w-5 h-5" />
-                  <span className="hidden md:block">Kirish</span>
+                  <span className="hidden md:block">
+                    {mounted ? (user ? user.name || user.email : 'Kirish') : 'Kirish'}
+                  </span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem asChild>
-                  <Link href="/sign-in">Kirish</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/sign-up">Ro'yxatdan o'tish</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/profile">Profil</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/orders">Buyurtmalar</Link>
-                </DropdownMenuItem>
+                {mounted && user ? (
+                  <>
+                    <DropdownMenuItem asChild>
+                      <Link href="/profile">Profil</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/orders">Buyurtmalar</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/favorites">Sevimlilar</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={logout}>
+                      Chiqish
+                    </DropdownMenuItem>
+                  </>
+                ) : (
+                  <>
+                    <DropdownMenuItem asChild>
+                      <Link href="/login">Kirish</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/register">Ro'yxatdan o'tish</Link>
+                    </DropdownMenuItem>
+                  </>
+                )}
               </DropdownMenuContent>
             </DropdownMenu>
 
