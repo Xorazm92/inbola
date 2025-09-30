@@ -3,10 +3,13 @@ import { onError } from "@apollo/client/link/error";
 import { GRAPHQL_URL } from "./constants/config";
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors) console.error("GraphQL Error", graphQLErrors);
-  if (networkError) console.error("Network Error", networkError);
+  if (graphQLErrors && process.env.NODE_ENV === 'development') {
+    console.error("GraphQL Error", graphQLErrors);
+  }
+  if (networkError && process.env.NODE_ENV === 'development') {
+    console.error("Network Error", networkError);
+  }
 });
-console.log("GRAPHQL_URL: ", GRAPHQL_URL);
 export const initializeApollo = (initialState = null) => {
   const httpLink = new HttpLink({
     uri: GRAPHQL_URL,
