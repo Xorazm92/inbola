@@ -46,28 +46,28 @@ const Home = () => {
       <HeroSection />
       <CategoryBar />
       <ProductSection
-        title="Featured"
+        title="Tavsiya Etilgan"
         products={featured}
         loading={false}
         error={error}
         showTitle={true}
       />
       <ProductSection
-        title="Trending"
+        title="Mashhur"
         products={trending}
         loading={false}
         error={error}
         showTitle={true}
       />
       <ProductSection
-        title="New Arrivals"
+        title="Yangi Kelganlar"
         products={newArrivals}
         loading={false}
         error={error}
         showTitle={true}
       />
       <ProductSection
-        title="Best Sellers"
+        title="Eng Ko'p Sotiladigan"
         products={bestSellers}
         loading={false}
         error={error}

@@ -5,74 +5,74 @@ const BlogPage = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "The Future of E-commerce: Trends to Watch in 2024",
-      excerpt: "Discover the latest trends shaping the e-commerce landscape and how they'll impact online shopping experiences.",
+      title: "E-commerce Kelajagi: 2024-yilda Kuzatish Kerak Bo'lgan Trendlar",
+      excerpt: "E-commerce landshaftini shakllantiruvchi so'nggi trendlarni kashf eting va ular onlayn xarid tajribalariga qanday ta'sir qilishini bilib oling.",
       author: "Sarah Johnson",
-      date: "March 15, 2024",
-      category: "Industry Insights",
+      date: "15 Mart, 2024",
+      category: "Sanoat Tahlillari",
       image: "/api/placeholder/400/250",
-      readTime: "5 min read"
+      readTime: "5 daqiqa o'qish"
     },
     {
       id: 2,
-      title: "Building Trust in Online Shopping: Security Best Practices",
-      excerpt: "Learn about the security measures we implement to protect your personal information and ensure safe transactions.",
+      title: "Onlayn Xaridlarda Ishonch Yaratish: Xavfsizlik Eng Yaxshi Amaliyotlari",
+      excerpt: "Shaxsiy ma'lumotlaringizni himoya qilish va xavfsiz tranzaksiyalarni ta'minlash uchun amalga oshiradigan xavfsizlik choralarini bilib oling.",
       author: "Mike Chen",
-      date: "March 10, 2024",
-      category: "Security",
+      date: "10 Mart, 2024",
+      category: "Xavfsizlik",
       image: "/api/placeholder/400/250",
-      readTime: "7 min read"
+      readTime: "7 daqiqa o'qish"
     },
     {
       id: 3,
-      title: "Sustainable Shopping: Our Commitment to the Environment",
-      excerpt: "Explore our sustainability initiatives and how we're working to reduce our environmental impact.",
+      title: "Barqaror Xarid: Atrof-Muhitga Bo'lgan Majburiyatimiz",
+      excerpt: "Barqarorlik tashabbuslarimizni va atrof-muhitga ta'sirimizni qanday kamaytirishga ishlaganligimizni o'rganing.",
       author: "Emma Davis",
-      date: "March 5, 2024",
-      category: "Sustainability",
+      date: "5 Mart, 2024",
+      category: "Barqarorlik",
       image: "/api/placeholder/400/250",
-      readTime: "4 min read"
+      readTime: "4 daqiqa o'qish"
     },
     {
       id: 4,
-      title: "Customer Success Stories: How SS-Commerce Changed Lives",
-      excerpt: "Read inspiring stories from our customers and how our platform has made a difference in their lives.",
+      title: "Mijozlar Muvaffaqiyat Hikoyalari: Inbola Hayotlarni Qanday O'zgartirdi",
+      excerpt: "Mijozlarimizning ilhomli hikoyalarini o'qing va bizning platformamiz ularning hayotida qanday o'zgarish yaratganini bilib oling.",
       author: "David Wilson",
-      date: "February 28, 2024",
-      category: "Customer Stories",
+      date: "28 Fevral, 2024",
+      category: "Mijoz Hikoyalari",
       image: "/api/placeholder/400/250",
-      readTime: "6 min read"
+      readTime: "6 daqiqa o'qish"
     },
     {
       id: 5,
-      title: "Mobile Commerce: Optimizing Your Shopping Experience",
-      excerpt: "Discover the features and optimizations we've made to enhance your mobile shopping experience.",
+      title: "Mobil Tijorat: Xarid Tajribangizni Optimallashtirish",
+      excerpt: "Mobil xarid tajribangizni yaxshilash uchun amalga oshirgan xususiyatlar va optimizatsiyalarni kashf eting.",
       author: "Lisa Rodriguez",
-      date: "February 20, 2024",
-      category: "Technology",
+      date: "20 Fevral, 2024",
+      category: "Texnologiya",
       image: "/api/placeholder/400/250",
-      readTime: "5 min read"
+      readTime: "5 daqiqa o'qish"
     },
     {
       id: 6,
-      title: "Behind the Scenes: Our Product Curation Process",
-      excerpt: "Get an inside look at how we select and curate the products available on our platform.",
+      title: "Parda Ortida: Mahsulot Tanlash Jarayonimiz",
+      excerpt: "Platformamizda mavjud mahsulotlarni qanday tanlab, tayyorlashimizni ichki ko'rinishda bilib oling.",
       author: "John Smith",
-      date: "February 15, 2024",
-      category: "Behind the Scenes",
+      date: "15 Fevral, 2024",
+      category: "Parda Ortida",
       image: "/api/placeholder/400/250",
-      readTime: "8 min read"
+      readTime: "8 daqiqa o'qish"
     }
   ];
 
   const categories = [
-    "All Posts",
-    "Industry Insights",
-    "Technology",
-    "Security",
-    "Sustainability",
-    "Customer Stories",
-    "Behind the Scenes"
+    "Barcha Maqolalar",
+    "Soha Tahlillari",
+    "Texnologiya",
+    "Xavfsizlik",
+    "Barqarorlik",
+    "Mijoz Hikoyalari",
+    "Sahna Ortida"
   ];
 
   return (
@@ -81,9 +81,9 @@ const BlogPage = () => {
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Blog</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Bizning Blog</h1>
             <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto">
-              Insights, stories, and updates from the SS-Commerce team
+              Inbola jamoasidan yangiliklar, hikoyalar va ma'lumotlar
             </p>
           </div>
         </div>
@@ -116,8 +116,8 @@ const BlogPage = () => {
               <div className="md:w-1/2">
                 <div className="h-64 md:h-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                   <div className="text-white text-center p-8">
-                    <h3 className="text-2xl font-bold mb-2">Featured Article</h3>
-                    <p className="text-indigo-100">Latest insights from our team</p>
+                    <h3 className="text-2xl font-bold mb-2">Asosiy Maqola</h3>
+                    <p className="text-indigo-100">Jamoamizdan so'nggi ma'lumotlar</p>
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@ const BlogPage = () => {
                     <span className="text-sm text-gray-600">{blogPosts[0].author}</span>
                   </div>
                   <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 flex items-center">
-                    Read More
+                    Batafsil O'qish
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </button>
                 </div>
@@ -151,8 +151,8 @@ const BlogPage = () => {
             <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
               <div className="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
                 <div className="text-white text-center">
-                  <h4 className="text-lg font-semibold mb-1">Blog Post</h4>
-                  <p className="text-indigo-100 text-sm">Image Placeholder</p>
+                  <h4 className="text-lg font-semibold mb-1">Blog Maqolasi</h4>
+                  <p className="text-indigo-100 text-sm">Rasm O'rni</p>
                 </div>
               </div>
               <div className="p-6">
@@ -171,7 +171,7 @@ const BlogPage = () => {
                     <span>{post.readTime}</span>
                   </div>
                   <button className="text-indigo-600 hover:text-indigo-700 font-medium text-sm flex items-center">
-                    Read More
+                    Batafsil O'qish
                     <ArrowRight className="w-3 h-3 ml-1" />
                   </button>
                 </div>
@@ -183,24 +183,24 @@ const BlogPage = () => {
         {/* Load More */}
         <div className="text-center mt-12">
           <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200">
-            Load More Posts
+            Ko'proq Maqolalar
           </button>
         </div>
 
         {/* Newsletter Signup */}
         <div className="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
+          <h2 className="text-2xl font-bold mb-4">Yangiliklar Bilan Tanishing</h2>
           <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
-            Subscribe to our newsletter to get the latest blog posts, product updates, and exclusive content delivered to your inbox.
+            So'nggi blog maqolalari, mahsulot yangiliklari va maxsus kontentni olish uchun bizning yangiliklar ro'yxatiga obuna bo'ling.
           </p>
           <div className="max-w-md mx-auto flex gap-4">
             <input
               type="email"
-              placeholder="Enter your email"
+              placeholder="Email manzilingizni kiriting"
               className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
             <button className="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-              Subscribe
+              Obuna Bo'lish
             </button>
           </div>
         </div>

@@ -230,7 +230,7 @@ const UserOrders = () => {
         >
           <Package size={20} className="sm:w-6 sm:h-6 text-indigo-500" />
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800">
-            Your Orders
+            Sizning Buyurtmalaringiz
           </h1>
         </motion.div>
 

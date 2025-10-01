@@ -38,7 +38,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   const handleAddToCart = async (e: React.MouseEvent) => {
     e.preventDefault();
     if (!selectedVariant) {
-      showToast("Please select a valid variant", "error");
+      showToast("Iltimos, to'g'ri variantni tanlang", "error");
       return;
     }
     try {
@@ -47,9 +47,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
         quantity: 1,
       });
       console.log(res);
-      showToast("Product added to cart", "success");
+      showToast("Mahsulot savatchaga qo'shildi", "success");
     } catch (error: any) {
-      showToast(error.data?.message || "Failed to add to cart", "error");
+      showToast(error.data?.message || "Savatchaga qo'shib bo'lmadi", "error");
       console.error("Error adding to cart:", error);
     }
   };
@@ -128,7 +128,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
       {/* Rating and Stock */}
       <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
         <Rating rating={averageRating} />
-        <span>({reviewCount || 0} reviews)</span>
+        <span>({reviewCount || 0} sharh)</span>
         <span
           className={`ml-2 px-2 py-1 rounded text-xs font-medium ${
             stock > 0
@@ -136,7 +136,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
               : "bg-red-100 text-red-600"
           }`}
         >
-          {stock > 0 ? `${stock} in stock` : "Out of stock"}
+          {stock > 0 ? `${stock} ta mavjud` : "Mavjud emas"}
         </span>
       </div>
 
@@ -325,7 +325,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                   animate={{ opacity: 1, y: 0 }}
                   className="flex items-center gap-2 text-sm text-gray-600"
                 >
-                  <span className="font-medium">Selected:</span>
+                  <span className="font-medium">Tanlangan:</span>
                   <span className="bg-indigo-50 text-indigo-700 px-2 py-1 rounded-md">
                     {selectedAttributes[attributeName]}
                   </span>
@@ -344,14 +344,14 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
             whileTap={{ scale: 0.98 }}
           >
             <X size={16} />
-            Reset All Selections
+            Barcha Tanlovlarni Bekor Qilish
           </motion.button>
         )}
       </div>
 
       {/* Description */}
       <div className="space-y-3">
-        <h3 className="text-lg font-semibold text-gray-900">Description</h3>
+        <h3 className="text-lg font-semibold text-gray-900">Tavsif</h3>
         <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
       </div>
 
@@ -369,12 +369,12 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
           {isLoading ? (
             <div className="flex items-center justify-center gap-2">
               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              Adding to Cart...
+              Savatchaga qo'shilmoqda...
             </div>
           ) : stock > 0 && selectedVariant ? (
-            "Add to Cart"
+            "Savatchaga Qo'shish"
           ) : (
-            "Select a Variant"
+            "Variantni Tanlash"
           )}
         </button>
         <button
@@ -385,7 +385,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
               : "border-gray-300 text-gray-400 cursor-not-allowed"
           }`}
         >
-          Buy Now
+          Hozir Sotib Olish
         </button>
       </div>
     </div>

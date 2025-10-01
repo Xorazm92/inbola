@@ -40,10 +40,10 @@ const Dashboard = () => {
   const formatPrice = useFormatPrice();
 
   const timePeriodOptions = [
-    { label: "Last 7 Days", value: "last7days" },
-    { label: "Last Month", value: "lastMonth" },
-    { label: "Last Year", value: "lastYear" },
-    { label: "All Time", value: "allTime" },
+    { label: "So'nggi 7 Kun", value: "last7days" },
+    { label: "So'nggi Oy", value: "lastMonth" },
+    { label: "So'nggi Yil", value: "lastYear" },
+    { label: "Barcha Vaqt", value: "allTime" },
   ];
 
   const { timePeriod } = watch();
@@ -76,7 +76,7 @@ const Dashboard = () => {
   if (error) {
     return (
       <div className="text-center text-red-500 p-4">
-        Error loading dashboard data
+        Dashboard ma'lumotlarini yuklashda xatolik
       </div>
     );
   }
@@ -90,7 +90,7 @@ const Dashboard = () => {
     >
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <h1 className="text-xl sm:text-2xl font-semibold">
-          Dashboard Overview
+          Dashboard Umumiy Ko'rinishi
         </h1>
         <div className="flex items-center justify-center gap-2 w-full sm:w-auto">
           <Controller
@@ -101,7 +101,7 @@ const Dashboard = () => {
                 onChange={field.onChange}
                 options={timePeriodOptions}
                 value={field.value}
-                label="Time Period"
+                label="Vaqt Oralig'i"
                 className="w-full sm:min-w-[150px] sm:max-w-[200px]"
               />
             )}
@@ -110,36 +110,36 @@ const Dashboard = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatsCard
-          title="Total Revenue"
+          title="Umumiy Daromad"
           value={formatPrice(data?.revenueAnalytics?.totalRevenue || 0)}
           percentage={data?.revenueAnalytics?.changes?.revenue}
-          caption="since last period"
+          caption="so'nggi davrdan beri"
           icon={<DollarSign className="w-5 h-5" />}
         />
         <StatsCard
-          title="Total Sales"
+          title="Umumiy Sotuvlar"
           value={data?.orderAnalytics?.totalSales || 0}
           percentage={data?.orderAnalytics?.changes?.sales}
-          caption="since last period"
+          caption="so'nggi davrdan beri"
           icon={<BarChart2 className="w-5 h-5" />}
         />
         <StatsCard
-          title="Total Interactions"
+          title="Umumiy O'zaro Ta'sirlar"
           value={data?.interactionAnalytics?.totalInteractions || 0}
           percentage={0}
-          caption="all interactions"
+          caption="barcha o'zaro ta'sirlar"
           icon={<LineChart className="w-5 h-5" />}
         />
         <StatsCard
-          title="Total Users"
+          title="Umumiy Foydalanuvchilar"
           value={data?.userAnalytics?.totalUsers || 0}
           percentage={data?.userAnalytics?.changes?.users}
-          caption="since last period"
+          caption="so'nggi davrdan beri"
           icon={<Users className="w-5 h-5" />}
         />
       </div>
       <AreaChart
-        title="Revenue Trends"
+        title="Daromad Tendensiyalari"
         data={data?.revenueAnalytics?.monthlyTrends?.revenue || []}
         categories={data?.revenueAnalytics?.monthlyTrends?.labels || []}
         color="#22c55e"
@@ -147,13 +147,13 @@ const Dashboard = () => {
       />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ListCard
-          title="Top Products"
+          title="Eng Yaxshi Mahsulotlar"
           viewAllLink="/shop"
           items={topItems}
           itemType="product"
         />
         <BarChart
-          title="Sales by Product"
+          title="Mahsulot bo'yicha Sotuvlar"
           data={salesByProduct.data}
           categories={salesByProduct.categories}
           color="#4CAF50"

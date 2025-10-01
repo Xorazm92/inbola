@@ -5,31 +5,31 @@ const PressPage = () => {
   const pressReleases = [
     {
       id: 1,
-      title: "SS-Commerce Reaches 10,000 Active Customers Milestone",
-      date: "March 20, 2024",
-      excerpt: "SS-Commerce celebrates reaching 10,000 active customers, marking a significant milestone in the company's growth journey.",
-      category: "Company News"
+      title: "Inbola 10,000 Faol Mijoz Chegarasiga Yetdi",
+      date: "20 Mart, 2024",
+      excerpt: "Inbola 10,000 faol mijozga erishishni nishonlaydi, bu kompaniyaning o'sish yo'lidagi muhim bosqichdir.",
+      category: "Kompaniya Yangiliklari"
     },
     {
       id: 2,
-      title: "New Partnership with Leading Logistics Provider Announced",
-      date: "March 10, 2024",
-      excerpt: "Strategic partnership will enhance delivery capabilities and expand shipping options for customers worldwide.",
-      category: "Partnerships"
+      title: "Yetakchi Logistika Provayderiga Yangi Hamkorlik E'lon Qilindi",
+      date: "10 Mart, 2024",
+      excerpt: "Strategik hamkorlik yetkazib berish imkoniyatlarini kuchaytiradi va butun dunyo bo'ylab mijozlar uchun yetkazib berish variantlarini kengaytiradi.",
+      category: "Hamkorliklar"
     },
     {
       id: 3,
-      title: "SS-Commerce Launches Sustainability Initiative",
-      date: "February 25, 2024",
-      excerpt: "New eco-friendly packaging and carbon-neutral shipping options introduced as part of comprehensive sustainability program.",
-      category: "Sustainability"
+      title: "Inbola Barqarorlik Tashabbusini Ishga Tushirdi",
+      date: "25 Fevral, 2024",
+      excerpt: "Keng qamrovli barqarorlik dasturining bir qismi sifatida yangi ekologik toza qadoqlash va uglerod-neytral yetkazib berish variantlari joriy etildi.",
+      category: "Barqarorlik"
     },
     {
       id: 4,
-      title: "Q4 2023 Growth Report: 150% Year-over-Year Increase",
-      date: "February 15, 2024",
-      excerpt: "Strong financial performance driven by customer acquisition and platform improvements throughout 2023.",
-      category: "Financial"
+      title: "2023-yil 4-chorak O'sish Hisoboti: Yillik 150% O'sish",
+      date: "15 Fevral, 2024",
+      excerpt: "2023 yil davomida mijozlarni jalb qilish va platforma yaxshilanishlari tufayli kuchli moliyaviy ko'rsatkichlar.",
+      category: "Moliyaviy"
     }
   ];
 

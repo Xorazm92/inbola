@@ -72,10 +72,10 @@ const UserProfile = () => {
                   <AlertCircle className="w-8 h-8 text-red-500" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
-                  Profile Error
+                  Profil Xatoligi
                 </h3>
                 <p className="text-red-600 text-sm sm:text-base">
-                  Unable to fetch your profile. Please try again.
+                  Profilingizni yuklashda xatolik. Qaytadan urinib ko'ring.
                 </p>
               </div>
             </div>
@@ -174,10 +174,10 @@ const UserProfile = () => {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8">
                 <div>
                   <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-1">
-                    {user.name || "User Profile"}
+                    {user.name || "Foydalanuvchi Profili"}
                   </h1>
                   <p className="text-gray-600 text-sm sm:text-base">
-                    Manage your account information and preferences
+                    Hisob ma'lumotlari va sozlamalarni boshqaring
                   </p>
                 </div>
 
@@ -186,7 +186,7 @@ const UserProfile = () => {
                   className="mt-4 sm:mt-0 inline-flex items-center space-x-2 bg-indigo-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-medium shadow-lg hover:bg-indigo-700 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
                 >
                   <Edit3 className="w-4 h-4" />
-                  <span>{isEditing ? "Save Changes" : "Edit Profile"}</span>
+                  <span>{isEditing ? "O'zgarishlarni Saqlash" : "Profilni Tahrirlash"}</span>
                 </button>
               </div>
 
@@ -354,7 +354,7 @@ const UserProfile = () => {
                         <Edit3 className="w-4 h-4 text-indigo-600" />
                       </div>
                       <span className="text-xs font-medium text-gray-700">
-                        Edit Profile
+                        Profilni Tahrirlash
                       </span>
                     </button>
 
@@ -363,7 +363,7 @@ const UserProfile = () => {
                         <Shield className="w-4 h-4 text-green-600" />
                       </div>
                       <span className="text-xs font-medium text-gray-700">
-                        Security
+                        Xavfsizlik
                       </span>
                     </button>
 
@@ -372,7 +372,7 @@ const UserProfile = () => {
                         <Mail className="w-4 h-4 text-purple-600" />
                       </div>
                       <span className="text-xs font-medium text-gray-700">
-                        Notifications
+                        Bildirishnomalar
                       </span>
                     </button>
 
@@ -381,7 +381,7 @@ const UserProfile = () => {
                         <LogOut className="w-4 h-4 text-red-600" />
                       </div>
                       <span className="text-xs font-medium text-gray-700">
-                        Sign Out
+                        Chiqish
                       </span>
                     </button>
                   </div>

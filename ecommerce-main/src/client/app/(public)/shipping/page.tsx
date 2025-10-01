@@ -4,33 +4,33 @@ import { Truck, Clock, MapPin, Package, Shield, Globe } from 'lucide-react';
 const ShippingPage = () => {
   const shippingOptions = [
     {
-      name: "Standard Shipping",
-      time: "5-7 Business Days",
-      cost: "$5.99",
-      description: "Reliable delivery for everyday orders",
+      name: "Standart Yetkazib Berish",
+      time: "5-7 Ish Kuni",
+      cost: "50,000 so'm",
+      description: "Kundalik buyurtmalar uchun ishonchli yetkazib berish",
       icon: <Package className="w-8 h-8" />
     },
     {
-      name: "Express Shipping",
-      time: "2-3 Business Days",
-      cost: "$12.99",
-      description: "Faster delivery when you need it sooner",
+      name: "Tezkor Yetkazib Berish",
+      time: "2-3 Ish Kuni",
+      cost: "100,000 so'm",
+      description: "Tezroq kerak bo'lganda tezkor yetkazib berish",
       icon: <Truck className="w-8 h-8" />
     },
     {
-      name: "Overnight Shipping",
-      time: "Next Business Day",
-      cost: "$24.99",
-      description: "Get your order the next business day",
+      name: "Bir Kunlik Yetkazib Berish",
+      time: "Keyingi Ish Kuni",
+      cost: "200,000 so'm",
+      description: "Buyurtmangizni keyingi ish kunida oling",
       icon: <Clock className="w-8 h-8" />
     }
   ];
 
   const internationalZones = [
-    { zone: "Zone 1 (Canada)", time: "7-10 Business Days", cost: "$15.99" },
-    { zone: "Zone 2 (Europe, UK)", time: "10-14 Business Days", cost: "$25.99" },
-    { zone: "Zone 3 (Asia, Australia)", time: "12-16 Business Days", cost: "$29.99" },
-    { zone: "Zone 4 (Rest of World)", time: "14-21 Business Days", cost: "$35.99" }
+    { zone: "1-zona (Markaziy Osiyo)", time: "7-10 Ish Kuni", cost: "150,000 so'm" },
+    { zone: "2-zona (Rossiya, Qozog'iston)", time: "10-14 Ish Kuni", cost: "250,000 so'm" },
+    { zone: "3-zona (Yevropa, Turkiya)", time: "12-16 Ish Kuni", cost: "300,000 so'm" },
+    { zone: "4-zona (Boshqa Mamlakatlar)", time: "14-21 Ish Kuni", cost: "350,000 so'm" }
   ];
 
   return (
@@ -39,9 +39,9 @@ const ShippingPage = () => {
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Shipping Information</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Yetkazib Berish Ma'lumotlari</h1>
             <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto">
-              Fast, reliable shipping options to get your orders delivered safely
+              Buyurtmalaringizni xavfsiz yetkazib berish uchun tez va ishonchli variantlar
             </p>
           </div>
         </div>
@@ -51,7 +51,7 @@ const ShippingPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Domestic Shipping Options */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Domestic Shipping Options</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Mahalliy Yetkazib Berish Variantlari</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {shippingOptions.map((option, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
@@ -69,10 +69,10 @@ const ShippingPage = () => {
           <div className="mt-8 bg-green-50 border border-green-200 rounded-lg p-6">
             <div className="flex items-center mb-4">
               <Shield className="w-6 h-6 text-green-600 mr-3" />
-              <h3 className="text-lg font-semibold text-green-800">Free Shipping Available!</h3>
+              <h3 className="text-lg font-semibold text-green-800">Bepul Yetkazib Berish Mavjud!</h3>
             </div>
             <p className="text-green-700">
-              Enjoy free standard shipping on orders over $75. No code needed - discount applied automatically at checkout.
+              750,000 so'mdan ortiq buyurtmalarda bepul standart yetkazib berish. Kod kerak emas - chegirma to'lovda avtomatik qo'llaniladi.
             </p>
           </div>
         </div>
@@ -80,24 +80,24 @@ const ShippingPage = () => {
         {/* Track Your Order CTA */}
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Shipping Restrictions</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Yetkazib Berish Cheklovlari</h3>
             <ul className="space-y-2 text-gray-600">
-              <li>• Some items may have shipping restrictions based on destination</li>
-              <li>• Hazardous materials cannot be shipped internationally</li>
-              <li>• Large items may require special shipping arrangements</li>
-              <li>• PO Box addresses may have limited shipping options</li>
+              <li>• Ba'zi mahsulotlar manzilga qarab yetkazib berish cheklovlariga ega bo'lishi mumkin</li>
+              <li>• Xavfli materiallar xalqaro miqyosda jo'natilmaydi</li>
+              <li>• Katta mahsulotlar maxsus yetkazib berish tartibini talab qilishi mumkin</li>
+              <li>• Pochta qutisi manzillari cheklangan yetkazib berish variantlariga ega</li>
             </ul>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Track Your Order</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Buyurtmangizni Kuzating</h3>
             <p className="text-gray-600 mb-4">
-              Once your order ships, you'll receive a tracking number via email. You can also track your order anytime in your account.
+              Buyurtmangiz jo'natilgandan keyin email orqali kuzatuv raqamini olasiz. Shuningdek, hisobingizda istalgan vaqtda buyurtmangizni kuzatishingiz mumkin.
             </p>
             <a 
               href="/track-order" 
               className="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200"
             >
-              Track Your Order
+              Buyurtmani Kuzatish
             </a>
           </div>
         </div>

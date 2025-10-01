@@ -124,7 +124,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
     return (
       <div className="my-12 text-center flex justify-center items-center space-x-3">
         <div className="animate-spin h-6 w-6 border-2 border-primary rounded-full border-t-transparent"></div>
-        <span className="text-gray-600 text-sm">Submitting your review...</span>
+        <span className="text-gray-600 text-sm">Sharhingiz yuborilmoqda...</span>
       </div>
     );
   }
@@ -134,7 +134,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
       <div className="my-12 bg-red-50 border border-red-200 rounded-lg p-4 text-center flex justify-center items-center text-red-600">
         <AlertCircle className="mr-2" size={20} />
         <span className="text-sm">
-          Error loading reviews. Please try again later.
+          Sharhlarni yuklashda xatolik. Iltimos, keyinroq qayta urinib ko'ring.
         </span>
       </div>
     );
@@ -146,11 +146,10 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
       <div className="border-b border-gray-200 pb-3 mb-6">
         <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 flex items-center">
           <MessageSquare className="mr-2 text-indigo-600" size={20} />
-          Customer Reviews
+          Mijozlar Sharhlari
         </h2>
         <p className="text-gray-600 text-xs sm:text-sm mt-1">
-          {reviews.length} {reviews.length === 1 ? "review" : "reviews"} for
-          this product
+          Ushbu mahsulot uchun {reviews.length} ta sharh
         </p>
       </div>
 
@@ -165,7 +164,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
               {renderStars(Math.round(Number(averageRating)))}
             </div>
             <p className="text-gray-600 text-xs sm:text-sm mt-1">
-              Based on {reviews.length} reviews
+              {reviews.length} ta sharhga asoslangan
             </p>
           </div>
           <div className="flex-1 w-full">
@@ -175,7 +174,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                 className="flex items-center mb-2 text-xs sm:text-sm"
               >
                 <div className="w-12 text-right text-gray-700">
-                  {5 - idx} stars
+                  {5 - idx} yulduz
                 </div>
                 <div className="ml-2 flex-1">
                   <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
@@ -199,12 +198,12 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
         <div className="bg-white rounded-lg p-4 sm:p-6 mb-6 border border-gray-100">
           <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 flex items-center">
             <ThumbsUp className="mr-2 text-indigo-600" size={18} />
-            Write a Review
+            Sharh Yozish
           </h3>
           <form onSubmit={handleSubmitReview}>
             <div className="mb-4">
               <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
-                Your Rating
+                Sizning Bahoyingiz
               </label>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-1">
@@ -238,7 +237,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                 htmlFor="comment"
                 className="block text-xs sm:text-sm font-medium text-gray-700 mb-2"
               >
-                Your Review
+                Sizning Sharhingiz
               </label>
               <textarea
                 id="comment"
@@ -246,7 +245,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 className="w-full border border-gray-200 rounded-lg p-2 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 text-xs sm:text-sm"
-                placeholder="Share your experience with this product..."
+                placeholder="Ushbu mahsulot bilan tajribangizni baham ko'ring..."
               />
             </div>
             <div className="flex justify-end">
@@ -258,12 +257,12 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                 {isSubmitting ? (
                   <>
                     <div className="animate-spin h-4 w-4 border-2 border-white rounded-full border-t-transparent mr-2"></div>
-                    Submitting...
+                    Yuborilmoqda...
                   </>
                 ) : (
                   <>
                     <Send size={14} className="mr-2" />
-                    Submit Review
+                    Sharh Yuborish
                   </>
                 )}
               </button>
@@ -273,7 +272,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
       ) : (
         <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-4 mb-6 text-indigo-600 flex items-center text-xs sm:text-sm">
           <AlertCircle size={16} className="mr-2" />
-          Please log in to write a review.
+          Sharh yozish uchun tizimga kiring.
         </div>
       )}
 
@@ -281,13 +280,13 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
       <div className="space-y-4">
         <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 flex items-center">
           <User className="mr-2 text-indigo-600" size={18} />
-          Customer Feedback
+          Mijozlar Fikri
         </h3>
         {reviews.length === 0 ? (
           <div className="text-center py-8 bg-gray-50 rounded-lg">
             <MessageSquare size={32} className="mx-auto text-gray-400 mb-2" />
             <p className="text-gray-600 text-xs sm:text-sm">
-              No reviews yet. Be the first to share your thoughts!
+              Hali sharhlar yo'q. Birinchi bo'lib o'z fikringizni baham ko'ring!
             </p>
           </div>
         ) : (

@@ -82,7 +82,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
 
   // Format categories for dropdown
   const categoryOptions = [
-    { label: "All Categories", value: "" },
+    { label: "Barcha Kategoriyalar", value: "" },
     ...categories.map((category) => ({
       label: category.name,
       value: category.id,
@@ -111,7 +111,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
         >
           <div className="flex items-center gap-3">
             <SlidersHorizontal size={20} className="text-indigo-600" />
-            <h2 className="font-bold text-gray-900 text-lg">Filters</h2>
+            <h2 className="font-bold text-gray-900 text-lg">Filtrlar</h2>
             {activeFilterCount > 0 && (
               <span className="bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full px-2.5 py-1">
                 {activeFilterCount}
@@ -126,7 +126,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                 className="text-sm text-gray-600 hover:text-gray-800 flex items-center gap-1.5 font-medium"
               >
                 <X size={16} />
-                Clear all
+                Hammasini tozalash
               </button>
             )}
             {isMobile && (
@@ -150,7 +150,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
           {/* Search */}
           <div className="space-y-3">
             <label className="text-sm font-semibold text-gray-800">
-              Search Products
+              Mahsulotlarni Qidirish
             </label>
             <Controller
               name="search"
@@ -158,7 +158,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
               render={({ field }) => (
                 <input
                   type="text"
-                  placeholder="Search products..."
+                  placeholder="Mahsulotlarni qidiring..."
                   className="w-full border border-gray-200 rounded-xl p-3.5 text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
                   {...field}
                   onChange={(e) => {
@@ -173,7 +173,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
           {/* Category */}
           <div className="space-y-3">
             <label className="text-sm font-semibold text-gray-800">
-              Category
+              Kategoriya
             </label>
             <Controller
               name="categoryId"
@@ -192,7 +192,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
           {/* Price Range */}
           <div className="space-y-3">
             <label className="text-sm font-semibold text-gray-800">
-              Price Range
+              Narx Oralig'i
             </label>
             <div className="flex items-center space-x-3">
               <Controller
@@ -201,7 +201,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                 render={({ field }) => (
                   <input
                     type="number"
-                    placeholder="Min"
+                    placeholder="Eng kam"
                     className="border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white w-1/2"
                     value={field.value || ""}
                     onChange={(e) =>
@@ -218,7 +218,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
                 render={({ field }) => (
                   <input
                     type="number"
-                    placeholder="Max"
+                    placeholder="Eng ko'p"
                     className="border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white w-1/2"
                     value={field.value || ""}
                     onChange={(e) =>
@@ -235,24 +235,24 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
           {/* Product Flags */}
           <div className="space-y-4">
             <label className="text-sm font-semibold text-gray-800">
-              Product Status
+              Mahsulot Holati
             </label>
             <div className="space-y-4 pl-1">
-              <CheckBox name="isNew" control={control} label="New Arrivals" />
+              <CheckBox name="isNew" control={control} label="Yangi Kelganlar" />
               <CheckBox
                 name="isFeatured"
                 control={control}
-                label="Featured Products"
+                label="Tavsiya Etilganlar"
               />
               <CheckBox
                 name="isTrending"
                 control={control}
-                label="Trending Now"
+                label="Hozir Mashhur"
               />
               <CheckBox
                 name="isBestSeller"
                 control={control}
-                label="Best Sellers"
+                label="Eng Ko'p Sotiladigan"
               />
             </div>
           </div>
@@ -268,7 +268,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
             type="submit"
             className="w-full bg-indigo-600 text-white py-3.5 rounded-xl hover:bg-indigo-700 transition-all duration-300 font-semibold shadow-sm hover:shadow-md"
           >
-            Apply Filters
+            Filtrlarni Qo'llash
           </button>
         </div>
       </form>

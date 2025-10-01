@@ -15,15 +15,15 @@ const OrderFilters: React.FC<OrderFiltersProps> = ({
   onSortOrderChange,
 }) => {
   const statusOptions = [
-    { value: "", label: "All Orders" },
-    { value: "PENDING", label: "Pending" },
-    { value: "PROCESSING", label: "Processing" },
-    { value: "SHIPPED", label: "Shipped" },
-    { value: "IN_TRANSIT", label: "In Transit" },
-    { value: "DELIVERED", label: "Delivered" },
-    { value: "CANCELED", label: "Canceled" },
-    { value: "RETURNED", label: "Returned" },
-    { value: "REFUNDED", label: "Refunded" },
+    { value: "", label: "Barcha Buyurtmalar" },
+    { value: "PENDING", label: "Kutilmoqda" },
+    { value: "PROCESSING", label: "Qayta ishlanmoqda" },
+    { value: "SHIPPED", label: "Jo'natildi" },
+    { value: "IN_TRANSIT", label: "Yo'lda" },
+    { value: "DELIVERED", label: "Yetkazildi" },
+    { value: "CANCELED", label: "Bekor qilindi" },
+    { value: "RETURNED", label: "Qaytarildi" },
+    { value: "REFUNDED", label: "Pullar qaytarildi" },
   ];
 
   return (

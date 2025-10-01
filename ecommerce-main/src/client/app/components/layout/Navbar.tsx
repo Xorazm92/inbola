@@ -67,9 +67,10 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="font-medium text-lg sm:text-xl lg:text-xl text-gray-900 flex-shrink-0"
+              className="font-medium text-lg sm:text-xl lg:text-xl text-gray-900 flex-shrink-0 flex items-center gap-2"
             >
-              Ecommerce
+              <img src="/logo.png" alt="Inbola" className="h-8 w-auto" />
+              <span>Inbola</span>
             </Link>
 
             {/* Desktop Search Bar */}
@@ -151,7 +152,7 @@ const Navbar = () => {
                     href="/sign-in"
                     className="hidden sm:block px-4 py-2 text-sm font-medium text-gray-800 hover:text-indigo-600 transition-colors"
                   >
-                    Sign in
+                    Kirish
                   </Link>
                 )
               )}
@@ -188,14 +189,14 @@ const Navbar = () => {
                       className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Sign in
+                      Kirish
                     </Link>
                     <Link
                       href="/sign-up"
                       className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      Sign up
+                      Ro'yxatdan O'tish
                     </Link>
                   </>
                 )}
@@ -204,21 +205,21 @@ const Navbar = () => {
                   className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Home
+                  Bosh Sahifa
                 </Link>
                 <Link
                   href="/orders"
                   className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Orders
+                  Buyurtmalar
                 </Link>
                 <Link
                   href="/shop"
                   className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Shop
+                  Do'kon
                 </Link>
                 {user?.role === "ADMIN" && (
                   <Link
@@ -226,7 +227,7 @@ const Navbar = () => {
                     className="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded-md"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Dashboard
+                    Boshqaruv Paneli
                   </Link>
                 )}
 
@@ -239,7 +240,7 @@ const Navbar = () => {
                     className="flex items-center w-full px-4 py-3 gap-3 text-red-600 hover:bg-red-50/80 transition-colors duration-150 text-sm"
                   >
                     <LogOut size={18} />
-                    <span>Sign out</span>
+                    <span>Chiqish</span>
                   </button>
                 )}
               </div>

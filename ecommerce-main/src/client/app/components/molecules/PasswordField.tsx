@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 
 export const passwordSchema = z
   .string()
-  .min(8, "Password must be at least 8 characters long")
-  .regex(/[A-Z]/, "Password must include at least one uppercase letter")
-  .regex(/[0-9]/, "Password must include at least one number")
+  .min(8, "Parol kamida 8 ta belgidan iborat bo'lishi kerak")
+  .regex(/[A-Z]/, "Parol kamida bitta katta harfni o'z ichiga olishi kerak")
+  .regex(/[0-9]/, "Parol kamida bitta raqamni o'z ichiga olishi kerak")
   .regex(
     /[!@#$%^&*(),.?":{}|<>]/,
-    "Password must include at least one special character"
+    "Parol kamida bitta maxsus belgini o'z ichiga olishi kerak"
   );
 
 interface PasswordFieldProps {
@@ -43,9 +43,9 @@ const PasswordField: React.FC<PasswordFieldProps> = ({
     <div>
       <input
         type="password"
-        placeholder="Enter your password"
+        placeholder="Parolingizni kiriting"
         {...register(name, {
-          required: "Password is required",
+          required: "Parol talab qilinadi",
           validate: (value) => {
             const result = passwordSchema.safeParse(value);
             return result.success || result.error.errors[0].message;
@@ -79,14 +79,14 @@ const PasswordField: React.FC<PasswordFieldProps> = ({
         </div>
         <p className="text-[12px] text-gray-500 text-right">
           {strength === 1
-            ? "Very weak"
+            ? "Juda zaif"
             : strength === 2
-            ? "Weak"
+            ? "Zaif"
             : strength === 3
-            ? "Good"
+            ? "Yaxshi"
             : strength === 4
-            ? "Strong"
-            : "Password strength"}
+            ? "Kuchli"
+            : "Parol kuchi"}
         </p>
       </div>
     </div>

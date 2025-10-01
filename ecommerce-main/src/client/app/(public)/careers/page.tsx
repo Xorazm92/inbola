@@ -5,58 +5,58 @@ const CareersPage = () => {
   const openPositions = [
     {
       id: 1,
-      title: "Senior Frontend Developer",
-      department: "Engineering",
-      location: "Remote",
-      type: "Full-time",
-      description: "Join our frontend team to build amazing user experiences with React, Next.js, and modern web technologies."
+      title: "Katta Frontend Dasturchi",
+      department: "Muhandislik",
+      location: "Masofaviy",
+      type: "To'liq vaqt",
+      description: "React, Next.js va zamonaviy veb texnologiyalar bilan ajoyib foydalanuvchi tajribalarini yaratish uchun frontend jamoamizga qo'shiling."
     },
     {
       id: 2,
-      title: "Product Manager",
-      department: "Product",
-      location: "New York, NY",
-      type: "Full-time",
-      description: "Lead product strategy and development for our e-commerce platform, working closely with engineering and design teams."
+      title: "Mahsulot Menejeri",
+      department: "Mahsulot",
+      location: "Toshkent, O'zbekiston",
+      type: "To'liq vaqt",
+      description: "E-commerce platformamiz uchun mahsulot strategiyasi va rivojlantirishni boshqaring, muhandislik va dizayn jamoalari bilan yaqin hamkorlik qiling."
     },
     {
       id: 3,
-      title: "Customer Success Specialist",
-      department: "Customer Success",
-      location: "Remote",
-      type: "Full-time",
-      description: "Help our customers succeed by providing exceptional support and building lasting relationships."
+      title: "Mijozlar Muvaffaqiyati Mutaxassisi",
+      department: "Mijozlar Muvaffaqiyati",
+      location: "Masofaviy",
+      type: "To'liq vaqt",
+      description: "Ajoyib qo'llab-quvvatlash va uzoq muddatli munosabatlar o'rnatish orqali mijozlarimizning muvaffaqiyatiga yordam bering."
     },
     {
       id: 4,
-      title: "Marketing Specialist",
+      title: "Marketing Mutaxassisi",
       department: "Marketing",
-      location: "New York, NY",
-      type: "Full-time",
-      description: "Drive growth through creative marketing campaigns, content creation, and data-driven strategies."
+      location: "Toshkent, O'zbekiston",
+      type: "To'liq vaqt",
+      description: "Ijodiy marketing kampaniyalari, kontent yaratish va ma'lumotlarga asoslangan strategiyalar orqali o'sishni rag'batlantiring."
     }
   ];
 
   const benefits = [
     {
       icon: <Heart className="w-8 h-8" />,
-      title: "Health & Wellness",
-      description: "Comprehensive health insurance, dental, vision, and wellness programs"
+      title: "Sog'liq va Farovonlik",
+      description: "To'liq sog'liq sug'urtasi, tish, ko'z va sog'liqni saqlash dasturlari"
     },
     {
       icon: <Clock className="w-8 h-8" />,
-      title: "Work-Life Balance",
-      description: "Flexible hours, remote work options, and unlimited PTO"
+      title: "Ish-Hayot Muvozanati",
+      description: "Moslashuvchan soatlar, masofadan ish imkoniyati va cheksiz dam olish kunlari"
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: "Growth & Learning",
-      description: "Professional development budget, conferences, and learning opportunities"
+      title: "O'sish va O'rganish",
+      description: "Professional rivojlanish byudjeti, konferensiyalar va o'rganish imkoniyatlari"
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Great Team",
-      description: "Work with passionate, talented people who care about what they do"
+      title: "Ajoyib Jamoa",
+      description: "Ishini yaxshi ko'rgan qiziqarli va iste'dodli odamlar bilan ishlash"
     }
   ];
 
@@ -66,9 +66,9 @@ const CareersPage = () => {
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Join Our Team</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Jamoamizga Qo'shiling</h1>
             <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto">
-              Build the future of e-commerce with passionate people who love what they do
+              Ishini yaxshi ko'rgan qiziqarli odamlar bilan e-commerce kelajagini qurish
             </p>
           </div>
         </div>
@@ -77,10 +77,9 @@ const CareersPage = () => {
       {/* Why Work With Us */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Why Work With Us?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">Nega Biz bilan Ishlash Kerak?</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            At SS-Commerce, we believe that great products come from great people. 
-            We're building something special, and we want you to be part of it.
+            Inbola'da biz ajoyib mahsulotlar ajoyib odamlardan kelib chiqishini hisoblaymiz. Biz maxsus narsa qurmoqdamiz va sizni ham qatnashishingizni xohlaymiz.
           </p>
         </div>
 
@@ -123,7 +122,7 @@ const CareersPage = () => {
                   </div>
                   <div className="mt-4 md:mt-0 md:ml-6">
                     <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200">
-                      Apply Now
+                      Hozir Ariza Topshirish
                     </button>
                   </div>
                 </div>
@@ -134,24 +133,22 @@ const CareersPage = () => {
 
         {/* Company Culture */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg p-8 md:p-12 text-center">
-          <h2 className="text-3xl font-bold mb-6">Our Culture</h2>
+          <h2 className="text-3xl font-bold mb-6">Bizning Madaniyatimiz</h2>
           <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
-            We're a diverse team of creators, innovators, and problem-solvers who are passionate 
-            about building products that make a difference. We value collaboration, creativity, 
-            and continuous learning.
+            Biz farq yaratadigan mahsulotlar qurishga ishtiyoqli yaratuvchilar, innovatorlar va muammolarni hal qiluvchilar xilma-xil jamoasimiz. Biz hamkorlik, ijodkorlik va doimiy o'rganishni qadrlaymiz.
           </p>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold mb-2">50+</div>
-              <div className="text-indigo-100">Team Members</div>
+              <div className="text-indigo-100">Jamoa A'zolari</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2">15+</div>
-              <div className="text-indigo-100">Countries</div>
+              <div className="text-indigo-100">Mamlakatlar</div>
             </div>
             <div>
               <div className="text-4xl font-bold mb-2">100%</div>
-              <div className="text-indigo-100">Remote Friendly</div>
+              <div className="text-indigo-100">Masofadan Ishga Qulay</div>
             </div>
           </div>
         </div>
@@ -165,43 +162,43 @@ const CareersPage = () => {
                 <span className="text-indigo-600 font-bold">1</span>
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Apply</h3>
-              <p className="text-gray-600 text-sm">Submit your application and resume</p>
+              <p className="text-gray-600 text-sm">Arizangiz va rezyumeyingizni topshiring</p>
             </div>
             <div className="text-center">
               <div className="bg-purple-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-purple-600 font-bold">2</span>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Review</h3>
-              <p className="text-gray-600 text-sm">We'll review your application carefully</p>
+              <h3 className="font-semibold text-gray-900 mb-2">Ko'rib Chiqish</h3>
+              <p className="text-gray-600 text-sm">Arizangizni e'tibor bilan ko'rib chiqamiz</p>
             </div>
             <div className="text-center">
               <div className="bg-green-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-green-600 font-bold">3</span>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Interview</h3>
-              <p className="text-gray-600 text-sm">Meet with our team and learn more</p>
+              <h3 className="font-semibold text-gray-900 mb-2">Suhbat</h3>
+              <p className="text-gray-600 text-sm">Jamoamiz bilan tanishing va ko'proq bilib oling</p>
             </div>
             <div className="text-center">
               <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-blue-600 font-bold">4</span>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Welcome</h3>
-              <p className="text-gray-600 text-sm">Join the team and start making impact</p>
+              <h3 className="font-semibold text-gray-900 mb-2">Xush Kelibsiz</h3>
+              <p className="text-gray-600 text-sm">Jamoa'ga qo'shiling va ta'sir ko'rsatishni boshlang</p>
             </div>
           </div>
         </div>
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Don't see the right position?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">To'g'ri lavozimni ko'rmadingizmi?</h2>
           <p className="text-gray-600 mb-6">
-            We're always looking for talented people. Send us your resume and we'll keep you in mind for future opportunities.
+            Biz har doim iste'dodli odamlarni qidirmoqdamiz. Rezyumeyingizni yuboring va kelajakdagi imkoniyatlar uchun sizni esda tutamiz.
           </p>
           <a 
             href="/contact" 
             className="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-200"
           >
-            Get in Touch
+            Bog'laning
           </a>
         </div>
       </div>

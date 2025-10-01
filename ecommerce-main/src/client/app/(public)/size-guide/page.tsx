@@ -25,9 +25,9 @@ const SizeGuidePage = () => {
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Size Guide</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">O'lcham Qo'llanmasi</h1>
             <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto">
-              Find your perfect fit with our comprehensive sizing charts
+              Keng qamrovli o'lcham jadvallari bilan o'zingizga mos keladigan o'lchamni toping
             </p>
           </div>
         </div>
@@ -36,44 +36,44 @@ const SizeGuidePage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* How to Measure */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">How to Measure</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Qanday O'lchash</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <div className="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <User className="w-8 h-8 text-indigo-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Chest</h3>
-              <p className="text-gray-600 text-sm">Measure around the fullest part of your chest, keeping the tape horizontal</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Ko'krak</h3>
+              <p className="text-gray-600 text-sm">Ko'krakning eng keng qismini o'lchang, lentani gorizontal holatda ushlab turing</p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Ruler className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Waist</h3>
-              <p className="text-gray-600 text-sm">Measure around your natural waistline, keeping the tape comfortably loose</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Bel</h3>
+              <p className="text-gray-600 text-sm">Tabiiy bel chizig'ini o'lchang, lentani qulay ravishda bo'sh ushlab turing</p>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shirt className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Hips</h3>
-              <p className="text-gray-600 text-sm">Measure around the fullest part of your hips, about 8 inches below your waist</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Kestirib</h3>
+              <p className="text-gray-600 text-sm">Kestiribning eng keng qismini o'lchang, beldan taxminan 20 sm pastda</p>
             </div>
           </div>
         </div>
 
         {/* Clothing Size Chart */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Clothing Size Chart</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Kiyim O'lchamlari Jadvali</h2>
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Chest (inches)</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Waist (inches)</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hips (inches)</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">O'lcham</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ko'krak (sm)</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bel (sm)</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kestirib (sm)</th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -93,7 +93,7 @@ const SizeGuidePage = () => {
 
         {/* Shoe Size Chart */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Shoe Size Chart</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Poyabzal O'lchamlari Jadvali</h2>
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">

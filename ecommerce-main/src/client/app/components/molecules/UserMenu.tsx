@@ -47,25 +47,25 @@ const UserMenu = ({ menuOpen, closeMenu, user }) => {
       routes: [
         {
           href: "/",
-          label: "Home",
+          label: "Bosh sahifa",
           icon: <Home size={18} className="text-indigo-500" />,
           show: true,
         },
         {
           href: "/orders",
-          label: "My Orders",
+          label: "Mening Buyurtmalarim",
           icon: <ShoppingCart size={18} className="text-emerald-500" />,
           show: true,
         },
         {
           href: "/profile",
-          label: "Profile",
+          label: "Profil",
           icon: <User size={18} className="text-blue-500" />,
           show: true,
         },
         {
           href: "/support",
-          label: "Contact Support",
+          label: "Qo'llab-quvvatlash",
           icon: <Group size={18} className="text-blue-500" />,
           show: true,
         },
@@ -75,7 +75,7 @@ const UserMenu = ({ menuOpen, closeMenu, user }) => {
       routes: [
         {
           href: "/dashboard",
-          label: "Dashboard",
+          label: "Boshqaruv Paneli",
           icon: <LayoutDashboard size={18} className="text-purple-500" />,
           show: user?.role === "ADMIN" || user?.role === "SUPERADMIN",
         },

@@ -60,30 +60,30 @@ const CartSummary: React.FC<CartSummaryProps> = ({
       className="bg-white rounded-lg p-6 sm:p-8 border border-gray-200"
     >
       <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
-        Order Summary
+        Buyurtma Xulosasi
       </h2>
 
       <div className="space-y-3 text-sm">
         <div className="flex justify-between text-gray-700">
-          <span>Total Items</span>
+          <span>Jami Mahsulotlar</span>
           <span>{totalItems}</span>
         </div>
         <div className="flex justify-between text-gray-700">
-          <span>Subtotal</span>
+          <span>Oraliq Jami</span>
           <span className="font-medium text-gray-800">
             {currency}
             {subtotal.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between text-gray-700">
-          <span>Shipping ({(shippingRate * 100).toFixed(0)}%)</span>
+          <span>Yetkazib Berish ({(shippingRate * 100).toFixed(0)}%)</span>
           <span className="font-medium text-gray-800">
             {currency}
             {shippingFee.toFixed(2)}
           </span>
         </div>
         <div className="flex justify-between pt-3 border-t border-gray-200">
-          <span className="font-semibold text-gray-800">Total</span>
+          <span className="font-semibold text-gray-800">Jami</span>
           <span className="font-semibold text-gray-800">
             {currency}
             {total.toFixed(2)}
@@ -97,14 +97,14 @@ const CartSummary: React.FC<CartSummaryProps> = ({
           onClick={handleInitiateCheckout}
           className="mt-4 w-full bg-indigo-600 text-white py-2.5 rounded-md font-medium text-sm hover:bg-indigo-700 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
         >
-          {isLoading ? "Processing..." : "Proceed to Checkout"}
+          {isLoading ? "Qayta ishlanmoqda..." : "To'lovga O'tish"}
         </button>
       ) : (
         <Link
           href="/sign-in"
           className="mt-4 w-full inline-block text-center bg-gray-300 text-gray-800 py-2.5 rounded-md font-medium text-sm hover:bg-gray-400 transition-colors"
         >
-          Sign in to Checkout
+          To'lov uchun Kirish
         </Link>
       )}
     </motion.div>

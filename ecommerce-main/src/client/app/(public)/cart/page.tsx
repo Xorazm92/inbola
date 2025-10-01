@@ -62,10 +62,10 @@ const Cart = () => {
           className="flex items-center space-x-2 mt-4 mb-6"
         >
           <h1 className="text-xl sm:text-2xl font-semibold text-gray-800">
-            Your Cart
+            Sizning Savatingiz
           </h1>
           <span className="text-gray-500 text-sm">
-            ({cartItems.length} items)
+            ({cartItems.length} ta mahsulot)
           </span>
         </motion.div>
 
@@ -74,9 +74,12 @@ const Cart = () => {
           <CartSkeletonLoader />
         ) : cartItems.length === 0 ? (
           <div className="text-center py-10">
-            <ShoppingCart size={40} className="mx-auto text-gray-400 mb-3" />
+            <img src="/empty-cart.png" alt="Bo'sh savatcha" className="mx-auto w-32 h-32 mb-4 opacity-60" />
             <p className="text-base sm:text-lg text-gray-600">
-              Your cart is empty
+              Savatingiz bo'sh
+            </p>
+            <p className="text-sm text-gray-500 mt-2">
+              Mahsulotlar qo'shish uchun do'konni ko'ring
             </p>
           </div>
         ) : (

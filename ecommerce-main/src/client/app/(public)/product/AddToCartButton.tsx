@@ -9,12 +9,12 @@ const AddToCartButton = ({
   const buttonText = isLoading ? (
     <div className="flex items-center justify-center gap-2">
       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-      Adding to Cart...
+      Savatchaga qo'shilmoqda...
     </div>
   ) : stock > 0 && selectedVariant ? (
-    "Add to Cart"
+    "Savatchaga Qo'shish"
   ) : (
-    "Select a Variant"
+    "Variantni Tanlash"
   );
 
   return (

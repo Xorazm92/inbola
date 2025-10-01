@@ -4,70 +4,70 @@ import { Search, HelpCircle, MessageCircle, Phone, Mail, ChevronRight } from 'lu
 const HelpPage = () => {
   const faqCategories = [
     {
-      title: "Orders & Shipping",
+      title: "Buyurtmalar va Yetkazib Berish",
       questions: [
         {
-          question: "How can I track my order?",
-          answer: "You can track your order by visiting the 'Track Order' page and entering your order number and email address. You'll also receive tracking information via email once your order ships."
+          question: "Buyurtmamni qanday kuzatishim mumkin?",
+          answer: "Buyurtmangizni 'Buyurtmani Kuzatish' sahifasiga kirib, buyurtma raqami va email manzilingizni kiritish orqali kuzatishingiz mumkin. Buyurtmangiz jo'natilgandan keyin email orqali kuzatuv ma'lumotlarini olasiz."
         },
         {
-          question: "What are your shipping options?",
-          answer: "We offer standard shipping (5-7 business days), express shipping (2-3 business days), and overnight shipping. Shipping costs vary based on location and order value."
+          question: "Yetkazib berish variantlaringiz qanday?",
+          answer: "Biz standart yetkazib berish (5-7 ish kuni), tezkor yetkazib berish (2-3 ish kuni) va bir kunlik yetkazib berish xizmatlarini taklif qilamiz. Yetkazib berish narxi joylashuv va buyurtma qiymatiga qarab o'zgaradi."
         },
         {
-          question: "Can I change or cancel my order?",
-          answer: "You can modify or cancel your order within 1 hour of placing it. After that, please contact our customer service team for assistance."
+          question: "Buyurtmamni o'zgartirish yoki bekor qilishim mumkinmi?",
+          answer: "Buyurtmangizni berganingizdan keyin 1 soat ichida o'zgartirish yoki bekor qilishingiz mumkin. Undan keyin yordam olish uchun mijozlarga xizmat jamoamiz bilan bog'laning."
         }
       ]
     },
     {
-      title: "Returns & Refunds",
+      title: "Qaytarish va Pulni Qaytarish",
       questions: [
         {
-          question: "What is your return policy?",
-          answer: "We offer a 30-day return policy for most items. Products must be in original condition with tags attached. Some items like personalized products are not eligible for return."
+          question: "Qaytarish siyosatingiz qanday?",
+          answer: "Biz ko'pchilik mahsulotlar uchun 30 kunlik qaytarish siyosatini taklif qilamiz. Mahsulotlar asl holatida va yorliqlari bilan bo'lishi kerak. Shaxsiy buyurtma mahsulotlari kabi ba'zi mahsulotlar qaytarilmaydi."
         },
         {
-          question: "How do I return an item?",
-          answer: "Visit our Returns page, enter your order information, and follow the instructions. We'll provide a prepaid return label for eligible returns."
+          question: "Mahsulotni qanday qaytarishim mumkin?",
+          answer: "Qaytarish sahifamizga tashrif buyuring, buyurtma ma'lumotlaringizni kiriting va ko'rsatmalarga amal qiling. Biz mos qaytarishlar uchun oldindan to'langan qaytarish yorlig'ini taqdim etamiz."
         },
         {
-          question: "When will I receive my refund?",
-          answer: "Refunds are processed within 5-7 business days after we receive your returned item. The refund will be credited to your original payment method."
+          question: "Pullarimni qachon qaytarib olaman?",
+          answer: "Qaytarilgan mahsulotni olganimizdan keyin 5-7 ish kuni ichida pul qaytariladi. Pul asl to'lov usulingizga qaytariladi."
         }
       ]
     },
     {
-      title: "Account & Payment",
+      title: "Hisob va To'lov",
       questions: [
         {
-          question: "How do I create an account?",
-          answer: "Click 'Sign Up' at the top of any page, enter your email and create a password. You can also sign up using your Google, Facebook, or Twitter account."
+          question: "Hisobni qanday yaratishim mumkin?",
+          answer: "Har qanday sahifaning yuqori qismidagi 'Ro'yxatdan O'tish' tugmasini bosing, emailingizni kiriting va parol yarating. Shuningdek, Google, Facebook yoki Twitter hisobingiz orqali ro'yxatdan o'tishingiz mumkin."
         },
         {
-          question: "What payment methods do you accept?",
-          answer: "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, and Google Pay."
+          question: "Qanday to'lov usullarini qabul qilasiz?",
+          answer: "Biz Payme, Click, Uzum Bank, Visa, MasterCard, Humo va UzCard to'lov tizimlarini qabul qilamiz."
         },
         {
-          question: "Is my payment information secure?",
-          answer: "Yes, we use industry-standard SSL encryption and work with trusted payment processors to ensure your information is secure."
+          question: "To'lov ma'lumotlarim xavfsizmi?",
+          answer: "Ha, biz sanoat standartidagi SSL shifrlash texnologiyasidan foydalanamiz va ma'lumotlaringiz xavfsizligini ta'minlash uchun ishonchli to'lov protsessorlari bilan ishlaymiz."
         }
       ]
     },
     {
-      title: "Products & Pricing",
+      title: "Mahsulotlar va Narxlar",
       questions: [
         {
-          question: "Are your product images accurate?",
-          answer: "We strive to display accurate product images and descriptions. However, colors may vary slightly due to monitor settings. Check the product description for detailed specifications."
+          question: "Mahsulot rasmlari aniqmi?",
+          answer: "Biz aniq mahsulot rasmlari va tavsiflarini ko'rsatishga harakat qilamiz. Biroq, monitor sozlamalari tufayli ranglar biroz farq qilishi mumkin. Batafsil spetsifikatsiyalar uchun mahsulot tavsifini tekshiring."
         },
         {
-          question: "Do you offer price matching?",
-          answer: "We don't currently offer price matching, but we regularly review our prices to ensure they're competitive. Sign up for our newsletter to receive exclusive discounts."
+          question: "Narx moslashtirish xizmatini taklif qilasizmi?",
+          answer: "Hozirda narx moslashtirish xizmatini taklif qilmaymiz, lekin narxlarimizni raqobatbardosh bo'lishini ta'minlash uchun muntazam ravishda ko'rib chiqamiz. Maxsus chegirmalarni olish uchun yangiliklar ro'yxatiga obuna bo'ling."
         },
         {
-          question: "How do I know if an item is in stock?",
-          answer: "Stock availability is shown on each product page. If an item is out of stock, you can sign up for restock notifications."
+          question: "Mahsulot mavjudligini qanday bilishim mumkin?",
+          answer: "Zaxira mavjudligi har bir mahsulot sahifasida ko'rsatilgan. Agar mahsulot mavjud bo'lmasa, qayta zaxiralash xabarnomalariga obuna bo'lishingiz mumkin."
         }
       ]
     }
@@ -76,24 +76,24 @@ const HelpPage = () => {
   const contactOptions = [
     {
       icon: <MessageCircle className="w-8 h-8" />,
-      title: "Live Chat",
-      description: "Chat with our support team in real-time",
+      title: "Jonli Suhbat",
+      description: "Qo'llab-quvvatlash jamoamiz bilan real vaqtda suhbatlashing",
       availability: "24/7",
-      action: "Start Chat"
+      action: "Suhbatni Boshlash"
     },
     {
       icon: <Phone className="w-8 h-8" />,
-      title: "Phone Support",
-      description: "Speak directly with a support representative",
-      availability: "Mon-Fri 9AM-6PM EST",
-      action: "Call Now"
+      title: "Telefon Qo'llab-quvvatlash",
+      description: "Qo'llab-quvvatlash vakili bilan bevosita gaplashing",
+      availability: "Dush-Jum 9:00-18:00",
+      action: "Hozir Qo'ng'iroq Qiling"
     },
     {
       icon: <Mail className="w-8 h-8" />,
-      title: "Email Support",
-      description: "Send us a detailed message about your issue",
-      availability: "Response within 24 hours",
-      action: "Send Email"
+      title: "Email Qo'llab-quvvatlash",
+      description: "Muammoingiz haqida batafsil xabar yuboring",
+      availability: "24 soat ichida javob",
+      action: "Email Yuborish"
     }
   ];
 
@@ -103,9 +103,9 @@ const HelpPage = () => {
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">Help Center</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">Yordam Markazi</h1>
             <p className="text-xl md:text-2xl text-indigo-100 max-w-3xl mx-auto mb-8">
-              Find answers to your questions and get the help you need
+              Savollaringizga javob toping va kerakli yordamni oling
             </p>
             
             {/* Search Bar */}

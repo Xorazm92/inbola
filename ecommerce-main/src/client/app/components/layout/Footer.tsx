@@ -17,18 +17,10 @@ import { useQuery } from "@apollo/client";
 import { GET_CATEGORIES } from "@/app/gql/Product";
 
 const FooterLogo = () => (
-  <svg viewBox="0 0 120 40" className="h-10">
-    <text
-      x="0"
-      y="28"
-      fontFamily="Arial"
-      fontSize="24"
-      fontWeight="bold"
-      fill="currentColor"
-    >
-      SS-Commerce
-    </text>
-  </svg>
+  <div className="flex items-center gap-2">
+    <img src="/logo.png" alt="Inbola" className="h-10 w-auto" />
+    <span className="text-2xl font-bold text-white">Inbola</span>
+  </div>
 );
 
 const Footer = () => {
@@ -58,14 +50,14 @@ const Footer = () => {
               </div>
               <div className="h-6 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-600"></div>
               <span className="ml-2 text-sm font-medium tracking-wider text-gray-400 uppercase">
-                Premium Store
+                Premium Do'kon
               </span>
             </div>
 
             <p className="text-gray-400 mt-6 text-sm leading-relaxed">
-              Discover high-quality products at SS-Commerce. Shop with
-              confidence and enjoy premium selections tailored just for you.
-              Fast shipping, secure payments, and exceptional customer service.
+              Inbola'da yuqori sifatli mahsulotlarni kashf eting. Ishonch bilan
+              xarid qiling va siz uchun maxsus tanlangan premium mahsulotlardan bahramand bo'ling.
+              Tezkor yetkazib berish, xavfsiz to'lovlar va ajoyib mijozlarga xizmat.
             </p>
 
             <div className="mt-8 flex flex-col space-y-4">
@@ -75,7 +67,7 @@ const Footer = () => {
                   className="text-indigo-400 mr-3 mt-0.5 flex-shrink-0"
                 />
                 <p className="text-sm text-gray-400">
-                  123 Commerce Street, Shopping District, 10001
+                  123 Savdo Ko'chasi, Savdo Maskani, Toshkent 100001
                 </p>
               </div>
               <div className="flex items-center">
@@ -83,14 +75,14 @@ const Footer = () => {
                   size={18}
                   className="text-indigo-400 mr-3 flex-shrink-0"
                 />
-                <p className="text-sm text-gray-400">+1 (555) 123-4567</p>
+                <p className="text-sm text-gray-400">+998 (97) 777-10-53</p>
               </div>
               <div className="flex items-center">
                 <Mail
                   size={18}
                   className="text-indigo-400 mr-3 flex-shrink-0"
                 />
-                <p className="text-sm text-gray-400">support@ss-commerce.com</p>
+                <p className="text-sm text-gray-400">inbola.uz@gmail.com</p>
               </div>
             </div>
 
@@ -98,15 +90,15 @@ const Footer = () => {
             <div className="mt-8 grid grid-cols-3 gap-4">
               <div className="text-center">
                 <Truck className="h-6 w-6 text-indigo-400 mx-auto mb-2" />
-                <p className="text-xs text-gray-400">Fast Shipping</p>
+                <p className="text-xs text-gray-400">Tezkor Yetkazib Berish</p>
               </div>
               <div className="text-center">
                 <Shield className="h-6 w-6 text-indigo-400 mx-auto mb-2" />
-                <p className="text-xs text-gray-400">Secure Payment</p>
+                <p className="text-xs text-gray-400">Xavfsiz To'lov</p>
               </div>
               <div className="text-center">
                 <Users className="h-6 w-6 text-indigo-400 mx-auto mb-2" />
-                <p className="text-xs text-gray-400">24/7 Support</p>
+                <p className="text-xs text-gray-400">24/7 Qo'llab-quvvatlash</p>
               </div>
             </div>
           </div>
@@ -117,7 +109,7 @@ const Footer = () => {
               {/* Categories */}
               <div>
                 <h3 className="font-semibold text-lg text-white mb-6 relative inline-block">
-                  Categories
+                  Kategoriyalar
                   <span className="absolute -bottom-2 left-0 h-0.5 w-8 bg-indigo-500"></span>
                 </h3>
                 <ul className="space-y-3">
@@ -139,7 +131,7 @@ const Footer = () => {
                         className="text-indigo-400 hover:text-indigo-300 text-sm flex items-center group transition-all duration-200"
                       >
                         <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                        View All Categories
+                        Barcha Kategoriyalarni Ko'rish
                       </Link>
                     </li>
                   )}
@@ -149,7 +141,7 @@ const Footer = () => {
               {/* Company */}
               <div>
                 <h3 className="font-semibold text-lg text-white mb-6 relative inline-block">
-                  Company
+                  Kompaniya
                   <span className="absolute -bottom-2 left-0 h-0.5 w-8 bg-indigo-500"></span>
                 </h3>
                 <ul className="space-y-3">
@@ -159,7 +151,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      About Us
+                      Biz Haqimizda
                     </Link>
                   </li>
                   <li>
@@ -168,7 +160,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      Contact Us
+                      Bog'lanish
                     </Link>
                   </li>
                   <li>
@@ -177,7 +169,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      Careers
+                      Karyera
                     </Link>
                   </li>
                   <li>
@@ -195,7 +187,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      Press
+                      Matbuot
                     </Link>
                   </li>
                 </ul>
@@ -204,7 +196,7 @@ const Footer = () => {
               {/* Customer Service */}
               <div>
                 <h3 className="font-semibold text-lg text-white mb-6 relative inline-block">
-                  Support
+                  Qo'llab-quvvatlash
                   <span className="absolute -bottom-2 left-0 h-0.5 w-8 bg-indigo-500"></span>
                 </h3>
                 <ul className="space-y-3">
@@ -214,7 +206,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      Help Center
+                      Yordam Markazi
                     </Link>
                   </li>
                   <li>
@@ -223,7 +215,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      Shipping Info
+                      Yetkazib Berish Ma'lumoti
                     </Link>
                   </li>
                   <li>
@@ -232,7 +224,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      Returns & Exchanges
+                      Qaytarish va Almashtirish
                     </Link>
                   </li>
                   <li>
@@ -241,7 +233,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      Track Order
+                      Buyurtmani Kuzatish
                     </Link>
                   </li>
                   <li>
@@ -250,7 +242,7 @@ const Footer = () => {
                       className="text-gray-400 hover:text-white text-sm flex items-center group transition-all duration-200"
                     >
                       <span className="h-1 w-0 bg-indigo-500 rounded-full mr-0 group-hover:w-2 group-hover:mr-2 transition-all duration-200"></span>
-                      Size Guide
+                      O'lcham Qo'llanmasi
                     </Link>
                   </li>
                 </ul>
@@ -261,18 +253,18 @@ const Footer = () => {
           {/* Newsletter */}
           <div className="col-span-1 lg:col-span-1">
             <h3 className="font-semibold text-lg text-white mb-6 relative inline-block">
-              Stay Updated
+              Yangiliklar
               <span className="absolute -bottom-2 left-0 h-0.5 w-8 bg-indigo-500"></span>
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Subscribe to get exclusive offers, new product updates, and
-              special discounts.
+              Maxsus takliflar, yangi mahsulot yangiliklari va
+              maxsus chegirmalarni olish uchun obuna bo'ling.
             </p>
             <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
               <div className="relative">
                 <input
                   type="email"
-                  placeholder="Your email address"
+                  placeholder="Email manzilingiz"
                   className="w-full bg-gray-800/50 border border-gray-700 rounded-lg p-3 pl-4 pr-12 text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                 />
                 <button
@@ -283,13 +275,13 @@ const Footer = () => {
                 </button>
               </div>
               <p className="text-gray-500 text-xs">
-                By subscribing, you agree to our Privacy Policy.
+                Obuna bo'lish orqali siz Maxfiylik Siyosatimizga rozilik bildirasiz.
               </p>
             </form>
 
             <div className="mt-8">
               <h4 className="text-sm font-medium text-gray-300 mb-4">
-                Follow Us
+                Bizni Kuzatib Boring
               </h4>
               <div className="flex space-x-3">
                 {[
@@ -297,25 +289,25 @@ const Footer = () => {
                     icon: <Facebook size={18} />,
                     name: "Facebook",
                     bg: "bg-blue-600",
-                    href: "https://facebook.com/ss-commerce",
+                    href: "https://facebook.com/inbola.uz",
                   },
                   {
-                    icon: <Twitter size={18} />,
-                    name: "Twitter",
-                    bg: "bg-sky-500",
-                    href: "https://twitter.com/ss-commerce",
+                    icon: <Send size={18} />,
+                    name: "Telegram",
+                    bg: "bg-blue-500",
+                    href: "https://t.me/Zufar_Xorazmiy",
                   },
                   {
                     icon: <Instagram size={18} />,
                     name: "Instagram",
                     bg: "bg-pink-600",
-                    href: "https://instagram.com/ss-commerce",
+                    href: "https://instagram.com/inbola.uz",
                   },
                   {
-                    icon: <Youtube size={18} />,
-                    name: "YouTube",
+                    icon: <Mail size={18} />,
+                    name: "Gmail",
                     bg: "bg-red-600",
-                    href: "https://youtube.com/ss-commerce",
+                    href: "mailto:inbola.uz@gmail.com",
                   },
                 ].map((social, idx) => (
                   <a
@@ -338,12 +330,13 @@ const Footer = () => {
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center space-x-6 mb-6 md:mb-0">
             {[
+              "Payme",
+              "Click",
+              "Uzum Bank",
               "Visa",
               "Mastercard",
-              "PayPal",
-              "Apple Pay",
-              "Google Pay",
-              "Stripe",
+              "Humo",
+              "UzCard",
             ].map((method, idx) => (
               <div key={idx} className="text-xs text-gray-500 font-medium">
                 {method}
@@ -353,14 +346,14 @@ const Footer = () => {
 
           <div className="flex flex-col md:flex-row text-center md:text-left items-center space-y-2 md:space-y-0 md:space-x-8 text-sm">
             <p className="text-gray-400">
-              © {currentYear} SS-Commerce. All rights reserved.
+              © {currentYear} Inbola. Barcha huquqlar himoyalangan.
             </p>
             <div className="flex space-x-4 text-gray-500">
               {[
-                { name: "Terms", href: "/terms" },
-                { name: "Privacy", href: "/privacy" },
-                { name: "Cookies", href: "/cookies" },
-                { name: "Sitemap", href: "/sitemap" },
+                { name: "Shartlar", href: "/terms" },
+                { name: "Maxfiylik", href: "/privacy" },
+                { name: "Cookie", href: "/cookies" },
+                { name: "Sayt Xaritasi", href: "/sitemap" },
               ].map((item, idx) => (
                 <Link
                   key={idx}

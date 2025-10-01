@@ -1,8 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inbola - Premium Onlayn Do'kon
 
-## Getting Started
+Bu [Next.js](https://nextjs.org) asosida qurilgan Inbola e-commerce platformasi.
 
-First, run the development server:
+## Boshlash
+
+Avval development serverni ishga tushiring:
 
 ```bash
 npm run dev
@@ -14,15 +16,15 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Brauzeringizda [http://localhost:3000](http://localhost:3000) manzilini oching.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Sahifani tahrirlash uchun `app/page.tsx` faylini o'zgartiring. Sahifa avtomatik yangilanadi.
 
-## 🧪 Testing
+## 🧪 Sinov
 
-### **Test Accounts**
+### **Test Akkauntlari**
 
-After running the database seeder (`cd ../server && npm run seed`), you can use these test accounts:
+Ma'lumotlar bazasini to'ldirgandan keyin (`cd ../server && npm run seed`), quyidagi test akkauntlaridan foydalaning:
 
 | Role           | Email                    | Password      | Use Case            |
 | -------------- | ------------------------ | ------------- | ------------------- |
