@@ -113,12 +113,12 @@ const HelpPage = () => {
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Search for help articles..."
+                  placeholder="Yordam maqolalarini qidiring..."
                   className="w-full px-6 py-4 pl-12 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
                 />
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors">
-                  Search
+                  Qidirish
                 </button>
               </div>
             </div>
@@ -130,7 +130,7 @@ const HelpPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Quick Help Options */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Get Help Now</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Hoziroq Yordam Oling</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {contactOptions.map((option, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
@@ -150,7 +150,7 @@ const HelpPage = () => {
 
         {/* FAQ Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Tez-tez So'raladigan Savollar</h2>
           <div className="space-y-8">
             {faqCategories.map((category, categoryIndex) => (
               <div key={categoryIndex} className="bg-white rounded-lg shadow-md p-6">
@@ -178,15 +178,15 @@ const HelpPage = () => {
 
         {/* Popular Help Articles */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Popular Help Articles</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Mashhur Yordam Maqolalari</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              "How to place an order",
-              "Setting up your account",
-              "Understanding shipping costs",
-              "Using discount codes",
-              "Managing your wishlist",
-              "Updating payment methods"
+              "Buyurtma berish usuli",
+              "Hisobingizni sozlash",
+              "Yetkazib berish xarajatlarini tushunish",
+              "Chegirma kodlaridan foydalanish",
+              "Sevimlilar ro'yxatini boshqarish",
+              "To'lov usullarini yangilash"
             ].map((article, index) => (
               <a
                 key={index}
@@ -197,10 +197,10 @@ const HelpPage = () => {
                   {article}
                 </h3>
                 <p className="text-gray-600 text-sm mb-4">
-                  Step-by-step guide to help you {article.toLowerCase()}.
+                  Sizga yordam berish uchun bosqichma-bosqich qo'llanma.
                 </p>
                 <div className="flex items-center text-indigo-600 text-sm font-medium">
-                  Read Article
+                  Maqolani O'qish
                   <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </div>
               </a>
@@ -210,19 +210,19 @@ const HelpPage = () => {
 
         {/* Still Need Help */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg p-8 text-center">
-          <h2 className="text-2xl font-bold mb-4">Still Need Help?</h2>
+          <h2 className="text-2xl font-bold mb-4">Hali Ham Yordam Kerakmi?</h2>
           <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
-            Can't find what you're looking for? Our customer support team is here to help you with any questions or concerns.
+            Qidirayotgan narsangizni topa olmadingizmi? Mijozlarni qo'llab-quvvatlash jamoamiz har qanday savol yoki muammolaringizda sizga yordam berishga tayyor.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="/contact" 
               className="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
             >
-              Contact Support
+              Qo'llab-quvvatlash Bilan Bog'lanish
             </a>
             <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors">
-              Start Live Chat
+              Jonli Suhbatni Boshlash
             </button>
           </div>
         </div>

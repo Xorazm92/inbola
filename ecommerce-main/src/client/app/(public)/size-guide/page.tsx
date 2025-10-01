@@ -122,28 +122,28 @@ const SizeGuidePage = () => {
 
         {/* Size Tips */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6 text-center">Sizing Tips</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center">O'lchash Maslahatlari</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-semibold mb-4">For the Best Fit:</h3>
+              <h3 className="text-lg font-semibold mb-4">Eng Yaxshi Mos Kelish Uchun:</h3>
               <ul className="space-y-2 text-indigo-100">
-                <li>• Measure yourself in underwear for accuracy</li>
-                <li>• Use a soft measuring tape, not a ruler</li>
-                <li>• Have someone help you measure for best results</li>
-                <li>• When in doubt, size up for comfort</li>
+                <li>• Aniqlik uchun ichki kiyimda o'lchang</li>
+                <li>• Chizg'ich emas, yumshoq o'lchash lentasidan foydalaning</li>
+                <li>• Eng yaxshi natija uchun kimdir sizga yordam bersin</li>
+                <li>• Shubhangiz bo'lsa, qulaylik uchun kattaroq o'lchamni tanlang</li>
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Still Unsure?</h3>
+              <h3 className="text-lg font-semibold mb-4">Hali Ham Shubhangiz Bormi?</h3>
               <p className="text-indigo-100 mb-4">
-                Our customer service team is here to help you find the perfect size. 
-                Contact us with any questions about sizing or fit.
+                Mijozlarni qo'llab-quvvatlash jamoamiz sizga mukammal o'lchamni topishda yordam beradi. 
+                O'lcham yoki mos kelish haqida har qanday savol bo'lsa, biz bilan bog'laning.
               </p>
               <a 
                 href="/contact" 
                 className="inline-block bg-white text-indigo-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
               >
-                Contact Support
+                Qo'llab-quvvatlash Bilan Bog'lanish
               </a>
             </div>
           </div>
